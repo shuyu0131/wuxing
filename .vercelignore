@@ -1,0 +1,5 @@
+data
+server.log
+server.mjs
+node_modules
+*.md

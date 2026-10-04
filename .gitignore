@@ -1,0 +1,8 @@
+# 游戏运行产生的本地数据与日志
+data/
+server.log
+node_modules/
+
+# 本地工具目录
+.mimosa/
+.v2c/

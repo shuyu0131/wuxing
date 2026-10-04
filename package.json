@@ -1,0 +1,14 @@
+{
+  "name": "wuxing-office-game",
+  "version": "1.2.0",
+  "private": true,
+  "type": "module",
+  "description": "悟性 · 职场修炼场 — 单文件职场文字修炼游戏（含可选联网服务端与 Vercel 无服务器函数）",
+  "scripts": {
+    "start": "node server.mjs",
+    "deploy": "vercel --prod"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

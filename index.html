@@ -1,0 +1,2544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f0f2f5">
+<title>悟性 · 职场修炼场</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024'%3E%3Crect width='1024' height='1024' rx='180' fill='%23409eff'/%3E%3Cpath fill='%23fff' d='M300 300h424v72H300zm0 160h424v72H300zm0 160h280v72H300z'/%3E%3C/svg%3E">
+<style>
+:root{
+  --el-color-primary:#409eff;--el-color-primary-light-3:#79bbff;--el-color-primary-light-5:#a0cfff;
+  --el-color-primary-light-7:#c6e2ff;--el-color-primary-light-8:#d9ecff;--el-color-primary-light-9:#ecf5ff;
+  --el-color-success:#67c23a;--el-color-success-light:#b3e19d;--el-color-success-light-9:#f0f9eb;
+  --el-color-warning:#e6a23c;--el-color-warning-light:#f3d19e;--el-color-warning-light-9:#fdf6ec;
+  --el-color-danger:#f56c6c;--el-color-danger-light:#fab6b6;--el-color-danger-light-9:#fef0f0;
+  --el-color-info:#909399;--el-color-info-light:#d3d4d6;--el-color-info-light-9:#f4f4f5;
+  --el-text-primary:#303133;--el-text-regular:#606266;--el-text-secondary:#909399;--el-text-placeholder:#a8abb2;
+  --el-border-base:#dcdfe6;--el-border-light:#e4e7ed;--el-border-lighter:#ebeef5;--el-border-extra-light:#f2f6fc;
+  --el-fill:#fff;--el-fill-light:#f5f7fa;--el-fill-lighter:#fafafa;--el-bg:#f0f2f5;
+  --el-radius:4px;--el-shadow:0 2px 12px 0 rgba(0,0,0,.1);--el-shadow-light:0 0 12px rgba(0,0,0,.12);
+  --el-font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",Arial,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--el-bg);color:var(--el-text-regular);font-family:var(--el-font);font-size:14px;line-height:1.6;
+  line-break:strict;word-break:normal;overflow-wrap:break-word;-webkit-text-size-adjust:100%}
+.ic{width:1em;height:1em;fill:currentColor;vertical-align:-.125em;flex:none;display:inline-block}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px 72px}
+.rise{animation:rise .26s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+
+/* ---------------- 顶部导航 ---------------- */
+.topnav{background:var(--el-fill);border-bottom:1px solid var(--el-border-light);position:sticky;top:0;z-index:60;box-shadow:0 1px 4px rgba(0,0,0,.04)}
+.topnav .in{max-width:900px;margin:0 auto;padding:0 20px;height:56px;display:flex;align-items:center;gap:28px}
+.brand{display:flex;align-items:center;gap:8px;font-size:16px;font-weight:600;color:var(--el-text-primary);flex:none}
+.brand .ic{width:20px;height:20px;color:var(--el-color-primary)}
+.brand em{font-style:normal;font-weight:400;font-size:12px;color:var(--el-text-secondary)}
+.menu{display:flex;align-items:center;gap:4px;flex:1;overflow-x:auto;scrollbar-width:none}
+.menu::-webkit-scrollbar{display:none}
+.menu button{display:flex;align-items:center;gap:6px;height:56px;padding:0 14px;border:none;background:none;
+  font-family:var(--el-font);font-size:14px;color:var(--el-text-regular);cursor:pointer;white-space:nowrap;
+  border-bottom:2px solid transparent;transition:color .1s,border-color .1s}
+.menu button:hover{color:var(--el-color-primary)}
+.menu button.on{color:var(--el-color-primary);border-bottom-color:var(--el-color-primary);font-weight:500}
+.menu button .ic{width:15px;height:15px}
+.menu button .bd{display:inline-flex;align-items:center;justify-content:center;min-width:16px;height:16px;padding:0 4px;
+  border-radius:8px;background:var(--el-color-danger);color:#fff;font-size:10px;line-height:1;font-variant-numeric:tabular-nums}
+.navuser{display:flex;align-items:center;gap:10px;flex:none}
+.navuser .who{text-align:right;line-height:1.3}
+.navuser .who b{display:block;font-size:13px;font-weight:500;color:var(--el-text-primary)}
+.navuser .who span{font-size:11px;color:var(--el-text-secondary)}
+.navuser .ava{width:30px;height:30px;border-radius:50%;background:var(--el-color-primary-light-9);
+  color:var(--el-color-primary);display:flex;align-items:center;justify-content:center;border:1px solid var(--el-color-primary-light-8);
+  cursor:pointer;transition:.1s;padding:0;font-family:var(--el-font)}
+.navuser .ava:hover{border-color:var(--el-color-primary);background:var(--el-color-primary-light-8)}
+.navuser .ava.on{background:var(--el-color-primary);border-color:var(--el-color-primary);color:#fff}
+
+/* 移动端底部标签栏（桌面隐藏） */
+.tabbar{display:none}
+@media (max-width:720px){
+  .tabbar{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--el-fill);
+    border-top:1px solid var(--el-border-light);padding-bottom:env(safe-area-inset-bottom);
+    box-shadow:0 -1px 4px rgba(0,0,0,.04)}
+  .tabbar button{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;height:52px;
+    border:none;background:none;font-family:var(--el-font);font-size:10.5px;color:var(--el-text-secondary);
+    cursor:pointer;position:relative;transition:color .1s}
+  .tabbar button .ic{width:20px;height:20px}
+  .tabbar button.on{color:var(--el-color-primary)}
+  .tabbar button .bd{position:absolute;top:5px;left:calc(50% + 9px);min-width:15px;height:15px;padding:0 4px;
+    border-radius:8px;background:var(--el-color-danger);color:#fff;font-size:10px;line-height:15px;text-align:center}
+  .wrap{padding-bottom:calc(76px + env(safe-area-inset-bottom))}
+  .topnav .in{gap:10px}
+  .menu{display:none}
+  .brand{display:flex}
+  .brand em{display:none}
+}
+
+/* 分段选择器（排行榜页签） */
+.rtabwrap{display:flex;border:1px solid var(--el-border-lighter);border-radius:var(--el-radius);overflow:hidden;margin-bottom:16px;background:var(--el-fill-light)}
+.rtab{flex:1;height:36px;border:none;background:none;font-family:var(--el-font);font-size:14px;
+  color:var(--el-text-regular);cursor:pointer;transition:.1s;border-right:1px solid var(--el-border-lighter)}
+.rtab:last-child{border-right:none}
+.rtab:hover{color:var(--el-color-primary)}
+.rtab.on{background:var(--el-fill);color:var(--el-color-primary);font-weight:600}
+
+/* 对话框（Element dialog 风） */
+.dmask{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:900;display:flex;align-items:center;justify-content:center;padding:16px}
+.dbox{background:var(--el-fill);border-radius:var(--el-radius);box-shadow:var(--el-shadow);width:100%;max-width:420px;animation:rise .2s ease both;max-height:86vh;display:flex;flex-direction:column}
+.dbox .dh{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--el-border-lighter)}
+.dbox .dh .t{font-size:16px;color:var(--el-text-primary);font-weight:600;display:flex;align-items:center;gap:8px}
+.dbox .dh .t .ic{color:var(--el-color-primary);width:17px;height:17px}
+.dbox .dh .x{border:none;background:none;cursor:pointer;color:var(--el-text-secondary);display:flex;padding:4px}
+.dbox .dh .x:hover{color:var(--el-color-primary)}
+.dbox .db{padding:20px;overflow:auto}
+.dbox .df{padding:12px 20px;border-top:1px solid var(--el-border-lighter);display:flex;justify-content:flex-end;gap:10px}
+/* 表单 */
+.fi{margin-bottom:14px}
+.fi label{display:block;font-size:13px;color:var(--el-text-regular);margin-bottom:6px}
+.fi label i{font-style:normal;color:var(--el-color-danger);margin-left:2px}
+.fi input,.fi select,.fi textarea{width:100%;font-family:var(--el-font);font-size:14px;color:var(--el-text-primary);
+  border:1px solid var(--el-border-base);border-radius:var(--el-radius);padding:8px 11px;outline:none;background:var(--el-fill);transition:.1s}
+.fi input:focus,.fi select:focus,.fi textarea:focus{border-color:var(--el-color-primary)}
+.fi textarea{resize:vertical;min-height:64px;line-height:1.6}
+.fi .hint{font-size:12px;color:var(--el-text-placeholder);margin-top:4px;line-height:1.5}
+.fi .err{font-size:12px;color:var(--el-color-danger);margin-top:4px}
+.opts-in .oi{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.opts-in .oi .k{flex:none;width:22px;height:22px;border-radius:50%;border:1px solid var(--el-border-base);
+  display:flex;align-items:center;justify-content:center;font-size:12px;color:var(--el-text-secondary);cursor:pointer;transition:.1s}
+.opts-in .oi .k.on{border-color:var(--el-color-success);background:var(--el-color-success);color:#fff}
+.navuser .ava .ic{width:17px;height:17px}
+.bellbtn{position:relative;border:none;background:none;cursor:pointer;color:var(--el-text-regular);padding:4px;display:flex;
+  border-radius:var(--el-radius);transition:.1s}
+.bellbtn:hover{color:var(--el-color-primary);background:var(--el-color-primary-light-9)}
+.bellbtn .ic{width:17px;height:17px}
+
+/* 面包屑 */
+.crumb{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--el-text-secondary);padding:14px 0 10px}
+.crumb .ic{width:12px;height:12px;color:var(--el-text-placeholder)}
+.crumb b{color:var(--el-text-primary);font-weight:500}
+
+/* ---------------- el-card ---------------- */
+.card{background:var(--el-fill);border:1px solid var(--el-border-lighter);border-radius:var(--el-radius);box-shadow:var(--el-shadow);overflow:hidden}
+.card+.card{margin-top:16px}
+.card-hd{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--el-border-lighter)}
+.card-hd .t{display:flex;align-items:center;gap:8px;font-size:15px;color:var(--el-text-primary);font-weight:600}
+.card-hd .t .ic{width:17px;height:17px;color:var(--el-color-primary)}
+.card-hd .x{font-size:12px;color:var(--el-text-secondary);display:flex;align-items:center;gap:6px}
+.card-bd{padding:20px}
+.card-bd.tight{padding:14px 20px}
+
+/* ---------------- el-button ---------------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;padding:0 19px;
+  font-family:var(--el-font);font-size:14px;line-height:1;white-space:nowrap;border:1px solid var(--el-border-base);
+  border-radius:var(--el-radius);background:var(--el-fill);color:var(--el-text-regular);cursor:pointer;transition:.1s;user-select:none}
+.btn .ic{width:15px;height:15px}
+.btn:hover{color:var(--el-color-primary);border-color:var(--el-color-primary-light-5);background:var(--el-color-primary-light-9)}
+.btn-primary{background:var(--el-color-primary);border-color:var(--el-color-primary);color:#fff}
+.btn-primary:hover{background:var(--el-color-primary-light-3);border-color:var(--el-color-primary-light-3);color:#fff}
+.btn-success{background:var(--el-color-success);border-color:var(--el-color-success);color:#fff}
+.btn-success:hover{background:#85ce61;border-color:#85ce61;color:#fff}
+.btn-warning{background:var(--el-color-warning);border-color:var(--el-color-warning);color:#fff}
+.btn-warning:hover{background:#ebb563;border-color:#ebb563;color:#fff}
+.btn-plain{background:var(--el-color-primary-light-9);border-color:var(--el-color-primary-light-7);color:var(--el-color-primary)}
+.btn-block{display:flex;width:100%}
+.btn-lg{height:42px;font-size:15px;padding:0 22px}
+.btn-sm{height:30px;padding:0 13px;font-size:12px}
+.btn-sm .ic{width:13px;height:13px}
+.btn-row{display:flex;gap:10px;flex-wrap:wrap}
+.btn-row .btn{flex:1;min-width:150px}
+.linkbtn{border:none;background:none;color:var(--el-color-primary);font-size:12px;cursor:pointer;font-family:var(--el-font);padding:0}
+.linkbtn:hover{color:var(--el-color-primary-light-3);text-decoration:underline}
+
+/* ---------------- el-tag ---------------- */
+.tag{display:inline-flex;align-items:center;gap:4px;height:24px;padding:0 9px;font-size:12px;line-height:1;
+  border:1px solid var(--el-color-primary-light-8);border-radius:var(--el-radius);background:var(--el-color-primary-light-9);color:var(--el-color-primary)}
+.tag .ic{width:12px;height:12px}
+.tag-s{border-color:var(--el-color-success-light);background:var(--el-color-success-light-9);color:var(--el-color-success)}
+.tag-w{border-color:var(--el-color-warning-light);background:var(--el-color-warning-light-9);color:var(--el-color-warning)}
+.tag-d{border-color:var(--el-color-danger-light);background:var(--el-color-danger-light-9);color:var(--el-color-danger)}
+.tag-i{border-color:var(--el-color-info-light);background:var(--el-color-info-light-9);color:var(--el-color-info)}
+.tag-mini{height:20px;padding:0 6px;font-size:11px}
+.tagrow{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+
+/* ---------------- el-progress ---------------- */
+.progress{display:flex;align-items:center;gap:12px}
+.progress .track{flex:1;height:6px;background:var(--el-border-lighter);border-radius:3px;overflow:hidden}
+.progress .track i{display:block;height:100%;background:var(--el-color-primary);border-radius:3px;transition:width .5s ease}
+.progress .txt{font-size:12px;color:var(--el-text-secondary);font-variant-numeric:tabular-nums;flex:none}
+
+/* ---------------- el-descriptions ---------------- */
+.desc{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--el-border-lighter);border-radius:var(--el-radius);overflow:hidden}
+.desc .it{padding:14px 6px;text-align:center;border-right:1px solid var(--el-border-lighter);background:var(--el-fill-lighter)}
+.desc .it:last-child{border-right:none}
+.desc .lb{font-size:12px;color:var(--el-text-secondary);display:flex;align-items:center;justify-content:center;gap:4px}
+.desc .lb .ic{width:13px;height:13px}
+.desc .vl{font-size:22px;color:var(--el-text-primary);font-variant-numeric:tabular-nums;margin-top:2px;font-weight:500}
+.desc .vl small{font-size:12px;color:var(--el-text-secondary);font-weight:400}
+
+/* ---------------- el-alert ---------------- */
+.alert{display:flex;gap:10px;padding:12px 16px;border-radius:var(--el-radius);font-size:13px;line-height:1.7}
+.alert+.alert{margin-top:10px}
+.alert .ai{flex:none;margin-top:2px}
+.alert .ai .ic{width:15px;height:15px}
+.alert .at{color:var(--el-text-primary);font-weight:600;margin-bottom:2px}
+.alert-s{background:var(--el-color-success-light-9);border:1px solid var(--el-color-success-light);color:var(--el-color-success)}
+.alert-w{background:var(--el-color-warning-light-9);border:1px solid var(--el-color-warning-light);color:var(--el-color-warning)}
+.alert-e{background:var(--el-color-danger-light-9);border:1px solid var(--el-color-danger-light);color:var(--el-color-danger)}
+.alert-i{background:var(--el-color-info-light-9);border:1px solid var(--el-color-info-light);color:var(--el-color-info)}
+
+/* ---------------- 选项 ---------------- */
+.opts{margin-top:16px}
+.opt{display:flex;gap:10px;align-items:flex-start;width:100%;text-align:left;padding:12px 16px;margin-bottom:10px;
+  border:1px solid var(--el-border-base);border-radius:var(--el-radius);background:var(--el-fill);
+  font-family:var(--el-font);font-size:14px;line-height:1.7;color:var(--el-text-regular);cursor:pointer;transition:.1s}
+.opt:last-child{margin-bottom:0}
+.opt:hover:not(:disabled){border-color:var(--el-color-primary);color:var(--el-color-primary)}
+.opt:disabled{cursor:default}
+.opt .key{flex:none;width:19px;height:19px;margin-top:2px;border:1px solid var(--el-border-base);border-radius:50%;
+  font-size:11px;color:var(--el-text-secondary);display:flex;align-items:center;justify-content:center}
+.opt .tx{flex:1}
+.opt .mk{flex:none;display:flex;align-items:center;gap:4px;font-size:12px;padding-left:6px;margin-top:2px}
+.opt .mk .ic{width:14px;height:14px}
+.opt.correct{border-color:var(--el-color-success);background:var(--el-color-success-light-9);color:var(--el-color-success)}
+.opt.correct .key{border-color:var(--el-color-success);background:var(--el-color-success);color:#fff}
+.opt.wrongpick{border-color:var(--el-color-danger);background:var(--el-color-danger-light-9);color:var(--el-color-danger)}
+.opt.wrongpick .key{border-color:var(--el-color-danger);background:var(--el-color-danger);color:#fff}
+
+/* ---------------- el-steps ---------------- */
+.steps{display:flex;gap:4px;margin-bottom:14px}
+.steps i{flex:1;height:3px;border-radius:2px;background:var(--el-border-lighter);transition:background-color .2s}
+.steps i.done{background:var(--el-color-primary)}
+.steps i.cur{background:var(--el-color-primary-light-5)}
+.steps i.fail{background:var(--el-color-danger-light)}
+
+/* ---------------- 场景容器 ---------------- */
+.scene{border:1px solid var(--el-border-light);border-radius:var(--el-radius);overflow:hidden;background:var(--el-fill)}
+.scene-hd{display:flex;align-items:center;gap:8px;padding:9px 14px;background:var(--el-fill-light);
+  border-bottom:1px solid var(--el-border-light);font-size:12px;color:var(--el-text-secondary)}
+.scene-hd .ic{width:14px;height:14px;color:var(--el-color-primary)}
+.scene-hd b{color:var(--el-text-primary);font-weight:500}
+.scene-hd .rt{margin-left:auto;color:var(--el-text-placeholder)}
+.scene-bd{padding:16px}
+/* 场景：聊天 */
+.scene.chat .scene-hd{background:var(--el-color-primary-light-9);border-bottom-color:var(--el-color-primary-light-8)}
+.msgrow{display:flex;gap:10px;align-items:flex-start}
+.av{width:34px;height:34px;border-radius:var(--el-radius);color:#fff;font-size:15px;flex:none;
+  display:flex;align-items:center;justify-content:center;font-weight:500}
+.msgin{flex:1;min-width:0}
+.mn{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--el-text-primary);font-weight:500;margin-bottom:6px;flex-wrap:wrap}
+.mn em{font-style:normal;font-weight:400;color:var(--el-text-placeholder);font-size:11px;
+  border:1px solid var(--el-border-light);border-radius:2px;padding:0 5px;line-height:16px}
+.mn i{margin-left:auto;font-style:normal;font-weight:400;color:var(--el-text-placeholder);font-size:11px;
+  font-variant-numeric:tabular-nums}
+.bubble{background:var(--el-fill-light);border:1px solid var(--el-border-extra-light);
+  border-radius:2px 8px 8px 8px;padding:12px 14px;font-size:14.5px;line-height:1.85;color:var(--el-text-primary)}
+/* 场景：公文 / 日程 / 测评 的元信息行 */
+.docmeta{display:flex;flex-wrap:wrap;gap:6px 18px;margin-bottom:10px;padding-bottom:10px;
+  border-bottom:1px dashed var(--el-border-light);font-size:12px;color:var(--el-text-secondary)}
+.docmeta i{font-style:normal;color:var(--el-text-placeholder);margin-right:6px}
+/* 场景：告警 */
+.alertrow{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:10px;
+  border-bottom:1px dashed var(--el-border-light);font-size:12px;color:var(--el-text-secondary)}
+.alertrow .ic{width:14px;height:14px;color:var(--el-color-danger)}
+.alertrow b{color:var(--el-color-danger);font-weight:600}
+.alertrow .lv{margin-left:auto;background:var(--el-color-danger);color:#fff;font-size:10px;
+  border-radius:2px;padding:0 5px;line-height:16px;font-weight:600}
+.scene.doc .scene-hd{background:var(--el-color-danger-light-9);border-bottom-color:var(--el-color-danger-light);color:var(--el-color-danger)}
+.scene.doc .scene-hd .ic,.scene.doc .scene-hd b{color:var(--el-color-danger)}
+.scene.doc .scene-bd{font-family:"FangSong","STFangsong","仿宋",serif;font-size:16px;line-height:1.9}
+.scene.alert{border-color:var(--el-color-danger-light)}
+.scene.alert .scene-hd{background:var(--el-color-danger-light-9);border-bottom-color:var(--el-color-danger-light);color:var(--el-color-danger)}
+.scene.alert .scene-hd .ic,.scene.alert .scene-hd b{color:var(--el-color-danger)}
+.scene.mail .scene-bd{padding:0}
+.mailrow{display:flex;gap:10px;padding:8px 16px;border-bottom:1px solid var(--el-border-lighter);font-size:13px}
+.mailrow .k{color:var(--el-text-secondary);flex:none;width:52px}
+.mailrow .v{color:var(--el-text-primary);overflow:hidden;text-overflow:ellipsis}
+.mailbody{padding:16px;font-size:14.5px;line-height:1.85;color:var(--el-text-primary)}
+.scene.dinner{border-color:var(--el-color-warning-light)}
+.scene.dinner .scene-hd{background:var(--el-color-warning-light-9);border-bottom-color:var(--el-color-warning-light);color:var(--el-color-warning)}
+.scene.dinner .scene-hd .ic,.scene.dinner .scene-hd b{color:var(--el-color-warning)}
+.scene.exam .scene-hd{background:var(--el-color-primary-light-9);border-bottom-color:var(--el-color-primary-light-8)}
+.qtext{font-size:15px;line-height:1.85;color:var(--el-text-primary)}
+.metaline{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.metaline .lft{display:flex;align-items:center;gap:8px;font-size:12px;color:var(--el-text-secondary)}
+.stars{display:inline-flex;gap:1px;color:var(--el-color-warning)}
+.stars .ic{width:12px;height:12px}
+.stars .off{color:var(--el-border-base)}
+.lives{display:inline-flex;gap:2px;align-items:center;color:var(--el-color-danger)}
+.lives .ic{width:14px;height:14px}
+.lives .off{color:var(--el-border-base)}
+
+/* ---------------- 解析 ---------------- */
+.analysis{margin-top:16px}
+.analysis .li{padding:10px 0;border-bottom:1px dashed var(--el-border-lighter);font-size:13px;line-height:1.75}
+.analysis .li:last-child{border-bottom:none}
+.analysis .li .hd{display:flex;align-items:center;gap:6px;font-size:12px;margin-bottom:2px}
+.analysis .li .hd .ic{width:13px;height:13px}
+.analysis .ok{color:var(--el-color-success)}
+.analysis .you{color:var(--el-color-danger)}
+.analysis .li .op{color:var(--el-text-primary);font-weight:500}
+.tip{margin-top:12px;background:var(--el-color-warning-light-9);border:1px solid var(--el-color-warning-light);
+  border-radius:var(--el-radius);padding:10px 14px;font-size:13px;color:#8a5c14;display:flex;gap:8px;line-height:1.7}
+.tip .ic{width:14px;height:14px;flex:none;margin-top:3px;color:var(--el-color-warning)}
+.combo{color:var(--el-color-danger);font-weight:600}
+
+/* ---------------- el-result ---------------- */
+.result{text-align:center;padding:8px 0 2px}
+.result .ri{display:inline-flex;font-size:54px;line-height:1}
+.result .ri .ic{width:54px;height:54px}
+.result .ri.ok{color:var(--el-color-success)}
+.result .ri.warn{color:var(--el-color-warning)}
+.result .ri.info{color:var(--el-color-primary)}
+.result .rt{font-size:20px;color:var(--el-text-primary);margin-top:14px;font-weight:600}
+.result .rs{font-size:13px;color:var(--el-text-secondary);margin-top:8px;line-height:1.8}
+.rankname{font-size:32px;font-weight:600;color:var(--el-color-primary);margin:6px 0 2px;letter-spacing:2px}
+
+/* 结算清单 */
+.recap{margin-top:16px;border:1px solid var(--el-border-lighter);border-radius:var(--el-radius);overflow:hidden;text-align:left}
+.recap .row{display:flex;align-items:center;gap:10px;padding:9px 14px;font-size:13px;border-bottom:1px solid var(--el-border-lighter)}
+.recap .row:last-child{border-bottom:none}
+.recap .row .ic{width:14px;height:14px}
+.recap .row .ok{color:var(--el-color-success)}
+.recap .row .no{color:var(--el-color-danger)}
+.recap .row .tx{color:var(--el-text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ---------------- 列表 ---------------- */
+.witem{display:flex;align-items:center;gap:12px;padding:13px 16px;border:1px solid var(--el-border-lighter);
+  border-radius:var(--el-radius);background:var(--el-fill);cursor:pointer;transition:.1s}
+.witem+.witem{margin-top:10px}
+.witem:hover{border-color:var(--el-color-primary-light-5);background:var(--el-color-primary-light-9)}
+.witem .wi{width:32px;height:32px;border-radius:var(--el-radius);background:var(--el-color-danger-light-9);
+  color:var(--el-color-danger);display:flex;align-items:center;justify-content:center;flex:none}
+.witem .wi .ic{width:16px;height:16px}
+.witem .wb{flex:1;min-width:0}
+.witem .wq{font-size:13.5px;color:var(--el-text-primary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.witem .wm{font-size:12px;color:var(--el-text-secondary);margin-top:2px;display:flex;align-items:center;gap:6px}
+.witem .go{flex:none;color:var(--el-text-placeholder)}
+.witem .go .ic{width:14px;height:14px}
+.todo{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--el-border-lighter)}
+.todo:last-child{border-bottom:none}
+.todo .ti{width:34px;height:34px;border-radius:var(--el-radius);display:flex;align-items:center;justify-content:center;flex:none;
+  background:var(--el-color-primary-light-9);color:var(--el-color-primary)}
+.todo .ti.w{background:var(--el-color-warning-light-9);color:var(--el-color-warning)}
+.todo .ti.d{background:var(--el-color-danger-light-9);color:var(--el-color-danger)}
+.todo .ti.s{background:var(--el-color-success-light-9);color:var(--el-color-success)}
+.todo .ti .ic{width:17px;height:17px}
+.todo .tb{flex:1;min-width:0}
+.todo .tt{font-size:14px;color:var(--el-text-primary);font-weight:500;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.todo .td{font-size:12px;color:var(--el-text-secondary);margin-top:3px}
+.todo .ta{flex:none}
+.agrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.acard{border:1px solid var(--el-border-lighter);border-radius:var(--el-radius);padding:14px;background:var(--el-fill)}
+.acard .an{display:flex;align-items:center;gap:6px;font-size:13px;color:var(--el-text-primary);font-weight:600}
+.acard .an .ic{width:15px;height:15px;color:var(--el-color-warning)}
+.acard .ad{font-size:12px;color:var(--el-text-secondary);margin-top:6px;line-height:1.6}
+.acard.locked{background:var(--el-fill-light)}
+.acard.locked .an{color:var(--el-text-placeholder);font-weight:400}
+.acard.locked .an .ic{color:var(--el-border-base)}
+.empty{padding:44px 0;text-align:center;color:var(--el-text-placeholder);font-size:13px}
+.empty .ic{width:40px;height:40px;display:block;margin:0 auto 10px;color:var(--el-border-base)}
+
+/* ---------------- el-message ---------------- */
+#toasts{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:1000;display:flex;flex-direction:column;gap:8px;align-items:center;pointer-events:none}
+.msg{display:flex;align-items:center;gap:8px;padding:11px 16px;border-radius:var(--el-radius);font-size:13px;
+  background:#edf2fc;border:1px solid #e1eaf5;color:var(--el-text-secondary);box-shadow:var(--el-shadow-light);animation:mi .25s ease both}
+.msg .ic{width:15px;height:15px;color:var(--el-color-primary)}
+.msg.ok{background:var(--el-color-success-light-9);border-color:var(--el-color-success-light);color:var(--el-color-success)}
+.msg.ok .ic{color:var(--el-color-success)}
+@keyframes mi{from{opacity:0;transform:translateY(-12px)}}
+.msg.out{opacity:0;transition:opacity .3s}
+
+/* ---------------- 老板键：Excel 只读窗口（不可编辑，防露馅） ---------------- */
+body.boss #app,body.boss #toasts{display:none}
+#boss{position:fixed;inset:0;z-index:999;display:none;flex-direction:column;background:#fff;color:#333;
+  font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif;font-size:13px;
+  user-select:none;-webkit-user-select:none;cursor:default}
+body.boss #boss{display:flex}
+/* 标题栏 */
+.b-title{background:#217346;color:#fff;font-size:12px;height:30px;padding:0 8px 0 10px;
+  display:flex;align-items:center;gap:8px;flex:none}
+.b-title .xi{width:15px;height:15px;background:#fff;color:#217346;border-radius:2px;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:11px;flex:none}
+.b-title .fn{font-weight:400;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.b-title .ro{flex:none;font-size:11px;border:1px solid rgba(255,255,255,.6);border-radius:2px;padding:0 5px;line-height:15px}
+.b-title .wc{margin-left:auto;display:flex;flex:none}
+.b-title .wc span{width:34px;height:30px;display:flex;align-items:center;justify-content:center;font-size:12px}
+.b-title .wc span.close{width:40px}
+.b-title .wc span.close:hover{background:#c42b1c}
+/* 功能区 */
+.b-tabs{background:#f3f2f1;border-bottom:1px solid #d9d9d9;height:26px;padding:0 6px;
+  display:flex;align-items:stretch;gap:0;flex:none;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+.b-tabs::-webkit-scrollbar{display:none}
+.b-tabs span{padding:0 11px;display:flex;align-items:center;font-size:12px;color:#444;flex:none}
+.b-tabs span.hot{background:#fff;color:#217346;font-weight:600;border-left:1px solid #d9d9d9;border-right:1px solid #d9d9d9}
+.b-ribbon{background:#fff;border-bottom:1px solid #d9d9d9;height:58px;display:flex;align-items:stretch;
+  flex:none;overflow-x:auto;scrollbar-width:none;padding:0 4px}
+.b-ribbon::-webkit-scrollbar{display:none}
+.b-grp{display:flex;flex-direction:column;justify-content:space-between;padding:4px 10px 2px;flex:none;
+  border-right:1px solid #e6e6e6}
+.b-grp .row{display:flex;align-items:center;gap:7px}
+.b-grp .bi{width:17px;height:17px;display:flex;align-items:center;justify-content:center;color:#444;font-size:12px}
+.b-grp .bi .ic{width:15px;height:15px}
+.b-grp .bi.g{font-weight:700;font-size:13px}
+.b-grp .bi.it{font-style:italic;font-family:Georgia,'Times New Roman',serif}
+.b-grp .bi.un{text-decoration:underline;font-weight:600}
+.b-grp .bi.under{position:relative}
+.b-grp .bi.under::after{content:'';position:absolute;left:2px;right:2px;bottom:1px;height:2.5px;background:#c42b1c}
+.b-grp .bi.num{font-size:11px;font-weight:600}
+.b-grp .fsel{height:18px;border:1px solid #cfcfcf;border-radius:2px;background:#fff;font-size:11px;color:#333;
+  display:flex;align-items:center;gap:6px;padding:0 5px;min-width:60px}
+.b-grp .fsel.wide{min-width:78px}
+.b-grp .fsel em{font-style:normal;color:#888;font-size:9px;margin-left:auto}
+.b-grp .fsel.chip{min-width:0;padding:0 5px}
+.b-grp .chip i{width:10px;height:10px;border-radius:1px;display:block}
+.b-grp .al{width:16px;height:16px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.b-grp .al s{display:block;height:2px;background:#555;border-radius:1px;text-decoration:none}
+.b-grp .al.l s:nth-child(1){width:14px}.b-grp .al.l s:nth-child(2){width:9px}.b-grp .al.l s:nth-child(3){width:12px}
+.b-grp .al.c s{margin:0 auto}.b-grp .al.c s:nth-child(1){width:14px}.b-grp .al.c s:nth-child(2){width:9px}.b-grp .al.c s:nth-child(3){width:14px}
+.b-grp .al.r s{margin-left:auto}.b-grp .al.r s:nth-child(1){width:14px}.b-grp .al.r s:nth-child(2){width:9px}.b-grp .al.r s:nth-child(3){width:12px}
+.b-grp .al.m s:nth-child(1){width:14px;margin:0 auto 1px}.b-grp .al.m s:nth-child(2){width:6px}.b-grp .al.m s:nth-child(3){width:6px}
+.b-grp .lb{font-size:10px;color:#888;text-align:center;line-height:1;margin-top:3px}
+/* 编辑栏 */
+.b-formula{display:flex;align-items:stretch;background:#fff;border-bottom:1px solid #d9d9d9;height:26px;flex:none}
+.b-formula .nb{width:88px;flex:none;border-right:1px solid #d9d9d9;display:flex;align-items:center;
+  padding:0 8px;font-size:12px;color:#333;font-weight:600;font-variant-numeric:tabular-nums}
+.b-formula .fx{width:40px;flex:none;display:flex;align-items:center;justify-content:center;
+  border-right:1px solid #e6e6e6;color:#666;font-style:italic;font-size:12px}
+.b-formula .ft{flex:1;display:flex;align-items:center;padding:0 8px;font-size:12px;color:#333;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+/* 表格区 */
+.b-grid{flex:1;overflow:auto;background:#fff}
+.b-grid table{border-collapse:collapse;width:100%;font-size:12px;table-layout:fixed}
+.b-grid th{background:#f3f2f1;color:#555;font-weight:400;border:1px solid #d9d9d9;
+  padding:0;height:22px;text-align:center;font-size:11px;position:sticky;top:0;z-index:2}
+.b-grid td{border:1px solid #e0e0e0;padding:0 7px;height:22px;white-space:nowrap;overflow:hidden;
+  text-overflow:ellipsis;font-size:12px;color:#333;background:#fff}
+.b-grid td.rowh{background:#f3f2f1;color:#555;text-align:center;padding:0;font-size:11px;
+  position:sticky;left:0;z-index:1;width:38px}
+.b-grid th.corner{position:sticky;left:0;top:0;z-index:3;width:38px;background:#e9e7e6}
+.b-grid td.hdr{font-weight:700;color:#000;background:#fff}
+.b-grid td.num{text-align:right;font-variant-numeric:tabular-nums}
+.b-grid td.sel{outline:2px solid #217346;outline-offset:-2px;position:relative;z-index:1}
+.b-grid tr:first-child td{background:#fff}
+/* 工作表标签 + 状态栏 */
+.b-sheets{display:flex;align-items:center;gap:0;background:#f3f2f1;border-top:1px solid #d9d9d9;
+  height:26px;padding:0 6px;flex:none;font-size:12px}
+.b-sheets .nav{display:flex;gap:10px;color:#888;padding:0 8px 0 2px}
+.b-sheets .tab{padding:0 14px;height:26px;display:flex;align-items:center;color:#444;border-right:1px solid #e0e0e0}
+.b-sheets .tab.on{background:#fff;color:#217346;font-weight:600;border-bottom:2px solid #217346}
+.b-sheets .add{padding:0 10px;color:#666}
+.b-status{background:#217346;color:#fff;font-size:11px;height:22px;padding:0 12px;flex:none;
+  display:flex;align-items:center;justify-content:space-between;gap:12px}
+.b-status .z{margin-left:auto;display:flex;align-items:center;gap:8px}
+.b-status .zbar{width:64px;height:3px;background:rgba(255,255,255,.4);border-radius:2px;position:relative}
+.b-status .zbar i{position:absolute;left:38%;top:-4px;width:2px;height:11px;background:#fff}
+.bigava{width:72px;height:72px;border-radius:var(--el-radius);background:var(--el-color-primary-light-9);
+  color:var(--el-color-primary);display:flex;align-items:center;justify-content:center;flex:none;
+  border:1px solid var(--el-color-primary-light-8)}
+.bigava .ic{width:38px;height:38px}
+.muted{color:var(--el-text-secondary)}
+.center{text-align:center}
+.hr{border:none;border-top:1px solid var(--el-border-lighter);margin:16px 0}
+@media (max-width:720px){
+  .desc{grid-template-columns:repeat(2,1fr)}
+  .desc .it:nth-child(2){border-right:none}
+  .desc .it:nth-child(1),.desc .it:nth-child(2){border-bottom:1px solid var(--el-border-lighter)}
+  .agrid{grid-template-columns:1fr 1fr}
+  .card-bd{padding:16px}
+  .wrap{padding:0 12px 64px}
+
+  /* 导航：顶部只留品牌 + 老板键 + 头像，页面切换走底部标签栏 */
+  .topnav .in{height:54px;padding:0 14px;gap:10px}
+  .brand{font-size:15px}
+  .navuser{gap:6px;margin-left:auto}
+  .navuser .who{display:none}
+  .navuser .ava{width:28px;height:28px}
+  .navuser .ava .ic{width:15px;height:15px}
+  .bellbtn{padding:3px}
+  .bellbtn .ic{width:16px;height:16px}
+
+  .crumb{padding:10px 0 8px;font-size:11px}
+  .card-hd{padding:12px 14px;flex-wrap:wrap;gap:6px}
+  .card-hd .t{font-size:14px}
+  .card-hd .x{font-size:11px}
+
+  /* 场景容器 */
+  .scene-hd{padding:8px 12px;font-size:11px}
+  .scene-bd{padding:12px}
+  .bubble{padding:10px 12px;font-size:14px;line-height:1.8}
+  .bub-t{margin-top:5px}
+  .scene.doc .scene-bd{font-size:15px;line-height:1.85}
+  .mailrow{flex-direction:column;gap:1px;padding:8px 12px}
+  .mailrow .k{width:auto}
+  .mailbody{padding:12px;font-size:14px;line-height:1.8}
+  .qtext{font-size:14.5px;line-height:1.8}
+
+  /* 选项与解析 */
+  .opt{padding:11px 13px;font-size:14px;line-height:1.65;gap:8px;margin-bottom:8px}
+  .analysis .li{font-size:12.5px;line-height:1.7}
+  .tip{font-size:12.5px;padding:9px 12px}
+
+  /* 结果与清单 */
+  .result{padding:4px 0 0}
+  .result .ri,.result .ri .ic{width:44px;height:44px;font-size:44px}
+  .result .rt{font-size:18px}
+  .result .rs{font-size:12.5px}
+  .rankname{font-size:26px}
+  .recap .row{padding:8px 12px;font-size:12.5px}
+  .recap .row .tx{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+
+  /* 待办：按钮独占一行，方便点按 */
+  .todo{padding:12px 14px;gap:10px;flex-wrap:wrap}
+  .todo .ta{width:100%;margin-top:2px}
+  .todo .ta .btn{width:100%}
+  .witem{padding:11px 13px;gap:10px}
+  .witem .wq{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+  .btn-row .btn{min-width:0}
+  .btn-lg{height:40px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<div id="app">
+  <div class="topnav"><div class="in">
+    <div class="brand"><svg class="ic"><use href="#i-data-analysis"></use></svg>悟性<em>职场修炼场</em></div>
+    <div class="menu" id="navmenu"></div>
+    <div class="navuser">
+      <button class="bellbtn" title="老板键（Esc）" aria-label="老板键" onclick="app.toggleBoss()"><svg class="ic"><use href="#i-monitor"></use></svg></button>
+      <div class="who"><b id="navrank">见习生</b><span>综合管理部</span></div>
+      <button class="ava" id="avatar" title="个人中心" aria-label="个人中心" onclick="app.nav('me')"><svg class="ic"><use href="#i-user"></use></svg></button>
+    </div>
+  </div></div>
+  <div class="wrap">
+    <div class="crumb" id="crumb"></div>
+    <div id="screen"></div>
+  </div>
+  <nav class="tabbar" id="tabbar"></nav>
+</div>
+
+<div id="boss" oncontextmenu="return false" ondragstart="return false">
+  <div class="b-title">
+    <span class="xi">X</span>
+    <span class="fn">2026年度部门绩效指标跟踪表.xlsx</span>
+    <span class="ro">只读</span>
+    <span class="wc"><span>—</span><span>□</span><span class="close">×</span></span>
+  </div>
+  <div class="b-tabs">
+    <span class="hot">开始</span><span>插入</span><span>页面布局</span><span>公式</span><span>数据</span><span>审阅</span><span>视图</span><span>帮助</span><span>分析</span>
+  </div>
+  <div class="b-ribbon">
+    <div class="b-grp">
+      <div class="row">
+        <span class="bi" title="粘贴"><svg class="ic"><use href="#i-postcard"></use></svg></span>
+        <span class="bi" title="复制"><svg class="ic"><use href="#i-files"></use></svg></span>
+        <span class="bi" title="剪切"><svg class="ic"><use href="#i-edit-pen"></use></svg></span>
+        <span class="bi" title="格式刷"><svg class="ic"><use href="#i-refresh"></use></svg></span>
+      </div><div class="lb">剪贴板</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="fsel wide">微软雅黑<em>▾</em></span>
+        <span class="fsel">11<em>▾</em></span>
+      </div>
+      <div class="row" style="margin-top:3px">
+        <span class="bi g" title="加粗">B</span>
+        <span class="bi it" title="倾斜">I</span>
+        <span class="bi un" title="下划线">U</span>
+        <span class="bi under" title="字体颜色">A</span>
+        <span class="bi" title="边框"><svg class="ic"><use href="#i-tickets"></use></svg></span>
+        <span class="bi" title="填充颜色"><svg class="ic"><use href="#i-collection"></use></svg></span>
+      </div><div class="lb">字体</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="al l"><s></s><s></s><s></s></span>
+        <span class="al c"><s></s><s></s><s></s></span>
+        <span class="al r"><s></s><s></s><s></s></span>
+        <span class="al m"><s></s><s></s><s></s></span>
+      </div><div class="lb">对齐方式</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="bi num" title="百分比">%</span>
+        <span class="bi num" title="货币">¥</span>
+        <span class="bi num" title="千位分隔">,</span>
+        <span class="bi num" title="增加小数">.0</span>
+      </div><div class="lb">数字</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="bi" title="条件格式"><svg class="ic"><use href="#i-warning"></use></svg></span>
+        <span class="bi" title="套用表格格式"><svg class="ic"><use href="#i-histogram"></use></svg></span>
+        <span class="bi" title="单元格样式"><svg class="ic"><use href="#i-star"></use></svg></span>
+      </div><div class="lb">样式</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="bi" title="插入"><svg class="ic"><use href="#i-promotion"></use></svg></span>
+        <span class="bi" title="删除"><svg class="ic"><use href="#i-close"></use></svg></span>
+        <span class="bi" title="格式"><svg class="ic"><use href="#i-refresh"></use></svg></span>
+      </div><div class="lb">单元格</div>
+    </div>
+    <div class="b-grp">
+      <div class="row">
+        <span class="bi num" title="自动求和">Σ</span>
+        <span class="bi" title="查找"><svg class="ic"><use href="#i-view"></use></svg></span>
+        <span class="bi" title="排序"><svg class="ic"><use href="#i-top-right"></use></svg></span>
+      </div><div class="lb">编辑</div>
+    </div>
+  </div>
+  <div class="b-formula">
+    <div class="nb">E14</div>
+    <div class="fx">fx</div>
+    <div class="ft">=SUM(E2:E13)*0.98</div>
+  </div>
+  <div class="b-grid">
+    <table>
+      <colgroup><col style="width:38px"><col style="width:190px"><col style="width:130px"><col style="width:110px"><col style="width:120px"><col style="width:100px"><col style="width:90px"><col style="width:150px"></colgroup>
+      <tr><th class="corner"></th><th>A</th><th>B</th><th>C</th><th>D</th><th>E</th><th>F</th><th>G</th></tr>
+      <tr><td class="rowh">1</td><td class="hdr">指标名称</td><td class="hdr">责任部门</td><td class="hdr">年度目标</td><td class="hdr">当前完成</td><td class="hdr">完成率</td><td class="hdr">状态</td><td class="hdr">备注</td></tr>
+      <tr><td class="rowh">2</td><td>需求交付及时率</td><td>研发部</td><td>98%</td><td>96.2%</td><td class="num">0.982</td><td>达标</td><td>按周统计</td></tr>
+      <tr><td class="rowh">3</td><td>线上故障恢复时长</td><td>运维部</td><td>≤30min</td><td>27min</td><td class="num">1.000</td><td>达标</td><td>P1/P2 合计</td></tr>
+      <tr><td class="rowh">4</td><td>客户满意度</td><td>客户成功部</td><td>92%</td><td>89.5%</td><td class="num">0.973</td><td>关注</td><td>样本量 1,204</td></tr>
+      <tr><td class="rowh">5</td><td>人均效能提升</td><td>人力效能组</td><td>12%</td><td>13.4%</td><td class="num">1.117</td><td>达标</td><td>同比口径</td></tr>
+      <tr><td class="rowh">6</td><td>流程数字化覆盖率</td><td>信息管理部</td><td>80%</td><td>76.0%</td><td class="num">0.950</td><td>关注</td><td>待补 3 个流程</td></tr>
+      <tr><td class="rowh">7</td><td>成本费用预算达成</td><td>财务部</td><td>≤预算</td><td>91.2%</td><td class="num">1.000</td><td>达标</td><td>含人力成本</td></tr>
+      <tr><td class="rowh">8</td><td>安全事故数</td><td>安委办</td><td>0</td><td>0</td><td class="num">1.000</td><td>达标</td><td>—</td></tr>
+      <tr><td class="rowh">9</td><td>重点项目里程碑达成</td><td>PMO</td><td>95%</td><td>93.8%</td><td class="num">0.987</td><td>达标</td><td>共 16 个里程碑</td></tr>
+      <tr><td class="rowh">10</td><td>人才保留率</td><td>人力资源部</td><td>90%</td><td>88.1%</td><td class="num">0.979</td><td>关注</td><td>主动离职口径</td></tr>
+      <tr><td class="rowh">11</td><td>知识库沉淀数量</td><td>各业务单元</td><td>400篇</td><td>387篇</td><td class="num">0.968</td><td>关注</td><td>已审核入库</td></tr>
+      <tr><td class="rowh">12</td><td>合规检查通过率</td><td>审计法务部</td><td>100%</td><td>100%</td><td class="num">1.000</td><td>达标</td><td>本年度 2 轮</td></tr>
+      <tr><td class="rowh">13</td><td>创新提案采纳数</td><td>全员</td><td>60项</td><td>58项</td><td class="num">0.967</td><td>达标</td><td>已落地 21 项</td></tr>
+      <tr><td class="rowh">14</td><td class="hdr">综合达成指数</td><td>—</td><td>—</td><td>—</td><td class="num sel"><b>0.986</b></td><td class="hdr">达标</td><td>加权计算</td></tr>
+      <tr><td class="rowh">15</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="rowh">16</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="rowh">17</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="rowh">18</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="rowh">19</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td class="rowh">20</td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </div>
+  <div class="b-sheets">
+    <div class="nav"><span>◀</span><span>▶</span></div>
+    <div class="tab on">绩效指标跟踪</div>
+    <div class="tab">季度汇总</div>
+    <div class="tab">说明</div>
+    <div class="add">+</div>
+  </div>
+  <div class="b-status">
+    <span>就绪</span><span>只读 · 建议以只读方式打开</span>
+    <span class="z"><span>平均值: 0.986</span><span>计数: 13</span><span>求和: 12.823</span>
+      <span class="zbar"><i></i></span><span>100%</span></span>
+  </div>
+</div>
+
+<div id="toasts"></div>
+
+<svg style="display:none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+<symbol id="i-setting" viewBox="0 0 1024 1024"><path fill="currentColor" d="M924.3 606.4a64 64 0 0 0 0-91.2l-60-57.4c2.4-20 2.4-40.3 0-60.3l60-57.4a64 64 0 0 0 8.7-79.6l-56-97a64 64 0 0 0-75.4-28.4l-79 29.5a448 448 0 0 0-52.2-30.2L656.9 48a64 64 0 0 0-60.6-48H484.2a64 64 0 0 0-60.6 48l-13.5 86.4a448 448 0 0 0-52.2 30.2l-79-29.5a64 64 0 0 0-75.4 28.4l-56 97a64 64 0 0 0 8.7 79.6l60 57.4a450 450 0 0 0 0 60.3l-60 57.4a64 64 0 0 0-8.7 79.6l56 97a64 64 0 0 0 75.4 28.4l79-29.5a448 448 0 0 0 52.2 30.2l13.5 86.4a64 64 0 0 0 60.6 48h112.1a64 64 0 0 0 60.6-48l13.5-86.4a448 448 0 0 0 52.2-30.2l79 29.5a64 64 0 0 0 75.4-28.4zM512 672a160 160 0 1 1 0-320 160 160 0 0 1 0 320"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path fill="currentColor" d="M12 20.7 4.4 13.1a4.9 4.9 0 0 1 0-7 4.95 4.95 0 0 1 7 0l.6.6.6-.6a4.95 4.95 0 0 1 7 0 4.9 4.9 0 0 1 0 7z"/></symbol>
+<symbol id="i-aim" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"/><path fill="currentColor" d="M512 96a32 32 0 0 1 32 32v192a32 32 0 0 1-64 0V128a32 32 0 0 1 32-32m0 576a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V704a32 32 0 0 1 32-32M96 512a32 32 0 0 1 32-32h192a32 32 0 0 1 0 64H128a32 32 0 0 1-32-32m576 0a32 32 0 0 1 32-32h192a32 32 0 1 1 0 64H704a32 32 0 0 1-32-32"/></symbol>
+<symbol id="i-arrow-down" viewBox="0 0 1024 1024"><path fill="currentColor" d="M831.872 340.864 512 652.672 192.128 340.864a30.592 30.592 0 0 0-42.752 0 29.12 29.12 0 0 0 0 41.6L489.664 714.24a32 32 0 0 0 44.672 0l340.288-331.712a29.12 29.12 0 0 0 0-41.728 30.592 30.592 0 0 0-42.752 0z"/></symbol>
+<symbol id="i-arrow-left" viewBox="0 0 1024 1024"><path fill="currentColor" d="M609.408 149.376 277.76 489.6a32 32 0 0 0 0 44.672l331.648 340.352a29.12 29.12 0 0 0 41.728 0 30.592 30.592 0 0 0 0-42.752L339.264 511.936l311.872-319.872a30.592 30.592 0 0 0 0-42.688 29.12 29.12 0 0 0-41.728 0z"/></symbol>
+<symbol id="i-arrow-right" viewBox="0 0 1024 1024"><path fill="currentColor" d="M340.864 149.312a30.592 30.592 0 0 0 0 42.752L652.736 512 340.864 831.872a30.592 30.592 0 0 0 0 42.752 29.12 29.12 0 0 0 41.728 0L714.24 534.336a32 32 0 0 0 0-44.672L382.592 149.376a29.12 29.12 0 0 0-41.728 0z"/></symbol>
+<symbol id="i-bell" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a64 64 0 0 1 64 64v64H448v-64a64 64 0 0 1 64-64"/><path fill="currentColor" d="M256 768h512V448a256 256 0 1 0-512 0zm256-640a320 320 0 0 1 320 320v384H192V448a320 320 0 0 1 320-320"/><path fill="currentColor" d="M96 768h832q32 0 32 32t-32 32H96q-32 0-32-32t32-32m352 128h128a64 64 0 0 1-128 0"/></symbol>
+<symbol id="i-briefcase" viewBox="0 0 1024 1024"><path fill="currentColor" d="M320 320V128h384v192h192v192H128V320zM128 576h768v320H128zm256-256h256.064V192H384z"/></symbol>
+<symbol id="i-calendar" viewBox="0 0 1024 1024"><path fill="currentColor" d="M128 384v512h768V192H768v32a32 32 0 1 1-64 0v-32H320v32a32 32 0 0 1-64 0v-32H128v128h768v64zm192-256h384V96a32 32 0 1 1 64 0v32h160a32 32 0 0 1 32 32v768a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V160a32 32 0 0 1 32-32h160V96a32 32 0 0 1 64 0zm-32 384h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 0 1 0 64h-64a32 32 0 0 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m192-192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64m0 192h64a32 32 0 1 1 0 64h-64a32 32 0 1 1 0-64"/></symbol>
+<symbol id="i-chat-dot-round" viewBox="0 0 1024 1024"><path fill="currentColor" d="m174.72 855.68 135.296-45.12 23.68 11.84C388.096 849.536 448.576 864 512 864c211.84 0 384-166.784 384-352S723.84 160 512 160 128 326.784 128 512c0 69.12 24.96 139.264 70.848 199.232l22.08 28.8-46.272 115.584zm-45.248 82.56A32 32 0 0 1 89.6 896l58.368-145.92C94.72 680.32 64 596.864 64 512 64 299.904 256 96 512 96s448 203.904 448 416-192 416-448 416a461.056 461.056 0 0 1-206.912-48.384l-175.616 58.56z"/><path fill="currentColor" d="M512 563.2a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4m192 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4m-384 0a51.2 51.2 0 1 1 0-102.4 51.2 51.2 0 0 1 0 102.4"/></symbol>
+<symbol id="i-check" viewBox="0 0 1024 1024"><path fill="currentColor" d="M406.656 706.944 195.84 496.256a32 32 0 1 0-45.248 45.248l256 256 512-512a32 32 0 0 0-45.248-45.248L406.592 706.944z"/></symbol>
+<symbol id="i-circle-check-filled" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m-55.808 536.384-99.52-99.584a38.4 38.4 0 1 0-54.336 54.336l126.72 126.72a38.272 38.272 0 0 0 54.336 0l262.4-262.464a38.4 38.4 0 1 0-54.272-54.336z"/></symbol>
+<symbol id="i-circle-close-filled" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 393.664L407.936 353.6a38.4 38.4 0 1 0-54.336 54.336L457.664 512 353.6 616.064a38.4 38.4 0 1 0 54.336 54.336L512 566.336 616.064 670.4a38.4 38.4 0 1 0 54.336-54.336L566.336 512 670.4 407.936a38.4 38.4 0 1 0-54.336-54.336z"/></symbol>
+<symbol id="i-clock" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"/><path fill="currentColor" d="M480 256a32 32 0 0 1 32 32v256a32 32 0 0 1-64 0V288a32 32 0 0 1 32-32"/><path fill="currentColor" d="M480 512h256q32 0 32 32t-32 32H480q-32 0-32-32t32-32"/></symbol>
+<symbol id="i-close" viewBox="0 0 1024 1024"><path fill="currentColor" d="M764.288 214.592 512 466.88 259.712 214.592a31.936 31.936 0 0 0-45.12 45.12L466.752 512 214.528 764.224a31.936 31.936 0 1 0 45.12 45.184L512 557.184l252.288 252.288a31.936 31.936 0 0 0 45.12-45.12L557.12 512.064l252.288-252.352a31.936 31.936 0 1 0-45.12-45.184z"/></symbol>
+<symbol id="i-coffee" viewBox="0 0 1024 1024"><path fill="currentColor" d="M822.592 192h14.272a32 32 0 0 1 31.616 26.752l21.312 128A32 32 0 0 1 858.24 384h-49.344l-39.04 546.304A32 32 0 0 1 737.92 960H285.824a32 32 0 0 1-32-29.696L214.912 384H165.76a32 32 0 0 1-31.552-37.248l21.312-128A32 32 0 0 1 187.136 192h14.016l-6.72-93.696A32 32 0 0 1 226.368 64h571.008a32 32 0 0 1 31.936 34.304zm-64.128 0 4.544-64H260.736l4.544 64h493.184m-548.16 128H820.48l-10.688-64H214.208l-10.688 64h6.784m68.736 64 36.544 512H708.16l36.544-512z"/></symbol>
+<symbol id="i-collection" viewBox="0 0 1024 1024"><path fill="currentColor" d="M192 736h640V128H256a64 64 0 0 0-64 64zm64-672h608a32 32 0 0 1 32 32v672a32 32 0 0 1-32 32H160l-32 57.536V192A128 128 0 0 1 256 64"/><path fill="currentColor" d="M240 800a48 48 0 1 0 0 96h592v-96zm0-64h656v160a64 64 0 0 1-64 64H240a112 112 0 0 1 0-224m144-608v250.88l96-76.8 96 76.8V128zm-64-64h320v381.44a32 32 0 0 1-51.968 24.96L480 384l-108.032 86.4A32 32 0 0 1 320 445.44z"/></symbol>
+<symbol id="i-compass" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"/><path fill="currentColor" d="M725.888 315.008C676.48 428.672 624 513.28 568.576 568.64c-55.424 55.424-139.968 107.904-253.568 157.312a12.8 12.8 0 0 1-16.896-16.832c49.536-113.728 102.016-198.272 157.312-253.632 55.36-55.296 139.904-107.776 253.632-157.312a12.8 12.8 0 0 1 16.832 16.832"/></symbol>
+<symbol id="i-data-analysis" viewBox="0 0 1024 1024"><path fill="currentColor" d="m665.216 768 110.848 192h-73.856L591.36 768H433.024L322.176 960H248.32l110.848-192H160a32 32 0 0 1-32-32V192H64a32 32 0 0 1 0-64h896a32 32 0 1 1 0 64h-64v544a32 32 0 0 1-32 32zM832 192H192v512h640zM352 448a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0v-64a32 32 0 0 1 32-32m160-64a32 32 0 0 1 32 32v128a32 32 0 0 1-64 0V416a32 32 0 0 1 32-32m160-64a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V352a32 32 0 0 1 32-32"/></symbol>
+<symbol id="i-document" viewBox="0 0 1024 1024"><path fill="currentColor" d="M832 384H576V128H192v768h640zm-26.496-64L640 154.496V320zM160 64h480l256 256v608a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m160 448h384v64H320zm0-192h160v64H320zm0 384h384v64H320z"/></symbol>
+<symbol id="i-edit-pen" viewBox="0 0 1024 1024"><path fill="currentColor" d="m199.04 672.64 193.984 112 224-387.968-193.92-112-224 388.032zm-23.872 60.16 32.896 148.288 144.896-45.696zM455.04 229.248l193.92 112 56.704-98.112-193.984-112-56.64 98.112zM104.32 708.8l384-665.024 304.768 175.936L409.152 884.8h.064l-248.448 78.336zm384 254.272v-64h448v64h-448z"/></symbol>
+<symbol id="i-files" viewBox="0 0 1024 1024"><path fill="currentColor" d="M128 384v448h768V384zm-32-64h832a32 32 0 0 1 32 32v512a32 32 0 0 1-32 32H96a32 32 0 0 1-32-32V352a32 32 0 0 1 32-32m64-128h704v64H160zm96-128h512v64H256z"/></symbol>
+<symbol id="i-food" viewBox="0 0 1024 1024"><path fill="currentColor" d="M128 352.576V352a288 288 0 0 1 491.072-204.224 192 192 0 0 1 274.24 204.48 64 64 0 0 1 57.216 74.24C921.6 600.512 850.048 710.656 736 756.992V800a96 96 0 0 1-96 96H384a96 96 0 0 1-96-96v-43.008c-114.048-46.336-185.6-156.48-214.528-330.496A64 64 0 0 1 128 352.64zm64-.576h64a160 160 0 0 1 320 0h64a224 224 0 0 0-448 0m128 0h192a96 96 0 0 0-192 0m439.424 0h68.544A128.256 128.256 0 0 0 704 192c-15.36 0-29.952 2.688-43.52 7.616 11.328 18.176 20.672 37.76 27.84 58.304A64.128 64.128 0 0 1 759.424 352M672 768H352v32a32 32 0 0 0 32 32h256a32 32 0 0 0 32-32zm-342.528-64h365.056c101.504-32.64 165.76-124.928 192.896-288H136.576c27.136 163.072 91.392 255.36 192.896 288"/></symbol>
+<symbol id="i-histogram" viewBox="0 0 1024 1024"><path fill="currentColor" d="M416 896V128h192v768zm-288 0V448h192v448zm576 0V320h192v576z"/></symbol>
+<symbol id="i-info-filled" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896.064A448 448 0 0 1 512 64m67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344M590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 0 1-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 0 1 7.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"/></symbol>
+<symbol id="i-lightning" viewBox="0 0 1024 1024"><path fill="currentColor" d="M288 671.36v64.128A239.808 239.808 0 0 1 63.744 496.192a240.32 240.32 0 0 1 199.488-236.8 256.128 256.128 0 0 1 487.872-30.976A256.064 256.064 0 0 1 736 734.016v-64.768a192 192 0 0 0 3.328-377.92l-35.2-6.592-12.8-33.408a192.064 192.064 0 0 0-365.952 23.232l-9.92 40.896-41.472 7.04a176.32 176.32 0 0 0-146.24 173.568c0 91.968 70.464 167.36 160.256 175.232z"/><path fill="currentColor" d="M416 736a32 32 0 0 1-27.776-47.872l128-224a32 32 0 1 1 55.552 31.744L471.168 672H608a32 32 0 0 1 27.776 47.872l-128 224a32 32 0 1 1-55.68-31.744L552.96 736z"/></symbol>
+<symbol id="i-list" viewBox="0 0 1024 1024"><path fill="currentColor" d="M704 192h160v736H160V192h160v64h384zM288 512h448v-64H288zm0 256h448v-64H288zm96-576V96h256v96z"/></symbol>
+<symbol id="i-lock" viewBox="0 0 1024 1024"><path fill="currentColor" d="M224 448a32 32 0 0 0-32 32v384a32 32 0 0 0 32 32h576a32 32 0 0 0 32-32V480a32 32 0 0 0-32-32zm0-64h576a96 96 0 0 1 96 96v384a96 96 0 0 1-96 96H224a96 96 0 0 1-96-96V480a96 96 0 0 1 96-96"/><path fill="currentColor" d="M512 544a32 32 0 0 1 32 32v192a32 32 0 1 1-64 0V576a32 32 0 0 1 32-32m192-160v-64a192 192 0 1 0-384 0v64zM512 64a256 256 0 0 1 256 256v128H256V320A256 256 0 0 1 512 64"/></symbol>
+<symbol id="i-management" viewBox="0 0 1024 1024"><path fill="currentColor" d="M576 128v288l96-96 96 96V128h128v768H320V128zm-448 0h128v768H128z"/></symbol>
+<symbol id="i-medal" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 896a256 256 0 1 0 0-512 256 256 0 0 0 0 512m0 64a320 320 0 1 1 0-640 320 320 0 0 1 0 640"/><path fill="currentColor" d="M576 128H448v200a286.72 286.72 0 0 1 64-8c19.52 0 40.832 2.688 64 8zm64 0v219.648c24.448 9.088 50.56 20.416 78.4 33.92L757.44 128zm-256 0H266.624l39.04 253.568c27.84-13.504 53.888-24.832 78.336-33.92V128zM229.312 64h565.376a32 32 0 0 1 31.616 36.864L768 480c-113.792-64-199.104-96-256-96-56.896 0-142.208 32-256 96l-58.304-379.136A32 32 0 0 1 229.312 64"/></symbol>
+<symbol id="i-memo" viewBox="0 0 1024 1024"><path fill="currentColor" d="M480 320h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32"/><path fill="currentColor" d="M887.01 72.99C881.01 67 873.34 64 864 64H160c-9.35 0-17.02 3-23.01 8.99C131 78.99 128 86.66 128 96v832c0 9.35 2.99 17.02 8.99 23.01S150.66 960 160 960h704c9.35 0 17.02-2.99 23.01-8.99S896 937.34 896 928V96c0-9.35-3-17.02-8.99-23.01M192 896V128h96v768zm640 0H352V128h480z"/><path fill="currentColor" d="M480 512h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32m0 192h192c21.33 0 32-10.67 32-32s-10.67-32-32-32H480c-21.33 0-32 10.67-32 32s10.67 32 32 32"/></symbol>
+<symbol id="i-monitor" viewBox="0 0 1024 1024"><path fill="currentColor" d="M544 768v128h192a32 32 0 1 1 0 64H288a32 32 0 1 1 0-64h192V768H192A128 128 0 0 1 64 640V256a128 128 0 0 1 128-128h640a128 128 0 0 1 128 128v384a128 128 0 0 1-128 128zM192 192a64 64 0 0 0-64 64v384a64 64 0 0 0 64 64h640a64 64 0 0 0 64-64V256a64 64 0 0 0-64-64z"/></symbol>
+<symbol id="i-moon" viewBox="0 0 1024 1024"><path fill="currentColor" d="M240.448 240.448a384 384 0 1 0 559.424 525.696 448 448 0 0 1-542.016-542.08 390.592 390.592 0 0 0-17.408 16.384zm181.056 362.048a384 384 0 0 0 525.632 16.384A448 448 0 1 1 405.056 76.8a384 384 0 0 0 16.448 525.696"/></symbol>
+<symbol id="i-notebook" viewBox="0 0 1024 1024"><path fill="currentColor" d="M192 128v768h640V128zm-32-64h704a32 32 0 0 1 32 32v832a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32"/><path fill="currentColor" d="M672 128h64v768h-64zM96 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32m0 192h128q32 0 32 32t-32 32H96q-32 0-32-32t32-32"/></symbol>
+<symbol id="i-odometer" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 896a384 384 0 1 0 0-768 384 384 0 0 0 0 768m0 64a448 448 0 1 1 0-896 448 448 0 0 1 0 896"/><path fill="currentColor" d="M192 512a320 320 0 1 1 640 0 32 32 0 1 1-64 0 256 256 0 1 0-512 0 32 32 0 0 1-64 0"/><path fill="currentColor" d="M570.432 627.84A96 96 0 1 1 509.568 608l60.992-187.776A32 32 0 1 1 631.424 440l-60.992 187.776zM502.08 734.464a32 32 0 1 0 19.84-60.928 32 32 0 0 0-19.84 60.928"/></symbol>
+<symbol id="i-opportunity" viewBox="0 0 1024 1024"><path fill="currentColor" d="M384 960v-64h192.064v64zm448-544a350.656 350.656 0 0 1-128.32 271.424C665.344 719.04 640 763.776 640 813.504V832H320v-14.336c0-48-19.392-95.36-57.216-124.992a351.552 351.552 0 0 1-128.448-344.256c25.344-136.448 133.888-248.128 269.76-276.48A352.384 352.384 0 0 1 832 416m-544 32c0-132.288 75.904-224 192-224v-64c-154.432 0-256 122.752-256 288z"/></symbol>
+<symbol id="i-pie-chart" viewBox="0 0 1024 1024"><path fill="currentColor" d="M448 68.48v64.832A384.128 384.128 0 0 0 512 896a384.128 384.128 0 0 0 378.688-320h64.768A448.128 448.128 0 0 1 64 512 448.128 448.128 0 0 1 448 68.48z"/><path fill="currentColor" d="M576 97.28V448h350.72A384.064 384.064 0 0 0 576 97.28zM512 64V33.152A448 448 0 0 1 990.848 512H512z"/></symbol>
+<symbol id="i-postcard" viewBox="0 0 1024 1024"><path fill="currentColor" d="M160 224a32 32 0 0 0-32 32v512a32 32 0 0 0 32 32h704a32 32 0 0 0 32-32V256a32 32 0 0 0-32-32zm0-64h704a96 96 0 0 1 96 96v512a96 96 0 0 1-96 96H160a96 96 0 0 1-96-96V256a96 96 0 0 1 96-96"/><path fill="currentColor" d="M704 320a64 64 0 1 1 0 128 64 64 0 0 1 0-128M288 448h256q32 0 32 32t-32 32H288q-32 0-32-32t32-32m0 128h256q32 0 32 32t-32 32H288q-32 0-32-32t32-32"/></symbol>
+<symbol id="i-promotion" viewBox="0 0 1024 1024"><path fill="currentColor" d="m64 448 832-320-128 704-446.08-243.328L832 192 242.816 545.472zm256 512V657.024L512 768z"/></symbol>
+<symbol id="i-reading" viewBox="0 0 1024 1024"><path fill="currentColor" d="m512 863.36 384-54.848v-638.72L525.568 222.72a96 96 0 0 1-27.136 0L128 169.792v638.72zM137.024 106.432l370.432 52.928a32 32 0 0 0 9.088 0l370.432-52.928A64 64 0 0 1 960 169.792v638.72a64 64 0 0 1-54.976 63.36l-388.48 55.488a32 32 0 0 1-9.088 0l-388.48-55.488A64 64 0 0 1 64 808.512v-638.72a64 64 0 0 1 73.024-63.36z"/><path fill="currentColor" d="M480 192h64v704h-64z"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 1024 1024"><path fill="currentColor" d="M771.776 794.88A384 384 0 0 1 128 512h64a320 320 0 0 0 555.712 216.448H654.72a32 32 0 1 1 0-64h149.056a32 32 0 0 1 32 32v148.928a32 32 0 1 1-64 0v-50.56zM276.288 295.616h92.992a32 32 0 0 1 0 64H220.16a32 32 0 0 1-32-32V178.56a32 32 0 0 1 64 0v50.56A384 384 0 0 1 896.128 512h-64a320 320 0 0 0-555.776-216.384z"/></symbol>
+<symbol id="i-star-filled" viewBox="0 0 1024 1024"><path fill="currentColor" d="M283.84 867.84 512 747.776l228.16 119.936a6.4 6.4 0 0 0 9.28-6.72l-43.52-254.08 184.512-179.904a6.4 6.4 0 0 0-3.52-10.88l-255.104-37.12L517.76 147.904a6.4 6.4 0 0 0-11.52 0L392.192 379.072l-255.104 37.12a6.4 6.4 0 0 0-3.52 10.88L318.08 606.976l-43.584 254.08a6.4 6.4 0 0 0 9.28 6.72z"/></symbol>
+<symbol id="i-star" viewBox="0 0 1024 1024"><path fill="currentColor" d="m512 747.84 228.16 119.936a6.4 6.4 0 0 0 9.28-6.72l-43.52-254.08 184.512-179.904a6.4 6.4 0 0 0-3.52-10.88l-255.104-37.12L517.76 147.904a6.4 6.4 0 0 0-11.52 0L392.192 379.072l-255.104 37.12a6.4 6.4 0 0 0-3.52 10.88L318.08 606.976l-43.584 254.08a6.4 6.4 0 0 0 9.28 6.72zM313.6 924.48a70.4 70.4 0 0 1-102.144-74.24l37.888-220.928L88.96 472.96A70.4 70.4 0 0 1 128 352.896l221.76-32.256 99.2-200.96a70.4 70.4 0 0 1 126.208 0l99.2 200.96 221.824 32.256a70.4 70.4 0 0 1 39.04 120.064L774.72 629.376l37.888 220.928a70.4 70.4 0 0 1-102.144 74.24L512 820.096l-198.4 104.32z"/></symbol>
+<symbol id="i-sunny" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 704a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512m0-704a32 32 0 0 1 32 32v64a32 32 0 0 1-64 0V96a32 32 0 0 1 32-32m0 768a32 32 0 0 1 32 32v64a32 32 0 1 1-64 0v-64a32 32 0 0 1 32-32M195.2 195.2a32 32 0 0 1 45.248 0l45.248 45.248a32 32 0 1 1-45.248 45.248L195.2 240.448a32 32 0 0 1 0-45.248zm543.104 543.104a32 32 0 0 1 45.248 0l45.248 45.248a32 32 0 0 1-45.248 45.248l-45.248-45.248a32 32 0 0 1 0-45.248M64 512a32 32 0 0 1 32-32h64a32 32 0 0 1 0 64H96a32 32 0 0 1-32-32m768 0a32 32 0 0 1 32-32h64a32 32 0 1 1 0 64h-64a32 32 0 0 1-32-32M195.2 828.8a32 32 0 0 1 0-45.248l45.248-45.248a32 32 0 0 1 45.248 45.248L240.448 828.8a32 32 0 0 1-45.248 0zm543.104-543.104a32 32 0 0 1 0-45.248l45.248-45.248a32 32 0 0 1 45.248 45.248l-45.248 45.248a32 32 0 0 1-45.248 0"/></symbol>
+<symbol id="i-sunrise" viewBox="0 0 1024 1024"><path fill="currentColor" d="M32 768h960a32 32 0 1 1 0 64H32a32 32 0 1 1 0-64m129.408-96a352 352 0 0 1 701.184 0h-64.32a288 288 0 0 0-572.544 0h-64.32zM512 128a32 32 0 0 1 32 32v96a32 32 0 0 1-64 0v-96a32 32 0 0 1 32-32m407.296 168.704a32 32 0 0 1 0 45.248l-67.84 67.84a32 32 0 1 1-45.248-45.248l67.84-67.84a32 32 0 0 1 45.248 0zm-814.592 0a32 32 0 0 1 45.248 0l67.84 67.84a32 32 0 1 1-45.248 45.248l-67.84-67.84a32 32 0 0 1 0-45.248"/></symbol>
+<symbol id="i-sunset" viewBox="0 0 1024 1024"><path fill="currentColor" d="M82.56 640a448 448 0 1 1 858.88 0h-67.2a384 384 0 1 0-724.288 0zM32 704h960q32 0 32 32t-32 32H32q-32 0-32-32t32-32m256 128h448q32 0 32 32t-32 32H288q-32 0-32-32t32-32"/></symbol>
+<symbol id="i-switch-button" viewBox="0 0 1024 1024"><path fill="currentColor" d="M352 159.872V230.4a352 352 0 1 0 320 0v-70.528A416.128 416.128 0 0 1 512 960a416 416 0 0 1-160-800.128z"/><path fill="currentColor" d="M512 64q32 0 32 32v320q0 32-32 32t-32-32V96q0-32 32-32"/></symbol>
+<symbol id="i-tickets" viewBox="0 0 1024 1024"><path fill="currentColor" d="M192 128v768h640V128zm-32-64h704a32 32 0 0 1 32 32v832a32 32 0 0 1-32 32H160a32 32 0 0 1-32-32V96a32 32 0 0 1 32-32m160 448h384v64H320zm0-192h192v64H320zm0 384h384v64H320z"/></symbol>
+<symbol id="i-top-right" viewBox="0 0 1024 1024"><path fill="currentColor" d="M768 256H353.6a32 32 0 1 1 0-64H800a32 32 0 0 1 32 32v448a32 32 0 0 1-64 0z"/><path fill="currentColor" d="M777.344 201.344a32 32 0 0 1 45.312 45.312l-544 544a32 32 0 0 1-45.312-45.312l544-544z"/></symbol>
+<symbol id="i-trend-charts" viewBox="0 0 1024 1024"><path fill="currentColor" d="M128 896V128h768v768zm291.712-327.296 128 102.4 180.16-201.792-47.744-42.624-139.84 156.608-128-102.4-180.16 201.792 47.744 42.624 139.84-156.608zM816 352a48 48 0 1 0-96 0 48 48 0 0 0 96 0"/></symbol>
+<symbol id="i-trophy" viewBox="0 0 1024 1024"><path fill="currentColor" d="M480 896V702.08A256.256 256.256 0 0 1 264.064 512h-32.64a96 96 0 0 1-91.968-68.416L93.632 290.88a76.8 76.8 0 0 1 73.6-98.88H256V96a32 32 0 0 1 32-32h448a32 32 0 0 1 32 32v96h88.768a76.8 76.8 0 0 1 73.6 98.88L884.48 443.52A96 96 0 0 1 792.576 512h-32.64A256.256 256.256 0 0 1 544 702.08V896h128a32 32 0 1 1 0 64H352a32 32 0 1 1 0-64zm224-448V128H320v320a192 192 0 1 0 384 0m64 0h24.576a32 32 0 0 0 30.656-22.784l45.824-152.768A12.8 12.8 0 0 0 856.768 256H768zm-512 0V256h-88.768a12.8 12.8 0 0 0-12.288 16.448l45.824 152.768A32 32 0 0 0 231.424 448z"/></symbol>
+<symbol id="i-user" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 512a192 192 0 1 0 0-384 192 192 0 0 0 0 384m0 64a256 256 0 1 1 0-512 256 256 0 0 1 0 512m320 320v-96a96 96 0 0 0-96-96H288a96 96 0 0 0-96 96v96a32 32 0 1 1-64 0v-96a160 160 0 0 1 160-160h448a160 160 0 0 1 160 160v96a32 32 0 1 1-64 0"/></symbol>
+<symbol id="i-view" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 160c320 0 512 352 512 352S832 864 512 864 0 512 0 512s192-352 512-352m0 64c-225.28 0-384.128 208.064-436.8 288 52.608 79.872 211.456 288 436.8 288 225.28 0 384.128-208.064 436.8-288-52.608-79.872-211.456-288-436.8-288zm0 64a224 224 0 1 1 0 448 224 224 0 0 1 0-448m0 64a160.192 160.192 0 0 0-160 160c0 88.192 71.744 160 160 160s160-71.808 160-160-71.744-160-160-160"/></symbol>
+<symbol id="i-warning" viewBox="0 0 1024 1024"><path fill="currentColor" d="M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896m0 832a384 384 0 0 0 0-768 384 384 0 0 0 0 768m48-176a48 48 0 1 1-96 0 48 48 0 0 1 96 0m-48-464a32 32 0 0 1 32 32v288a32 32 0 0 1-64 0V288a32 32 0 0 1 32-32"/></symbol>
+</svg>
+
+<script>
+/* ============================================================
+   悟性 · 职场修炼场
+   UI：Element Plus 设计语言（配色/组件/间距）+ Element Plus 官方图标
+   玩法：真实职场情境题（逐项解析）+ 行测式思维题（带解法）
+============================================================ */
+
+const IC=(n,c)=>'<svg class="ic'+(c?' '+c:'')+'"><use href="#i-'+n+'"></use></svg>';
+
+/* ---------------- 题库：情商情境题 ---------------- */
+const EQ = [
+{i:'E01',c:'向上管理',d:1,s:'深夜23:47，领导发来消息：「小王，这个方案先放着，不着急。」你会怎么处理？',
+o:['回复「收到，明早十点前给您一版调整思路」，然后睡觉','立刻爬起来连夜改出一版新方案','回复「好的」，放下手机继续睡','追问：「您是哪里不满意？」'],
+a:0,
+e:['接住消息、给时间点：既不让领导干等，也不用半夜拍脑袋改方向。第二天用清醒的脑子对齐，才是真高效。','「不着急」多半是客气。半夜赶工容易改错方向，还把自己搞得很悲壮，性价比极低。','只回「好的」没有闭环，领导不知道你打算什么时候给，事情悬在半空。','深夜追问显得没听懂潜台词，领导也可能一时说不清，白天当面聊更清楚。'],
+t:'深夜消息三连：接住、缓办、给时间点。次日上午对齐，胜过连夜表忠心。'},
+
+{i:'E02',c:'向上管理',d:2,s:'你负责的项目大概率要延期一周，你会怎么处理？',
+o:['等彻底确定了再汇报，免得朝令夕改','第一时间汇报：原因、影响面、补救方案和新的时间点','先默默加班顶一顶，实在扛不住了再说','在周报里轻描淡写提一句「略有风险」'],
+a:1,
+e:['拖到最后领导被动知情，信任损耗远大于延期本身。','坏消息越早说成本越低。带着方案汇报，体现的是掌控力，不是失败。','靠个人加班掩盖系统性风险，救不回来，还错过了调资源的机会。','文字里藏着掖着，领导看不到优先级，等于没说。'],
+t:'汇报坏消息公式：坏消息＋原因＋影响＋方案＋新时间点。'},
+
+{i:'E03',c:'向上管理',d:2,s:'会上领导环视一圈说：「这个紧急需求总得有人跟吧？」没人接话。',
+o:['低头看笔记本，装作记笔记','主动接：「我来跟，周三出初版，需要测试组留两天档期」','反问领导：「您觉得谁合适？」','小声说「我手头还有两个活」'],
+a:1,
+e:['沉默会让领导记住这个瞬间，比接砸一个活代价更大。','接活时顺带锁定时间和资源：既表了态，又立了规矩，是最漂亮的接法。','把球踢回给领导，等于当众说不作为。','有困难可以会后私聊协调，当众先拒绝显得不上道。'],
+t:'接活三件套：接任务、给时间点、要资源。'},
+
+{i:'E04',c:'向上管理',d:1,s:'要给领导发消息汇报一件事，最稳妥的结构是什么？',
+o:['铺陈背景三百字，最后问「您看怎么办」','先说结论和需要的决策，理由分一、二、三条放在后面','发六十秒语音，显得有诚意','只发一句「出事了，电话聊」'],
+a:1,
+e:['让领导替你做阅读理解，大概率收到一个「？」。','结论先行是职场第一沟通铁律：领导三十秒能决策，你显得专业。','语音对上级是负担：不方便回看，也无法留痕。','制造焦虑却不制造信息，领导会慌，也会烦。'],
+t:'结论先行、要点分条、「需要您做什么」放最后。'},
+
+{i:'E05',c:'向上管理',d:3,s:'你发现领导方案里有个明显的数据漏洞。他刚当着全员讲完，情绪正好。',
+o:['当场指出：「这数不对吧？」','会后私下找他：先认可整体思路，再以请教口吻确认数据口径','跟别的同事吐槽，等别人去说','在群里发正确的数据表格，@所有人'],
+a:1,
+e:['正确但时机最差：赢了道理输了关系，领导大概率当场进入防御状态。','给足面子再补事实。领导私下改方案不丢人，被当众下不来台才会记仇。','扯闲话传话风险最高：传到他耳朵里，你解释不清。','看似客观，实际是公开打脸，比当场指出更让人难堪。'],
+t:'纠错看场合：私下、请教式、带数据。'},
+
+{i:'E06',c:'向上管理',d:1,s:'领导路过工位随口说了句「辛苦了」，最好的回应是什么？',
+o:['「不辛苦，应该的」，然后没了下文','「应该的！顺便跟您同步下：材料到二稿了，明早发您」','「确实挺辛苦的，这个需求太赶了」','「领导您也辛苦」'],
+a:1,
+e:['谦虚没有错，但等于放弃了最好的汇报窗口。','把客套话变成三十秒进度同步，你的努力才会被看见。','接住「辛苦」开始倒苦水，瞬间变成抱怨，扣分。','互道辛苦没有信息量，聊完等于没聊。'],
+t:'「辛苦了」是递到你手里的汇报话筒。'},
+
+{i:'E07',c:'向上管理',d:1,s:'领导布置了个任务，没说什么时候要。你会怎么处理？',
+o:['先放着，想起来了再做','确认：「急吗？我手上有个事周四截止，这个我排周五可以吗？」','立刻放下一切去干这个，手头的全推迟','自己猜一个截止时间，比如下周一'],
+a:1,
+e:['没有截止时间的任务最容易烂尾，最后双方都尴尬。','主动对齐优先级和时间，是职场里最快的加分项。','不分优先级猛冲：旧的窟窿谁补？领导要的是全局，不是感动。','猜错了时间成本极高，猜对了也不会有人夸你。'],
+t:'没有期限的任务＝必须当场问清的任务。'},
+
+{i:'E08',c:'向上管理',d:2,s:'半夜想起白天发的报表有个小数点错误，影响不大、领导明早才看。你会怎么处理？',
+o:['半夜爬起来改掉，并打电话上报','先改掉文件，明早上班第一时间主动说明并同步正确数据','睡觉。明天领导没发现就当没事','在群里发「抱歉大家，我错了」配三朵鲜花'],
+a:1,
+e:['精神可嘉，但影响可控的事半夜惊动所有人，是把小事扩大化。','修复动作先行＋主动认领：错误小、姿态对，这叫靠谱。','赌运气是职场大忌。被发现那天，连今天的靠谱一起赔进去。','群发道歉把小错变成大型表演，重点全偏了。'],
+t:'小错＝修复＋主动同步；大错＝立刻上报。分寸感就是判断影响面。'},
+
+{i:'E09',c:'同事相处',d:3,s:'会上同事把你的方案原样讲了一遍，只字未提是你做的，领导频频点头。',
+o:['当场打断：「这是我上周给他的方案」','会后单独找领导补一份过程材料：「这个方案的一些背景我补充汇报下」','会后质问同事：「你什么意思？」','忍了，以后不给他看方案'],
+a:1,
+e:['当场拆台变成「两个下属争功」：领导只觉得场面难看，方案本身反而没人听了。','不撕破脸又留下痕迹。过程材料会替你说话，领导心里自然有数。','对质大概率换来「我那是帮你在会上推」，气受了，理还没占住。','惩罚自己而不是问题：信息封锁不了，学会留痕才是解法。'],
+t:'防抢功三板斧：平时留痕、事后补充汇报、不当场撕。'},
+
+{i:'E10',c:'同事相处',d:2,s:'组里老同事隔三差五把「帮忙整理个数据」的小活推给你。',
+o:['都接了。新人嘛，混个脸熟','偶尔帮，但这次说：「我这周排期满了，下周三之后可以」','直接拒绝：「这不是我的活」','帮了，然后在群里暗示自己很累'],
+a:1,
+e:['来者不拒，三个月后这些就是「你的活」了。','用排期说话而不是用情绪表态：帮了人情、守了边界，老同事也挑不出错。','一次硬拒把关系打碎。其实你缺的是节奏控制，不是翻脸。','帮忙还夹枪带棒，等于帮了个寂寞还得罪人。'],
+t:'拒绝模板：承认＋排期＋给时间窗。让排期当坏人，别让关系当坏人。'},
+
+{i:'E11',c:'同事相处',d:2,s:'部门群里有人阴阳怪气：「有些人活没干完，会议倒是安排得挺勤。」听着像在说你。',
+o:['群里回击：「说谁呢，有话直说」','不接茬。会后私聊对方问是否有误会，就事论事','当没看见，但憋屈一整天','找共同同事倾诉，希望有人评理'],
+a:1,
+e:['群里对线没有赢家，围观群众只会截图。','阴阳怪气最怕正面且平静的核对：多数误会到此为止；真有矛盾，也摊开了。','内耗一天。对方永远不知道你把他的「暗示」当真了。','话传到第三个人嘴里就变形，最后变成两个部门的矛盾。'],
+t:'群里不接战，私聊核对事实。'},
+
+{i:'E12',c:'同事相处',d:1,s:'同事发起投票选团建地点，你其实觉得去哪都行。',
+o:['弃权，「我都行」','认真选一个并附一句「这家评分高」','选了但补一句「我无所谓，看大家」','私下吐槽这种投票很形式主义'],
+a:1,
+e:['弃权不省事：发起人还得再问一遍。','「都行」在群体决策里最没存在感。明确表态省一轮讨论，还让人记得你。','选了又不认账等于白选，发起人会心累。','别人热情组织你泼冷水，下次就不带你了。'],
+t:'小事上明确表态，是最便宜的社交投资。'},
+
+{i:'E13',c:'同事相处',d:1,s:'你路过茶水间，撞见同事上班时间刷剧，他也看到了你，气氛瞬间凝固。',
+o:['会心一笑，转身去接水','装作没看见，低头回工位','小声说「放心，我不告诉别人」','顺便吐槽：「这个点真闲啊，羡慕」'],
+a:1,
+e:['那个「会心的笑」在他心里等于「他把柄在你手上」，从此看你的眼神都变味。','漠然路过对双方都是台阶。别人的工作节奏，不该成为你的信息。','「我不告诉别人」这句话本身就成了把柄，说得越多越像威胁。','点破人家的闲还带刺，等于当众处刑。'],
+t:'撞见同事摸鱼：让他觉得你「没看见」，是最重要的看见。'},
+
+{i:'E14',c:'同事相处',d:2,s:'邻组在邮件里说「该需求是你们组提出的」，锅朝你飞来。但你留有当时的聊天记录。',
+o:['回复全体，附上记录：「请看2月3日的确认记录，贵组当时明确认可方案」','私聊对方组长理论','找自己领导哭诉，让领导去吵','算了，反正领导会明白'],
+a:0,
+e:['留痕的意义就在此刻：群邮对群邮、事实对事实，克制且无法反驳。','对方已经在正式渠道动作，私聊只能被他回旋，你想更正都没有观众。','让领导替你打这种有记录可查的仗，显得你自己不会用证据。','书面锅不甩会变成既定事实，年底复盘全是你的锅。'],
+t:'书面沟通的意义：关键时刻，记录替你出庭作证。'},
+
+{i:'E15',c:'同事相处',d:1,s:'入职两个月的你，收到同组老同事的婚礼请帖。',
+o:['不熟，装作没收到','按部门惯例随礼并到场吃席，随大流不冒尖','独自包一个远超惯例的大红包','找借口当天请假，不去也不随礼'],
+a:1,
+e:['同组请帖不回，以后每个合作场合都会微妙。','跟随惯例是最安全的姿态：既不冷场也不讨好，随礼随的是圈子节奏。','红包超出惯例：对方尴尬、旁人侧目，还被怀疑「图什么」。','不去可以，礼数不到就是明确表态「我不想进这个圈」。'],
+t:'人情场第一条：先搞清楚「惯例」，再决定怎么出手。'},
+
+{i:'E16',c:'同事相处',d:2,s:'你最好的朋友进了同一家公司，还成了平级同事。',
+o:['把当朋友那套全带过来：啥都聊、啥都说','公开场合只谈工作，牢骚和私事留在饭桌上','主动结盟，什么事都互相照应','保持距离，装作不熟'],
+a:1,
+e:['你的情绪和软肋，在办公室语境里都可能变成谈资——朋友也未必守得住。','公私切换是成年人友谊的保护壳：公司里是同事，出了门才是朋友。','明面结盟容易被贴「小团体」标签，反而绑住两个人。','装不熟很累也没必要，自然相处不越界就好。'],
+t:'公司里的友谊：场合切分，不共享软肋，不公开站队。'},
+
+{i:'E17',c:'拒绝的艺术',d:2,s:'周五下午领导说：「明天周六，客户那边要个东西，你来加个班？」而你早有家里安排。',
+o:['「我明天有事，去不了」','「明天家里确实走不开。材料我今晚先出一版初稿发您，周一早上我最早到岗收尾，可以吗？」','「好好好」，然后心里骂骂咧咧敷衍了事','「这不是我负责的部分吧」'],
+a:1,
+e:['光拒绝没方案，把问题原样踢回去，下次好消息也轮不到你。','拒绝的是时间不是事：先给出替代方案。领导要的大多是「这事有人兜住」。','嘴上答应心里抗拒，做出来的东西和你的脸色一样差，两头不讨好。','分清责任没错，但在最需要人手的时候说这话，等于补刀。'],
+t:'拒绝公式：做不到X，但可以做到Y和Z。'},
+
+{i:'E18',c:'拒绝的艺术',d:2,s:'邻组同事说：「帮我跑个数呗，很快的。」这是本周第三次。',
+o:['帮了，谁让人家开口了','「我这周排期到周四，周五给你行吗？急的话你跟我们组长排下优先级。」','「你自己不会导吗？就一个报表」','答应了，然后故意拖两天'],
+a:1,
+e:['「很快的」一天来三次，一周后你就是免费的数据库。','把「帮不帮」变成「什么时候帮、按什么顺序帮」，用流程化解人情绑架。','能力上你可能对，但攻击性拉满：以后对方专挑你出错。','阳奉阴违比拒绝更伤信任，还落下「不靠谱」三个字。'],
+t:'第三次求助就该走流程了：排期和优先级，不是你的义务。'},
+
+{i:'E19',c:'拒绝的艺术',d:2,s:'大学同学想让你内推，但你看完简历，确实达不到岗位要求。',
+o:['直接把简历递上去，人情归人情','坦诚说明差距在哪、建议怎么补，问问他是否真想做这行','「我帮你问问」，然后石沉大海','劝他：「现在行业不行，别来了」'],
+a:1,
+e:['递一份不达标的简历，消耗的是你在公司的信用额度。','说真话＋给路径：短期伤一点面子，长期是真正的朋友行为。','「帮你问问」是最廉价的敷衍，双方都知道结局。','替别人的人生下结论，还把关系聊死了。'],
+t:'内推的本质是信用背书：只推你敢担保的人。'},
+
+{i:'E20',c:'拒绝的艺术',d:2,s:'合作多年的乙方每逢过节都寄礼品卡，今年又寄来了，价值不低。',
+o:['收了。老关系，不吃白不吃','婉拒退回，说明公司规定，工作上有事照常支持','收下然后转送同事，眼不见为净','收下，但提醒自己以后别偏袒他'],
+a:1,
+e:['礼物会升值——升成对方跟你谈判时的筹码。','干净的边界让合作关系更长久，也让你的判断永远站得住。','转赠只是让东西过一遍你的手，性质没变。','「我心里有数」是幻觉。收了手软是人性，不是意志力问题。'],
+t:'边界感要在别人测试你之前立好。'},
+
+{i:'E21',c:'拒绝的艺术',d:1,s:'前同事来挖你跳槽，涨薪三成。你其实暂时不想动。',
+o:['「我考虑下」，然后玩消失','感谢＋说明当前的想法，保持联系：「今年先把手头项目做完，年底再聊聊」','直接说：「我不想走，别再联系我了」','假装动心拿offer，回去跟现公司谈加薪'],
+a:1,
+e:['失联最伤人脉：下次他有好机会，第一个想到的不再是你。','不把话说死也不吊着人。人脉的维护靠的是体面和节奏。','话太满。三年后谁求谁不一定，行业说大不大。','用人话当筹码：穿帮那天，两边的信任一起没。'],
+t:'拒绝offer的正确姿势：留门，不吊人。'},
+
+{i:'E22',c:'会议汇报',d:1,s:'会上你正铺垫背景，领导打断：「说重点。」',
+o:['「马上就到重点了」，继续铺垫','立刻给结论＋关键数字＋需要领导定的事，细节装进附录备用','慌了，从头再讲一遍','「领导你别急嘛」'],
+a:1,
+e:['「马上」二字会让不耐烦升级，他已经在心里给你扣分。','被打断不是事故，是切换信号：一秒给结论，细节永远备着。','重讲一遍＝把不耐烦加倍。','玩笑接不住场合就是冒犯。'],
+t:'汇报永远先备好三十秒版本：结论、数字、要决策。'},
+
+{i:'E23',c:'会议汇报',d:3,s:'你的方案在会上被领导当场否定，理由你并不认同。',
+o:['当场逐条反驳，用事实说话','记下分歧点，会后一对一带着数据和备选方案再沟通','当场认错：「好的我改」，然后照自己原方案干','会后找其他领导告状'],
+a:1,
+e:['事实可能对，但当众让领导下不来台，方案再对也会被搁置。','会场不是辩论场，一对一才有探讨空间；带着方案去，是沟通不是诉苦。','口头认错实际硬顶，比正面反对更伤信任。','越级告状基本等于自爆，无论你多占理。'],
+t:'会下沟通，会上补台；分歧要数据，不要观众。'},
+
+{i:'E24',c:'会议汇报',d:1,s:'大领导路过问：「这个项目现在啥情况？」你只有十秒钟。',
+o:['从头讲背景，讲了三分钟','「进展正常，本周上线。风险是服务器还没批，需要您推一下」','「还行吧，都挺好的」','「一言难尽……」'],
+a:1,
+e:['场景根本不允许，背景没人关心。','状态＋节点＋一个可行动的请求：十秒钟让人记住你的项目。','「还行」是职场最贵的一句话：它让你同时失去汇报机会和存在感。','情绪化开场，领导只会想「这人扛不住事」。'],
+t:'电梯汇报＝现状＋时间点＋要资源。'},
+
+{i:'E25',c:'会议汇报',d:2,s:'会议开到一半，你发现自己组的汇报数据口径错了。',
+o:['赌没人发现，讲完再说','当场用一句话更正并说明正确口径，会后邮件补充修正版','悄悄把PPT改了，假装无事发生','会后只跟自己领导私下说'],
+a:1,
+e:['数据口径是复盘最爱抓的点，赌输一次赔上的是信用。','当场更正成本最低：小事故＋靠谱印象，远好过被别人当场戳穿。','会场改数据再被抓包，性质从「失误」变成「掩盖」。','参会者拿着错误数据做了讨论，影响已经扩散，捂是捂不住的。'],
+t:'错误越小的时候，越是纠错的黄金窗口。'},
+
+{i:'E26',c:'会议汇报',d:2,s:'跨部门会上，对方负责人言辞激烈：「延误全是你们支持不到位！」',
+o:['对着吵：「你们自己需求改了四版！」','不接情绪，把争议点整理成清单：「我们逐条对一下时间线，把分歧拉出来双方领导对齐」','会上一言不发，会后消极配合','直接把锅接了：「好吧，算我们的」'],
+a:1,
+e:['对吵只会坐实「两个部门闹矛盾」：领导们记住的是吵架，不是事实。','把情绪战场转成事实清单：时间线一摆，责任自然清楚。','消极抵抗牺牲的是业务，最后锅还是你的。','接了不属于你的锅，下次还有更大的锅等你。'],
+t:'冲突升级时，把「谁对」换成「时间线和下一步」。'},
+
+{i:'E27',c:'会议汇报',d:2,s:'项目失败，领导让你组织复盘会。组里气氛紧张，人人自危。',
+o:['直接点名谁做错了什么，效率高','开场先立规矩：「对事不对人，先看流程和机制，再看个案」','大家都不说话，那就散会','把失败归因于外部资源不足，尽快结束'],
+a:1,
+e:['点名批斗一次，下次所有人的信息都不会再进复盘会。','复盘的产出是机制改进，不是替罪羊；基调定错，以后没人说真话。','冷场说明信任没建立，硬开等于走形式。','甩锅外因让复盘失去意义，同样的坑二刷预定。'],
+t:'复盘会的第一句话决定它的价值：「我们对事不对人」。'},
+
+{i:'E28',c:'饭局应酬',d:2,s:'酒桌上领导举杯：「我干了，你随意。」',
+o:['真的就随意，抿一小口','起身、杯沿低于对方，能喝就干；不能喝就说明情况，以茶代酒补足敬意','一口闷完，再给领导满上','手挡在杯口：「我酒精过敏」'],
+a:1,
+e:['字面理解「随意」：敬意没到，这顿饭白坐。','姿态到位、量力而行。「随意」考验的是态度，不是酒量。','干完还反手给领导满上，强势过了头，喧宾夺主。','谎称过敏风险大：一句「来点啤酒意思下」就当场穿帮。'],
+t:'酒桌礼仪核心：姿态大于酒量，真诚大于招式。'},
+
+{i:'E29',c:'饭局应酬',d:2,s:'你天生不能喝酒，明晚又有重要饭局。',
+o:['到了饭局现场再说不能喝','提前和组里同事打招呼；席间主动承担点菜、倒茶、叫车的服务位','喝了再说，大不了吃解酒药','提前找借口不去了'],
+a:1,
+e:['临场拒绝没有铺垫，像在挑场合，主陪脸上挂不住。','不能喝没问题，但要补位：把酒量之外的价值做足，位置照样稳。','头孢配酒真的会进医院——这不是段子，是急救知识。','躲得过初一躲不过十五，该来的局迟早要面对。'],
+t:'酒局生存＝提前铺垫＋角色补位，从不靠临场发挥。'},
+
+{i:'E30',c:'饭局应酬',d:1,s:'领导让你点菜。桌上五个人，预算人均一百。',
+o:['全点自己爱吃的硬菜','先问忌口，荤素冷热搭配，最后留一个可以加的空间','只点便宜的，显得节俭','点最贵的，显示大气'],
+a:1,
+e:['自嗨式点菜：客户忌口都不知道，饭还没吃先扣分。','点菜是全局观表演：照顾所有人、控制预算、留有余地。一顿饭看懂一个人。','过度节俭让主人难堪，预算就是让你花的。','超支的「大气」是给自己加戏，报销单会出卖你。'],
+t:'点菜三问：忌口？搭配？预算内留余量。'},
+
+{i:'E31',c:'饭局应酬',d:2,s:'饭局冷场，气氛尴尬，主陪正在看手机。',
+o:['讲一个网上看来的段子救场','向主宾请教式提问：「王总，听说您当年那个项目……当时是怎么考虑的？」','低头猛吃，等别人暖场','提议：「要不咱们玩个游戏？」'],
+a:1,
+e:['网络段子的冷场率高于救场率，尤其有长辈在场。','请教式提问让人谈自己最擅长的领域，几乎万无一失，还顺手建立好感。','每个人都在等别人暖场，冷场就自动续费。','游戏要看场合和辈分：拍马屁失败至少无害，游戏翻车会被记住。'],
+t:'冷场急救包：请教式提问，聊对方的擅长。'},
+
+{i:'E32',c:'饭局应酬',d:2,s:'敬酒环节。桌上坐着大领导、直管领导、客户和同事。',
+o:['从离自己最近的同事开始挨个敬','按主次来：先主宾，再直管领导，同事间最后互相敬','只敬大领导和客户，其他人略过','等所有人敬完了，再单独补敬大领导'],
+a:1,
+e:['顺序错乱在讲究的桌上是真失礼，不是小事。','敬酒顺序是桌面上的组织架构图：主次分明，谁都不会觉得被冷落。','同事虽然「不重要」，被跳过的感觉会带到明天工位。','补敬＝告诉全桌你刚才漏了，尴尬加倍。'],
+t:'敬酒如开会：先拍板的人，后抬桩的人。'},
+
+{i:'E33',c:'饭局应酬',d:3,s:'饭局过半，有同事开始吐槽公司战略，越说越激动，一桌人听着。',
+o:['跟着附和几句，难得大家都有共鸣','只听不接不传，适时把话题引向别处','当场劝他：「少说两句吧」','举起手机拍照发到部门群'],
+a:1,
+e:['你的附和明天可能被概括成「你们组都这么想」。喝酒的话不作数，但传话不管这个。','饭桌上的话是流动的：不接话是你的护城河，转移话题是你的善良。','当众喝止等于宣布立场，还让说话的人下不来台。','这是职场核武器：用了就没有回头路，无论动机多正义。'],
+t:'酒后吐槽现场守则：不接、不录、不传，把话题引走。'},
+
+{i:'E34',c:'危机处理',d:3,s:'你发现刚上线的活动页价格配置错了：原价199标成19.9，已有几十个订单。',
+o:['先自己研究怎么弄错的，查明再上报','立刻止血：下架或改价；同时上报领导和相关方，附影响订单数','赶紧把页面改回来，当无事发生','在群里问：「这是谁配的价格？」'],
+a:1,
+e:['排查内部原因可以等：每多一分钟，就多几十单损失。','止血优先、同步跟进。损失已发生，时间和影响面才是唯一能抢救的东西。','偷偷改回解决不了订单问题；事后追责时「隐瞒」比「失误」重得多。','找责任人的时机在止损之后。先内讧，只会延误战机。'],
+t:'线上事故三板斧：止血、上报、留证。顺序不能错。'},
+
+{i:'E35',c:'危机处理',d:2,s:'客户在大群里发火并@所有人：「你们的服务就是这么做的？！」',
+o:['群里立刻反驳，摆出是他的问题','群里先接住情绪、致歉表态，马上转私聊给解决方案和时间点','已读不回，等领导出面','在群里发一个「抱拳」表情'],
+a:1,
+e:['群里对喷，围观的是两家公司的其他人：赢了对错，输了合作。','公开接情绪给姿态，私下给方案给节奏。客户要的先是「被重视」。','已读不回是火上浇油：他截图发给自己领导只是时间问题。','表情包在暴怒客户眼里等于挑衅，二次引爆。'],
+t:'客户愤怒三步：公开接情绪→私聊给方案→群里同步进展。'},
+
+{i:'E36',c:'危机处理',d:3,s:'你发现同事为赶汇报，在数据里「美化」了一部分。这份报告要上大会。',
+o:['大会上他讲到那页时，当场质疑','先私下确认是否笔误；若真是造假，劝他撤回；不听，就按流程上报','装作没看见，反正不是你的报告','截图发到吃瓜群，让大家评评理'],
+a:1,
+e:['当场引爆，毁掉的是整个部门的报告公信力，也可能毁掉一个本可挽回的人。','先假设善意、私下给台阶，成本最低；他不回头，你的上报就变成了挽救他。','一旦追查「谁早就知道」，沉默的你也脱不了干系。','吃瓜群不是法外之地：截图满天飞，最后查的是泄密的你。'],
+t:'同事造假：私下核实→给台阶→按流程。一步都不能跳。'},
+
+{i:'E37',c:'危机处理',d:2,s:'你是oncall。凌晨三点服务挂了，用户投诉涌入。',
+o:['先修复完再统一汇报，免得让大家白等','先发出第一条同步：「已定位，正在处理，预计X点恢复」，之后每半小时更新','先睡一会，说不定自动恢复了','先在群里甩锅给上游服务方'],
+a:1,
+e:['修复可能要两小时，两小时的沉默会让恐慌升级十倍。','事故沟通的黄金法则：宁要有节奏的「处理中」，也不要突然的「修好了」。','祈祷不是运维手段，用户等不了玄学。','甩锅是恢复之后复盘里的事，事故中只谈进展。'],
+t:'oncall铁律：先同步、再修复、后复盘。'},
+
+{i:'E38',c:'危机处理',d:1,s:'你发的会议纪要把关键结论写反了，已经群发。',
+o:['装没发过，下次开会口头再说一遍','立刻发更正版，@关键人说明变更点，并撤回原版','在群里轻描淡写：「那个结论以我口头说的为准」','私聊几个重要的人说明一下就好'],
+a:1,
+e:['错误纪要是「书面证据」，会一直流传到执行环节。','纪要是给没参会的人看的，更正必须走同一条传播路径。','「口头为准」等于没有标准，还显得你在甩锅给听众。','私聊的覆盖面，永远追不上群发的错误。'],
+t:'书面错误要用书面更正，路径要一致。'},
+
+{i:'E39',c:'办公室政治',d:3,s:'两位副总在方案上意见对立，都私下找你：「你觉得呢？」',
+o:['如实告诉A副总，B副总的完整观点','只谈方案和数据，摆出各自的优劣，把选择权还给两位领导','谁官大听谁的，另一个敷衍','装病请假，等他们吵完'],
+a:1,
+e:['传话会让你同时成为双方的线人：哪天版本对不上就完了。','你是执行层不是仲裁层。提供事实、不提供站队，是唯一的活路。','官大的一边你会押对，但另一边的项目你还做不做？','躲得过初一，躲不过周会。'],
+t:'夹缝生存：给事实不给立场，给方案不给站队。'},
+
+{i:'E40',c:'办公室政治',d:2,s:'同事拉你进一个五人小群，群名「晚饭突击队」。进去发现全在吐槽领导。',
+o:['跟着聊几句，不然显得不合群','潜水或不留痕迹退出：工作场合少说多看','反手截图发给领导邀功','在群里劝大家理性'],
+a:1,
+e:['你说的每一句都可能被截屏，聊天记录没有语气。','不参与是不留把柄，退出是不背锅。吐槽群出事是概率问题，别当分母。','告密换来的短期信任，远低于全员对你的长期警惕。','说教只会让你同时得罪五个人。'],
+t:'吐槽群的正确姿势：潜水。实在不行：退群。'},
+
+{i:'E41',c:'办公室政治',d:2,s:'你从别人口中得知，有同事在背后说你「就会讨好领导」。',
+o:['冲过去当面质问他','不对质不内耗，继续用工作结果说话','也开始说他坏话，礼尚往来','在朋友圈发阴阳怪气的文案'],
+a:1,
+e:['对质等于承认你在意，还坐实「敏感」标签。','传言会自己蒸发，实绩会自己沉淀。二者赛跑时，你只需要跑在前面。','坏话接力赛没有终点站，你会变成「他们俩在互说」。','朋友圈阴阳是低配版对质：所有人都看得懂，除了你自己。'],
+t:'应对背后议论：让它饿死——不回应、不传播、不解释。'},
+
+{i:'E42',c:'办公室政治',d:2,s:'年度评优，你和关系最好的同事竞争最后一个名额。',
+o:['让他「意思一下」，以后还你人情','各凭本事正常参评，不拉票不承诺交换','私下联合其他同事投票压他','主动退出：「兄弟重要」'],
+a:1,
+e:['用人情换名额，换来的不是感激，是拿捏你的把柄。','竞争不伤友情，操作才伤：规则内的较量，输了也体面。','拉票一旦被发现，输掉的是所有人的信任。','他若是你兄弟，你的退出会变成他的负担。'],
+t:'和朋友竞争：遵守规则，是彼此体面的前提。'},
+
+{i:'E43',c:'办公室政治',d:2,s:'新领导上任，风格大变：要日报、开会不许念PPT、当场出结论。',
+o:['用老领导那套节奏继续干，以不变应万变','头两周低调观察，主动找新领导对齐目标和工作节奏','私下联合同事怀念老领导','第一周就提交七页改进建议书'],
+a:1,
+e:['「以不变应万变」在新领导眼里就是「消极抵抗」。','换帅适应期：先对齐再表现。新领导的偏好，就是新的职场语言。','怀念老领导的饭局，第二天就会变成「小团体不满」。','热情没错，但七页建议＝告诉他老做法全错，时机致命。'],
+t:'新领导上任：先适应，后建议。顺序不能反。'},
+
+{i:'E44',c:'办公室政治',d:2,s:'你被安排做行政杂活：订会议室、发通知，离核心业务越来越远。',
+o:['消极怠工，杂活糊弄着做','把杂活做出体系（模板/流程），同时主动申请参与一个小项目证明能力','找领导大谈理想，拒绝杂活','准备简历，第二天就提离职'],
+a:1,
+e:['糊弄杂活的人，会被定义成「只能糊弄的人」。','杂活的尽头是话语权：把琐事流程化，你就从「做杂活的人」变成「定规矩的人」。','拒绝眼前的事去谈远方，领导听到的是「这人不靠谱」。','想走可以，但要带着筹码走。裸怒式离职是把选择权送给市场。'],
+t:'破局杂活：流程化它，再用省下的时间换个项目。'},
+
+{i:'E45',c:'自我提升',d:1,s:'又到写周报。这周你修了三个bug、开了十一个会。',
+o:['如实流水账：修3个bug，开会11个','写结果和价值：「上线后线上故障周环比下降X%，三项关键会议落地决议并跟进」','写辛苦：「本周加班4天，通宵1次」','尽量不写，等领导来问'],
+a:1,
+e:['「修了3个bug」在领导眼里约等于零，因为没有参照系。','周报是给决策看的信息流，不是劳动打卡记录：写影响，别写动作。','苦劳在周报里一文不值，还会引来「效率低」的猜测。','你不定义你的工作，别人就会用印象定义你。'],
+t:'周报公式：结果＋对比数据＋下一步。'},
+
+{i:'E46',c:'自我提升',d:2,s:'你兢兢业业半年，感觉领导完全没看到你的努力。',
+o:['加倍努力，是金子总会发光','建立固定同步机制：双周一对一或邮件进展，让成果可视化','找领导当面诉苦：「我干了这么多，您看不见吗」','观察领导喜欢谁，学他拍马屁'],
+a:1,
+e:['金子会发光，但领导没空挖矿：被动等待是最贵的策略。','可见性不是溜须拍马，是把工作翻译成领导关心的语言，定期批量推送。','诉苦把「求可见」变成「发牢骚」，诉求完全失焦。','学模仿秀不如学翻译术：他喜欢谁是结果，不是方法论。'],
+t:'职场能见度＝定期、结构化、用对方的语言同步成果。'},
+
+{i:'E47',c:'自我提升',d:3,s:'你觉得薪资低于市场水平，想和领导谈涨薪。',
+o:['借着酒局在饭桌上提一嘴','准备成绩清单＋市场数据，约正式一对一，谈贡献和期望区间','拿着别的offer去「威胁」领导','用离职暗示，等领导挽留'],
+a:1,
+e:['酒桌谈钱让双方都没退路：领导的「再说吧」，你连补充的资格都没有。','涨薪谈判是商业提案：证据、时机、区间，三样齐了才配得上「谈判」二字。','offer威胁成功一次，领导记你一辈子；不成功，你走也不是留也不是。','「暗示离职」被识破那天，你会进下一轮裁员优先名单。'],
+t:'谈钱三件套：书面证据、正式场合、合理区间。'},
+
+{i:'E48',c:'自我提升',d:2,s:'同批入职的同事晋升了，你没有。',
+o:['找领导理论：「凭什么他行我不行」','约一对一要具体反馈：「差距清单＋改进计划＋下次评审时间点」','私下说他肯定有关系户背景','摆烂半年，用绩效表达不满'],
+a:1,
+e:['「凭什么」问出的是情绪：领导只能给你安抚，给不了答案。','把情绪事件转成信息缺口：要清单、要标准、要时间点，下次你就是有备而来。','猜关系户是最省力的解释，也是最让自己停滞的解释。','用绩效报复公司，工资和成长一起报销，纯属自伤。'],
+t:'没晋升＝一次免费诊断，别浪费在抱怨上。'},
+
+{i:'E49',c:'自我提升',d:1,s:'你收藏了两百门网课，越学越焦虑，感觉什么都不会。',
+o:['全部再买一遍，用购物缓解焦虑','围绕当前工作里最痛的一个问题，学一门用一门','承认自己焦虑，先睡三天','报名考证，用证书证明自己'],
+a:1,
+e:['囤课是焦虑的自我按摩，库存越多越内疚。','以战养战式学习：问题牵引学习，学完立刻有反馈，焦虑自然退潮。','休息没错，但睡三天醒来，问题还在原地。','为考证而考的证，是简历上的装饰品，不是能力。'],
+t:'学习抗焦虑：一次只解决一个工作里的真问题。'},
+
+{i:'E50',c:'自我提升',d:3,s:'手里有个涨薪四成的新offer。现公司前景尚可、团队舒服，你犹豫不决。',
+o:['跟着感觉走，拖延到offer过期','列决策矩阵：成长／钱／风险／人，给自己一个截止日期，到点决策','抛给朋友投票，少数服从多数','接了offer再和现公司谈价'],
+a:1,
+e:['拖延也是决策——决策了「最差的那个」。','大决策的最优解是结构化：把感觉拆成维度，配上截止日，选项会自己浮出来。','人生题没有标准答案，投票只会收获更多混乱。','用offer抬价是高危操作：新公司拉黑你，老公司提防你，双输。'],
+t:'纠结的尽头是决策矩阵＋截止日，不是第六感。'},
+
+{i:'E51',c:'自我提升',d:1,s:'群里有人@你，问一个你不熟悉的问题。',
+o:['已读不回，等会的人出现','回「我确认下，X点前答复您」，然后真去查','随便答一个，显得反应快','「不清楚，你问XX吧」'],
+a:1,
+e:['已读不回的观感＝不靠谱三连：没能力、没态度、没礼貌。','「给确定的响应时间」比「给不确定的答案」专业一百倍，这是靠谱的最低成本形态。','快而错的回答会被执行，返工成本算你头上。','直接转介绍没问题，但连「我帮你问」的缓冲都没有，显得甩手。'],
+t:'不会不可怕，可怕的是不给确定时间。'},
+
+{i:'E52',c:'办公室政治',d:3,s:'领导私下让你评价另一位同事——他最近表现有点问题。',
+o:['把知道的所有八卦都倒出来','只谈工作协作层面的事实：「最近两次交付延期，配合时沟通成本变高」，不评价人品动机','「他人挺好的，没觉得有问题」','建议领导直接去问那位同事'],
+a:1,
+e:['你今天倒的八卦，明天会变成「你这么说他」。','汇报事实＋不诛心：既尽到告知义务，又不做背后小人，传出去你也站得住。','睁眼说瞎话，领导会把你归入「不可信的信息源」。','踢皮球式回答等于告诉领导「这事我不想沾」，下次好事也绕开你。'],
+t:'评价同事三原则：只谈事实、只谈工作、不猜动机。'}
+];
+
+/* ---------------- 题库：智商题（行测式） ---------------- */
+const IQ = [
+{i:'I01',c:'数字推理',d:1,s:'找规律填数：2，6，12，20，30，（　）',o:['40','42','44','46'],a:1,
+x:'相邻两项差为 4、6、8、10，下一个差是 12，30+12=42。（也可看作 n×(n+1)）',
+t:'数列卡壳第一步：先做差。'},
+{i:'I02',c:'数字推理',d:1,s:'找规律填数：1，8，27，64，（　）',o:['100','121','125','216'],a:2,
+x:'1³、2³、3³、4³，下一项是 5³=125。',t:'见到 1、8、27 想立方。'},
+{i:'I03',c:'数字推理',d:2,s:'找规律填数：3，7，15，31，63，（　）',o:['95','124','127','128'],a:2,
+x:'每项 ×2+1：63×2+1=127。',t:'递增快数列，试「×2±常数」。'},
+{i:'I04',c:'数字推理',d:2,s:'找规律填数：5，8，14，26，50，（　）',o:['96','98','102','110'],a:1,
+x:'每项 ×2−2：50×2−2=98。',t:'增长越来越快？试 ×2 再修正。'},
+{i:'I05',c:'数字推理',d:2,s:'找规律填数：3，4，7，12，19，28，（　）',o:['36','38','39','41'],a:2,
+x:'相邻差为 1、3、5、7、9（连续奇数），下一个差是 11，28+11=39。',t:'差数列本身有规律时，做二次差。'},
+{i:'I06',c:'数字推理',d:2,s:'找规律填数：121，144，169，196，（　）',o:['210','221','225','256'],a:2,
+x:'11²、12²、13²、14²，下一项 15²=225。',t:'100～256 之间的数，先想平方数。'},
+{i:'I07',c:'数字推理',d:2,s:'找规律填数：1，2，6，24，120，（　）',o:['240','600','720','840'],a:2,
+x:'阶乘数列：1!=1、2!=2、3!=6、4!=24、5!=120，下一项 6!=720。',t:'相邻比值为 2、3、4、5 → 阶乘。'},
+{i:'I08',c:'数字推理',d:1,s:'找规律填数：81，64，49，36，（　）',o:['16','25','28','49'],a:1,
+x:'9²、8²、7²、6²，下一项 5²=25。',t:'递减数列先想反向平方。'},
+{i:'I09',c:'数字推理',d:3,s:'找规律填数：1，3，2，6，5，15，（　）',o:['12','13','14','45'],a:2,
+x:'运算交替：×3、−1、×3、−1……15−1=14。',t:'隔项看无规律时，检查「运算交替」。'},
+{i:'I10',c:'数字推理',d:2,s:'找规律填数：2，3，5，9，17，（　）',o:['26','31','33','34'],a:2,
+x:'每项 ×2−1：17×2−1=33。',t:'差为 1、2、4、8（翻倍）⇒ ×2−1 型。'},
+{i:'I11',c:'逻辑推理',d:2,s:'办公室失窃。甲说：「是乙干的。」乙说：「不是我。」丙说：「不是我。」已知只有一人说真话。是谁干的？',
+o:['甲','乙','丙','无法确定'],a:2,
+x:'甲与乙的话互相矛盾，必一真一假，所以唯一那句真话就在他俩之间 → 丙说的是假话。丙说「不是我」为假 → 是丙干的。',t:'矛盾命题必一真一假，是解「真假话」的钥匙。'},
+{i:'I12',c:'逻辑推理',d:1,s:'张三比李四高；王五比李四矮；赵六比王五高，但比李四矮。谁第二高？',
+o:['张三','李四','赵六','王五'],a:1,
+x:'排序：张三 > 李四 > 赵六 > 王五，第二高是李四。',t:'画一条数轴把人插进去，比脑内排列稳。'},
+{i:'I13',c:'逻辑推理',d:1,s:'抽屉里混放着黑袜和白袜各10只，房间断电一片黑。至少拿几只出去，才能保证配成一双同色？',
+o:['2只','3只','11只','12只'],a:1,
+x:'最坏情况：拿出的2只一黑一白。第3只无论什么颜色，必能与前两只之一配成同色。抽屉原理。',t:'「保证」＝考虑最坏情况。'},
+{i:'I14',c:'逻辑推理',d:2,s:'时钟显示 3:15，时针与分针的夹角是多少度？',
+o:['0°','7.5°','15°','30°'],a:1,
+x:'分针指3即90°；时针在3点基础上又走了15分钟：3×30°+15×0.5°=97.5°。两者相差 7.5°。',t:'时针每小时走30°，每分钟再走0.5°。'},
+{i:'I15',c:'逻辑推理',d:1,s:'某班100名学生，至少有几人生日在同一个月？',
+o:['8人','9人','12人','13人'],a:1,
+x:'100÷12=8余4。若每月都只有8人，最多容纳96人，所以必有月份至少9人。抽屉原理。',t:'抽屉原理：物体数>抽屉数×k 时必有抽屉装 k+1 个。'},
+{i:'I16',c:'逻辑推理',d:2,s:'一杯500毫升牛奶：先喝掉一半，加满水；再喝掉一半，又加满水；最后再喝掉一半。此时杯中剩多少牛奶？',
+o:['0毫升','62.5毫升','125毫升','250毫升'],a:1,
+x:'加水不影响牛奶量：牛奶每次只剩一半。500×(1/2)³=62.5毫升。',t:'盯着牛奶本身的变化，别被水绕晕。'},
+{i:'I17',c:'逻辑推理',d:3,s:'两根粗细不均的香，每根燃尽都恰好1小时。如何测出45分钟？',
+o:['两根同时点燃一端，烧完即45分钟','甲香点两端、乙香点一端；甲烧尽时（30分钟）点燃乙另一端，乙再烧15分钟','先烧完一根，再同时点燃另一根两端','甲香点两端，乙香点两端，烧完为止'],
+a:1,
+x:'甲点两端＝30分钟烧尽；此刻乙已单端烧了30分钟、剩「30分钟量」，点燃另一端后剩余部分双倍速燃烧＝15分钟。30+15=45。',t:'不均匀的香，只有「两端点」才能把时长对半砍。'},
+{i:'I18',c:'逻辑推理',d:2,s:'楼下有三个开关，分别对应楼上一盏灯（目前关闭）。只允许上楼一次，如何确定每个开关对应关系？',
+o:['打开1号约10分钟后关掉，再打开2号上楼：灯亮=2号；灯灭但灯泡发热=1号；灯灭且凉=3号','随机打开两个开关上楼碰运气','打开1号等10分钟直接上楼','无论怎么做都无法确定'],
+a:0,
+x:'灯泡除了亮灭，还有温度这个隐藏信息。发热是1号留下的「时间指纹」。',t:'信息不够时，寻找隐藏维度（温度、气味、痕迹）。'},
+{i:'I19',c:'逻辑推理',d:2,s:'9个外观相同的球，其中1个偏重。用无砝码天平，最少称几次保证找出？',
+o:['1次','2次','3次','4次'],a:1,
+x:'3-3-3分组：任取两组上天平，定位重球在哪组（1次）；组内再取两只上天平或留一（1次）。共2次。',t:'n 次天平可分辨 3ⁿ 个球。'},
+{i:'I20',c:'逻辑推理',d:2,s:'鸡兔同笼：头35个，脚94只。兔有几只？',
+o:['10只','11只','12只','23只'],a:2,
+x:'假设全是鸡：35×2=70脚。多出的94−70=24只脚，每只兔多2脚 → 24÷2=12只兔。',t:'假设法：先全按一种算，再补差。'},
+{i:'I21',c:'逻辑推理',d:2,s:'今年父子年龄和为48岁。4年前父亲年龄是儿子的3倍。儿子今年几岁？',
+o:['10岁','12岁','14岁','34岁'],a:2,
+x:'4年前年龄和=48−8=40岁；设儿子x，父3x → 4x=40 → 儿子10岁 → 今年14岁。',t:'年龄问题的关键：所有人的年龄差不变，和每年减2。'},
+{i:'I22',c:'逻辑推理',d:3,s:'猎人带狼、羊、菜过河。船每次除猎人外只能载一样。狼吃羊、羊吃菜。最少渡河几次（按单程计）？',
+o:['5次','6次','7次','9次'],a:2,
+x:'羊过→空回→狼过→带羊回→菜过→空回→羊过，共7次。核心技巧：把羊带回来「拆矛盾」。',t:'冲突载体（羊）两头跑，是此类题的万能起手。'},
+{i:'I23',c:'文字推理',d:2,s:'字母数列：A，C，F，J，O，（　）',
+o:['R','S','T','U'],a:3,
+x:'间隔依次+2、+3、+4、+5、+6：O+6=U。',t:'字母题先把字母转成序号：A=1，B=2……'},
+{i:'I24',c:'文字推理',d:1,s:'下列哪个与其余三个不同类？',
+o:['蜻蜓','蝴蝶','蝙蝠','螳螂'],a:2,
+x:'蝙蝠是哺乳动物，会飞但不是昆虫；其余三个都是昆虫。',t:'「会飞」是表象，「类属」才是本质。'},
+{i:'I25',c:'文字推理',d:2,s:'谜面「一加一」，打一字。',
+o:['二','王','田','干'],a:1,
+x:'「一」+「加（十）」+「一」竖起来组合：一、十、一 → 王。',t:'字谜里的「加」本身就是零件。'},
+{i:'I26',c:'文字推理',d:2,s:'「二三四五六七八九」打一成语。',
+o:['缺衣少食','丢三落四','接二连三','乱七八糟'],a:0,
+x:'缺「一」少「十」——谐音「缺衣少食」。',t:'数字成语谜先找「缺谁少谁」，再谐音。'},
+{i:'I27',c:'文字推理',d:1,s:'「1、2、5、6、7、8、9」打一成语。',
+o:['缺衣少食','丢三落四','七上八下','九牛一毛'],a:1,
+x:'缺3、4 ——「丢三落四」。',t:'和上一题对照记：缺一少十 vs 丢三落四。'},
+{i:'I28',c:'文字推理',d:1,s:'类比推理：园丁∶教师',
+o:['蜡烛∶警察','白衣天使∶医生','铁饭碗∶工人','孺子牛∶学生'],
+a:1,x:'「园丁」是教师的美称，「白衣天使」是医生的美称，对应关系一致。',t:'类比题先写出关系句：「X是Y的美称」。'},
+{i:'I29',c:'文字推理',d:1,s:'类比推理：水∶鱼',
+o:['空气∶鸟','树∶叶','车∶人','云∶雨'],
+a:0,x:'鱼生存于水中，鸟生存于空气中——生存环境对应。',t:'造句法：鱼在水中生活→鸟在空气中生活。'},
+{i:'I30',c:'文字推理',d:3,s:'谜面「半真半假」，打一字。',
+o:['值','假','佳','直'],a:0,
+x:'取「真」的一半（直）＋「假」的一半（亻）＝值。',t:'「半X半Y」型字谜：各取半边再拼装。'},
+{i:'I31',c:'文字推理',d:1,s:'成语接龙：「一心一意→意气风发→发扬光大→？」下列哪个能接上？',
+o:['大同小异','异想天开','开天辟地','地大物博'],
+a:0,x:'接龙必须以上一个成语的末字「大」开头，只有「大同小异」满足。',t:'接龙题先看尾字，再筛选项。'},
+{i:'I32',c:'文字推理',d:2,s:'谜面「一口咬掉牛尾巴」，打一字。',
+o:['牢','告','舌','生'],a:1,
+x:'「牛」被咬掉尾巴（竖的下半截）后加「口」＝告。',t:'字谜动词（咬、砍、丢）都是笔画增删提示。'},
+{i:'I33',c:'场景计算',d:2,s:'一个活儿3个人干需要12天。现在要提前4天完成，至少需要几个人？',
+o:['4人','5人','6人','9人'],a:1,
+x:'总量=3×12=36人天。新工期=12−4=8天，36÷8=4.5 → 至少5人（人不能要半个）。',t:'工程题核心是「人天总量」不变；人数记得向上取整。'},
+{i:'I34',c:'场景计算',d:1,s:'会议9:30开始，你被要求提前15分钟到场布置，路上需要40分钟。最迟几点出发？',
+o:['8:30','8:35','8:40','8:45'],a:1,
+x:'最迟到达时刻9:15，倒推40分钟 → 8:35出发。',t:'倒排时间：从终点往回减，比顺推不易错。'},
+{i:'I35',c:'场景计算',d:1,s:'团建人均150元、共12人，商家打8折。总费用多少？',
+o:['1200元','1440元','1500元','1800元'],a:1,
+x:'150×12=1800，1800×0.8=1440元。',t:'先总价再折扣，比逐人折算快。'},
+{i:'I36',c:'场景计算',d:1,s:'上半年销量100台，下半年增长20%。全年销量占目标250台的百分之几？',
+o:['80%','84%','88%','92%'],a:2,
+x:'下半年100×1.2=120台，全年220台，220÷250=88%。',t:'「增长20%」是乘1.2，别当成加20台。'},
+{i:'I37',c:'场景计算',d:2,s:'大楼共21层，每层4米。电梯以4米/秒匀速直上（中间不停），从1层到21层要几秒？',
+o:['16秒','20秒','21秒','84秒'],a:1,
+x:'1层到21层只跨20个层间距：20×4=80米，80÷4=20秒。',t:'楼层问题永恒陷阱：层数差=层距。'},
+{i:'I38',c:'场景计算',d:1,s:'一份120页的文件，单面打印要120张纸；改双面打印（每张2页）要60张。省几张？',
+o:['30张','40张','60张','120张'],a:2,
+x:'120−60=60张，省一半。',t:'送分题也要看清问的是「省几张」还是「用几张」。'},
+{i:'I39',c:'场景计算',d:2,s:'某指标环比增长30%，同比下降20%。这说明什么？',
+o:['比上月和去年同期都好','比上一期好，但比去年同期差','两个时期都变差','数据自相矛盾，必然有错'],
+a:1,
+x:'环比＝跟紧邻的上一期比（变好）；同比＝跟去年同期比（变差）。两个基准不同，完全可以同时成立。',t:'环比看势头，同比看年基准，别混。'},
+{i:'I40',c:'场景计算',d:1,s:'快递首重1公斤8元，续重每0.5公斤3元。一个3公斤的包裹运费多少？',
+o:['14元','17元','20元','26元'],a:2,
+x:'首重8元＋续重2公斤=4个0.5公斤×3元=12元，共20元。',t:'续重按0.5公斤为台阶，不足也按一档算。'}
+];
+
+/* ---------------- 元数据 ---------------- */
+const RANKS=[
+ {xp:0,  n:'见习生',        q:'初入江湖，先学闭嘴'},
+ {xp:25, n:'试用新人',      q:'工牌还没焐热'},
+ {xp:60, n:'正式员工',      q:'恭喜转正，工位风水已熟'},
+ {xp:110,n:'业务骨干',      q:'锅来了，也能接住了'},
+ {xp:180,n:'组长',          q:'开始带人，开始失眠'},
+ {xp:270,n:'主管',          q:'会上终于有你的座位牌'},
+ {xp:380,n:'经理',          q:'汇报对象变成了「各位领导」'},
+ {xp:520,n:'总监',          q:'画饼功力初成'},
+ {xp:700,n:'合伙人',        q:'你的名字出现在组织架构图上'},
+ {xp:900,n:'打工魂·悟道者',  q:'摸鱼与修行的尽头，是和解'}
+];
+const ACHV=[
+ {i:'day1',  n:'初窥门径', d:'完成第一次「修行一日」'},
+ {i:'perfect',n:'一日无过', d:'单日修行全对'},
+ {i:'combo8', n:'妙语连珠', d:'单次连击达到 8'},
+ {i:'combo15',n:'一气呵成', d:'单次连击达到 15'},
+ {i:'promo1', n:'初入仕途', d:'首次晋升成功'},
+ {i:'rank5',  n:'中层干部', d:'晋升至「组长」'},
+ {i:'rank9',  n:'悟道',     d:'抵达最高职级'},
+ {i:'clear0', n:'补悟圆满', d:'清空错题本'},
+ {i:'streak7',n:'七日不辍', d:'每日一练连续 7 天'},
+ {i:'daily1', n:'日课之始', d:'完成第一次每日一练'},
+ {i:'boss1',  n:'金蝉脱壳', d:'首次使用老板键'},
+ {i:'total100',n:'百题斩',  d:'累计作答 100 题'}
+];
+/* 一天中的七个时段：每个时段有最可能发生的情境类型 */
+const SLOTS=[
+ {t:'08:50',n:'早会前',   ic:'sunrise',      cats:['向上管理','同事相处']},
+ {t:'10:20',n:'工位上',   ic:'monitor',      cats:['自我提升','拒绝的艺术']},
+ {t:'12:10',n:'食堂',     ic:'food',         cats:['同事相处','饭局应酬']},
+ {t:'14:30',n:'会议室',   ic:'memo',         cats:['会议汇报']},
+ {t:'16:40',n:'跨部门',   ic:'switch-button',cats:['会议汇报','危机处理']},
+ {t:'21:30',n:'加班中',   ic:'moon',         cats:['危机处理','向上管理']},
+ {t:'23:00',n:'下班路上', ic:'sunset',       cats:['办公室政治','向上管理']}
+];
+const TIPS=[
+ '老板键：任何时候按 Esc，整页秒变「绩效指标跟踪表」',
+ '错题会主动回访你；补悟成功一次 +15 悟性',
+ '连击越高单题悟性越多，但答错清零——稳比贪重要',
+ '每日一练连续七天，解锁成就「七日不辍」',
+ '答错的题都进了错题本：那里才是涨功力最快的地方',
+ '晋级试炼八题过六题即可，失败不掉悟性，随时再战',
+ '情商题看「怎么处理」，智商题看「怎么拆解」'
+];
+
+/* ---------------- 场景定义：把题目放进真实的办公场景 ---------------- */
+/* k=容器类型  app=应用/系统名  who=来源  ic=图标  av=头像字  tm=时间戳 */
+const SCENE={
+ '向上管理':{k:'chat',app:'企业微信',who:'王主任',av:'王',sub:'直属领导',ic:'chat-dot-round'},
+ '同事相处':{k:'chat',app:'企业微信',who:'李工',av:'李',sub:'同组同事',ic:'chat-dot-round'},
+ '拒绝的艺术':{k:'chat',app:'企业微信',who:'老张',av:'张',sub:'邻组同事',ic:'chat-dot-round'},
+ '会议汇报':{k:'doc',app:'OA 会议系统',who:'部门周会 · 会议纪要',ic:'memo'},
+ '饭局应酬':{k:'dinner',app:'日程提醒',who:'客户答谢晚宴 · 包厢 302',ic:'food'},
+ '危机处理':{k:'alert',app:'监控中心',who:'线上告警 · P1 级',ic:'warning'},
+ '办公室政治':{k:'mail',app:'OA 邮箱',who:'综合管理部 · 内部沟通',ic:'postcard'},
+ '自我提升':{k:'self',app:'绩效与成长系统',who:'个人工作台',ic:'trend-charts'}
+};
+const SCENE_IQ={k:'exam',app:'在线测评中心',who:'综合能力测评 · 第 N 题',ic:'edit-pen'};
+/* 按题干关键词修正场景：容器类型要跟内容对得上（群里=群聊、邮件=邮件、会上=纪要…） */
+const SCENE_HINTS=[
+ {re:/群里|工作群|部门群|@你|大群/,sc:{k:'chat',app:'企业微信',who:'部门工作群（8人）',av:'群',sub:'群聊',ic:'chat-dot-round'}},
+ {re:/邮件|群邮|抄送/,sc:{k:'mail',app:'OA 邮箱',who:'综合管理部 · 内部沟通',ic:'postcard'}},
+ {re:/酒桌|饭局|酒局|敬酒|点菜|晚宴|包厢|不能喝酒/,sc:{k:'dinner',app:'日程提醒',who:'客户答谢晚宴 · 包厢 302',ic:'food'}},
+ {re:/告警|服务挂了|故障|事故|投诉涌入|价格配置错|oncall/,sc:{k:'alert',app:'监控中心',who:'线上告警 · P1 级',ic:'warning'}},
+ {re:/会上|会议|周会|复盘会|纪要|当着全员|汇报时/,sc:{k:'doc',app:'OA 会议系统',who:'部门周会 · 会议纪要',ic:'memo'}},
+ {re:/深夜23:47|领导发来消息|领导说|领导让你|领导举杯|领导问你|领导私下|领导布置|领导路过/,sc:{k:'chat',app:'企业微信',who:'王主任',av:'王',sub:'直属领导',ic:'chat-dot-round'}},
+ {re:/大学同学|前同事|老同学/,sc:{k:'chat',app:'微信',who:'阿伟',av:'伟',sub:'老同学',ic:'chat-dot-round'}},
+ {re:/乙方|供应商/,sc:{k:'mail',app:'OA 邮箱',who:'合作方 · 商务对接',ic:'postcard'}}
+];
+function refineScene(q,sc){
+  if(isIQ(q))return sc;
+  for(const h of SCENE_HINTS){if(h.re.test(q.s))return h.sc}
+  return sc;
+}
+const SENDER=['王主任','李工','老张','张经理','刘总监','陈主管','赵组长'];
+const AVATAR={'王':'#409eff','李':'#67c23a','张':'#e6a23c','刘':'#f56c6c','陈':'#909399','赵':'#8e6bd8'};
+
+/* ---------------- 工具 ---------------- */
+function hash(s){let h=2166136261;for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function shuffle(arr,rng){const a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor((rng?rng():Math.random())*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+function stars(d){let s='';for(let i=1;i<=3;i++)s+='<svg class="ic'+(i<=d?'':' off')+'"><use href="#i-star-filled"></use></svg>';return '<span class="stars">'+s+'</span>'}
+function lives(hp){let s='';for(let i=0;i<3;i++)s+='<svg class="ic'+(i<hp?'':' off')+'"><use href="#i-heart"></use></svg>';return '<span class="lives">'+s+'</span>'}
+function isIQ(q){return !q.e}
+
+/* ---------------- 存档 ---------------- */
+const KEY='wuxing_save_v3';
+function defaultSave(){return{v:3,placed:false,wuxing:0,level:0,pending:false,streak:0,lastDaily:'',dailyDone:'',wrongbook:{},achv:[],
+ stats:{answered:0,correct:0,maxCombo:0,days:0,eqXp:0,iqXp:0},seen:{},
+ profile:{nick:'无名修行人',dept:'综合管理部',no:'ZP-2026-0971',color:'#409eff'},
+ ai:{preset:'zhipu',provider:'zhipu',model:'glm-4-flash',key:''},
+ aiStyle:{industry:'互联网大厂',role:'普通员工',topics:'',tone:'真实扎心',count:5},
+ aiQs:[],commQs:[],hist:[]}}
+function load(){
+  try{
+    const raw=localStorage.getItem(KEY)||localStorage.getItem('wuxing_save_v2');
+    if(!raw)return defaultSave();
+    const m=Object.assign(defaultSave(),JSON.parse(raw));
+    m.v=3;return m;
+  }catch(e){}
+  return defaultSave();
+}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(SV))}catch(e){}}
+let SV=load();
+
+/* ---------------- 全局 ---------------- */
+let RUN=null, WB={q:null,answered:false}, bossOn=false, NAV='home';
+
+/* ---------------- 网络层：本地服务端（排行榜 / 玩家出题 / AI 代理） ---------------- */
+const NET={on:false,checking:false};
+async function netProbe(){
+  if(NET.checking||location.protocol==='file:')return;
+  NET.checking=true;
+  try{
+    const c=new AbortController();const t=setTimeout(()=>c.abort(),1800);
+    const r=await fetch('api/health',{signal:c.signal});
+    clearTimeout(t);
+    const j=await r.json();
+    NET.on=!!(j&&j.ok);
+  }catch(e){NET.on=false}
+  NET.checking=false;
+  if(NET.on&&typeof renderRank==='function'&&NAV==='rank')renderRank();
+}
+async function apiGet(p){const r=await fetch(p);if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
+async function apiPost(p,body){
+  const r=await fetch(p,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok)throw new Error(j.error||('HTTP '+r.status));
+  return j;
+}
+
+/* ---------------- 数据访问 ---------------- */
+const POOL={};EQ.forEach(q=>POOL[q.i]=q);IQ.forEach(q=>POOL[q.i]=q);
+/* mode==='day' 时混入 AI 情景与玩家出题；测评/每日/试炼只用核心题库保证公平与确定性 */
+function qList(mode){const base=EQ.concat(IQ);return mode==='day'?base.concat(SV.aiQs||[],SV.commQs||[]):base}
+function qById(id){return POOL[id]||SV.aiQs.find(q=>q.i===id)||SV.commQs.find(q=>q.i===id)}
+function maxDiffAvail(){const l=SV.level;return l===0?1:(l===1?2:3)}
+function pickQuestion(mode,rng,usedIds){
+  const cand=qList(mode).filter(q=>!usedIds.includes(q.i)&&q.d<=maxDiffAvail());
+  if(!cand.length)return null;
+  const scored=cand.map(q=>{
+    let w;
+    if(SV.wrongbook[q.i])w=5; else if(!SV.seen[q.i])w=3; else w=1;
+    if(q.d===1&&SV.level>=2)w*=0.7;
+    return{q,w};
+  });
+  let total=scored.reduce((s,x)=>s+x.w,0),r=(rng?rng():Math.random())*total;
+  for(const x of scored){r-=x.w;if(r<=0)return x.q}
+  return scored[scored.length-1].q;
+}
+function buildQueue(mode,rng){
+  const n=mode==='day'?7:(mode==='daily'?8:(mode==='trial'?8:6));
+  const used=[],qs=[];
+  for(let k=0;k<n;k++){
+    let q=null;
+    if(mode==='daily'){
+      const c=qList('daily').filter(x=>!used.includes(x.i));q=c[Math.floor(rng()*c.length)];
+    }else if(mode==='day'){
+      // 让题目贴合当前时段的场景：优先取该时段高发的题型，取不到再放宽
+      const cats=SLOTS[k].cats;
+      for(const cat of cats){
+        const c=qList('day').filter(x=>!used.includes(x.i)&&x.c===cat&&x.d<=maxDiffAvail());
+        if(c.length){q=c[Math.floor((rng?rng():Math.random())*c.length)];break}
+      }
+      if(!q)q=pickQuestion(mode,rng,used);
+    }else q=pickQuestion(mode,rng,used);
+    if(!q)q=pickQuestion(mode,rng,used);
+    used.push(q.i);qs.push(q);
+  }
+  return qs;
+}
+
+/* ---------------- 渲染基础 ---------------- */
+function setScreen(html,crumb,active){
+  document.getElementById('screen').innerHTML=html;
+  document.getElementById('crumb').innerHTML=crumb||'';
+  NAV=active||NAV;
+  renderNav(NAV);
+  document.getElementById('navrank').textContent=currentRank().n;
+  window.scrollTo({top:0});
+}
+function renderNav(active){
+  // 五个主入口；「我的」由右上角头像进入
+  const items=[['home','工作台','histogram'],['practice','修行','lightning'],['wrong','错题本','notebook'],['rank','排行','trophy'],['achv','成就','medal']];
+  const wrongN=Object.keys(SV.wrongbook).length;
+  document.getElementById('navmenu').innerHTML=items.map(([k,n,ic])=>{
+    const bd=k==='wrong'&&wrongN?'<span class="bd">'+wrongN+'</span>':'';
+    return '<button class="'+(active===k?'on':'')+'" onclick="app.nav(\''+k+'\')">'+IC(ic)+'<span>'+n+'</span>'+bd+'</button>';
+  }).join('');
+  document.getElementById('tabbar').innerHTML=items.map(([k,n,ic])=>{
+    const bd=k==='wrong'&&wrongN?'<span class="bd">'+wrongN+'</span>':'';
+    return '<button class="'+(active===k?'on':'')+'" onclick="app.nav(\''+k+'\')">'+IC(ic)+n+bd+'</button>';
+  }).join('');
+  const av=document.getElementById('avatar');
+  if(av)av.classList.toggle('on',active==='me');
+}
+function crumb(...parts){
+  return parts.map((p,i)=>{
+    const last=i===parts.length-1;
+    return (i?'<svg class="ic"><use href="#i-arrow-right"></use></svg>':'')+(last?'<b>'+esc(p)+'</b>':esc(p));
+  }).join('');
+}
+function toast(msg,type){
+  const box=document.getElementById('toasts');
+  const t=document.createElement('div');t.className='msg'+(type==='ok'?' ok':'');
+  t.innerHTML=IC(type==='ok'?'circle-check-filled':'info-filled')+'<span>'+esc(msg)+'</span>';
+  box.appendChild(t);
+  setTimeout(()=>{t.classList.add('out');setTimeout(()=>t.remove(),400)},2200);
+}
+function grant(id){
+  if(SV.achv.includes(id))return;
+  const a=ACHV.find(x=>x.i===id);if(!a)return;
+  SV.achv.push(id);save();toast('成就解锁 · '+a.n,'ok');
+}
+
+/* ---------------- 首页 / 工作台 ---------------- */
+function currentRank(){return RANKS[SV.level]}
+function nextRank(){return RANKS[SV.level+1]||null}
+function eqScore(){return Math.min(140,70+Math.round(SV.stats.eqXp/5))}
+function iqScore(){return Math.min(140,70+Math.round(SV.stats.iqXp/5))}
+function todayKey(){const d=new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function renderHome(){
+  const cur=currentRank(),nx=nextRank();
+  // 晋升待命校正：悟性够了就该能发起试炼，无论何时达成的
+  if(nx&&SV.wuxing>=nx.xp&&!SV.pending){SV.pending=true;save()}
+  const prog=nx?Math.min(1,(SV.wuxing-cur.xp)/(nx.xp-cur.xp)):1;
+  const wrongN=Object.keys(SV.wrongbook).length;
+  const dailyDone=SV.dailyDone===todayKey();
+  const d=new Date(),wk='日一二三四五六'[d.getDay()];
+  const dateStr=d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日 星期'+wk;
+  const todos=[];
+  if(SV.pending)todos.push({ic:'promotion',cls:'w',t:'晋级试炼 · 待发起',
+    d:'悟性已达标，可申请晋升为「'+esc((nx||{n:''}).n)+'」。八题过六题即可。',
+    a:'<button class="btn btn-warning btn-sm" onclick="app.introTrial()">'+IC('lightning')+'发起试炼</button>'});
+  todos.push({ic:'lightning',cls:'',t:'修行一日',d:'七个时段，七道情境题，约 3 分钟。当日主要修行。',
+    a:'<button class="btn btn-primary btn-sm" onclick="app.startDay()">'+IC('arrow-right')+'开始</button>'});
+  todos.push({ic:'calendar',cls:dailyDone?'s':'',t:'每日一练'+(dailyDone?'（今日已完成）':'')+'',
+    d:dailyDone?('连续修行 '+SV.streak+' 天，明天见。'):(SV.streak>0?'已连续 '+SV.streak+' 天，别断在今天。':'每天八题，固定题序，练手感也练耐心。'),
+    a:dailyDone?'<button class="btn btn-sm" disabled>已完成</button>':'<button class="btn btn-sm" onclick="app.startDaily()">'+IC('arrow-right')+'开始</button>'});
+  if(wrongN)todos.push({ic:'notebook',cls:'d',t:'错题待补悟 · '+wrongN+' 条',
+    d:'错题会在修行中主动回访；集中补悟每道额外 +15 悟性。',
+    a:'<button class="btn btn-sm" onclick="app.openWrong()">'+IC('arrow-right')+'去补悟</button>'});
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd">
+      <div class="t">${IC('data-analysis')}工作台</div>
+      <div class="x">${IC('calendar')}${esc(dateStr)}</div>
+    </div>
+    <div class="card-bd">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap">
+        <div>
+          <div style="font-size:12px;color:var(--el-text-secondary)">当前职级</div>
+          <div style="font-size:26px;font-weight:600;color:var(--el-text-primary);line-height:1.3">${esc(cur.n)}</div>
+          <div style="font-size:13px;color:var(--el-text-secondary)">${esc(cur.q)}</div>
+        </div>
+        <div style="text-align:right;font-size:12px;color:var(--el-text-secondary)">
+          部门：综合管理部<br>工号：ZP-2026-0971<br>状态：${SV.pending?'<span style="color:var(--el-color-warning)">晋升待审</span>':'在岗修行中'}
+        </div>
+      </div>
+      <div style="margin-top:18px">
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--el-text-secondary);margin-bottom:6px">
+          <span>悟性 ${SV.wuxing}</span><span>${!nx?'已达最高职级':(SV.wuxing>=nx.xp?'已达「'+esc(nx.n)+'」晋升线，可发起试炼':'距「'+esc(nx.n)+'」还差 '+(nx.xp-SV.wuxing))}</span>
+        </div>
+        <div class="progress"><div class="track"><i style="width:${Math.round(prog*100)}%"></i></div><span class="txt">${Math.round(prog*100)}%</span></div>
+      </div>
+      <div class="desc" style="margin-top:18px">
+        <div class="it"><div class="lb">${IC('opportunity')}情商 EQ</div><div class="vl">${eqScore()}</div></div>
+        <div class="it"><div class="lb">${IC('odometer')}智商 IQ</div><div class="vl">${iqScore()}</div></div>
+        <div class="it"><div class="lb">${IC('lightning')}最高连击</div><div class="vl">${SV.stats.maxCombo}</div></div>
+        <div class="it"><div class="lb">${IC('clock')}修行日数</div><div class="vl">${SV.stats.days}</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('list')}待办事项</div>
+      <div class="x">共 ${todos.length} 项 · 累计作答 ${SV.stats.answered} 题 · 正确 ${SV.stats.correct}</div></div>
+    <div class="card-bd tight" style="padding:0">${todos.map(t=>`
+      <div class="todo">
+        <div class="ti ${t.cls}">${IC(t.ic)}</div>
+        <div class="tb"><div class="tt">${t.t}</div><div class="td">${t.d}</div></div>
+        <div class="ta">${t.a}</div>
+      </div>`).join('')}
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('info-filled')}使用说明</div>
+      <div class="x">Esc = 老板键 · 键盘 1-4 作答 · Enter 继续</div></div>
+    <div class="card-bd">
+      <div class="alert alert-i"><div class="ai">${IC('info-filled')}</div><div>
+        <div class="at">这是一个真的能涨功力的游戏</div>
+        <div class="ab">情商题全部是真实职场情境，每个选项都给出「为什么对、为什么错」；智商题是行测式思维训练，附解法与口诀。答错的题会自动进入错题本，之后主动回来找你——把错题做对，才是真正在进步。</div>
+      </div></div>
+      <div class="alert alert-w" style="margin-top:10px"><div class="ai">${IC('warning')}</div><div>
+        <div class="at">摸鱼提示</div>
+        <div class="ab">${esc(TIPS[Math.floor(Math.random()*TIPS.length)])}</div>
+      </div></div>
+      <div class="hr"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px">
+        <span class="muted" style="font-size:12px">进度自动保存在本机浏览器，不上传任何数据。</span>
+        <button class="linkbtn" onclick="app.resetSave()">重置全部存档</button>
+      </div>
+    </div>
+  </div>`, crumb('工作台'), 'home');
+}
+
+/* ---------------- 入门测评 ---------------- */
+function renderPlacementIntro(){
+  setScreen(`
+  <div class="card rise"><div class="card-bd" style="padding:0">
+    <div class="result" style="padding:34px 24px 10px">
+      <div class="ri info">${IC('edit-pen')}</div>
+      <div class="rt">入职测评</div>
+      <div class="rs">入职第一天，先做一套测评，看看你此刻的道行。<br>
+        六道小题，给出你的初始<b style="color:var(--el-color-primary)">情商</b>与<b style="color:var(--el-color-primary)">智商</b>。<br>
+        此后这两个分数只增不减，全凭你在修行中答对的每一道题。</div>
+    </div>
+    <div style="padding:22px 24px 26px">
+      <button class="btn btn-primary btn-lg btn-block" onclick="app.beginPlacement()">${IC('arrow-right')}开始测评</button>
+      <div class="center muted" style="margin-top:10px;font-size:12px">键盘 1-4 直接作答 · Enter 继续 · Esc 老板键</div>
+    </div>
+  </div></div>`, crumb('工作台','入职测评'),'home');
+}
+function startPlacement(){
+  RUN={mode:'placement',qs:buildQueue('placement'),i:0,combo:0,maxCombo:0,hp:99,xp:0,cleared:0,wrongs:[],results:[],phase:'q',order:null};
+  renderQ();
+}
+function placementResult(){
+  const right=RUN.qs.reduce((s,q,k)=>s+(RUN.results[k]?1:0),0);
+  let comment;
+  if(right<=2)comment='道基未稳。没关系，摸鱼贵在坚持。';
+  else if(right<=4)comment='略有慧根。职场这潭水，够你扑腾了。';
+  else if(right<=5)comment='根骨上佳。领导见到你绕道走的概率 +10%。';
+  else comment='天选打工人。建议直接把简历改成「悟道者」。';
+  SV.placed=true;save();
+  setScreen(`
+  <div class="card rise"><div class="card-bd">
+    <div class="result">
+      <div class="ri ok">${IC('circle-check-filled')}</div>
+      <div class="rt">测评完毕</div>
+      <div class="rs">${esc(comment)}</div>
+    </div>
+    <div class="desc" style="margin-top:20px">
+      <div class="it"><div class="lb">${IC('opportunity')}初始情商</div><div class="vl">${eqScore()}</div></div>
+      <div class="it"><div class="lb">${IC('odometer')}初始智商</div><div class="vl">${iqScore()}</div></div>
+      <div class="it"><div class="lb">${IC('aim')}测评正确</div><div class="vl">${right}<small>/6</small></div></div>
+      <div class="it"><div class="lb">${IC('medal')}初始职级</div><div class="vl" style="font-size:17px;line-height:34px">见习生</div></div>
+    </div>
+    <div class="alert alert-i" style="margin-top:16px"><div class="ai">${IC('info-filled')}</div><div class="ab">
+      分数只是起点。接下来每答对一道题，情商或智商都会真实上涨——这也是这个游戏唯一「有意义」的地方。
+    </div></div>
+    <button class="btn btn-primary btn-lg btn-block" style="margin-top:18px" onclick="app.home()">${IC('arrow-right')}进入工作台</button>
+  </div></div>`, crumb('工作台','入职测评','结果'),'home');
+}
+
+/* ---------------- 对局核心 ---------------- */
+function startRun(mode){
+  const rng=mode==='daily'?mulberry32(hash('daily-'+todayKey())):null;
+  RUN={mode,qs:buildQueue(mode,rng),i:0,combo:0,maxCombo:0,hp:3,xp:0,cleared:0,wrongs:[],results:[],phase:'q',order:null,tleft:0,tid:null};
+  renderQ();
+}
+/* 把题目包进对应的办公场景容器 */
+function sceneHTML(q){
+  const slot=(RUN&&RUN.mode==='day'&&SLOTS[RUN.i])?SLOTS[RUN.i]:null;
+  let sc;
+  if(isIQ(q))sc=Object.assign({},SCENE_IQ,{who:'综合能力测评'});
+  else sc=refineScene(q,SCENE[q.c]||{k:'self',app:'工作台',who:q.c,ic:'document'});
+  const qt='<div class="qtext">'+esc(q.s)+'</div>';
+  const hd=(right)=>'<div class="scene-hd">'+IC(sc.ic)+'<b>'+esc(sc.who)+'</b><span class="rt">'+right+'</span></div>';
+  const av=(ch)=>'<span class="av" style="background:'+(AVATAR[ch]||'#909399')+'">'+esc(ch)+'</span>';
+
+  if(sc.k==='chat'){
+    return '<div class="scene chat">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="msgrow">'+av(sc.av)+
+        '<div class="msgin"><div class="mn">'+esc(sc.who)+'<em>'+esc(sc.sub)+'</em><i>'+(slot?slot.t:'刚刚')+'</i></div>'+
+        '<div class="bubble">'+qt+'</div></div>'+
+      '</div></div></div>';
+  }
+  if(sc.k==='doc'){
+    return '<div class="scene doc">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="docmeta">'+
+        '<span><i>编号</i>会纪〔2026〕047 号</span>'+
+        '<span><i>时间</i>'+esc(slot?slot.t+' · '+slot.n:'周一 14:30')+'</span>'+
+        '<span><i>抄送</i>部门全体</span>'+
+      '</div>'+qt+'</div></div>';
+  }
+  if(sc.k==='dinner'){
+    return '<div class="scene dinner">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="docmeta">'+
+        '<span><i>地点</i>云海酒楼 · 302 包厢</span>'+
+        '<span><i>时间</i>今晚 18:30</span>'+
+        '<span><i>出席</i>客户方 3 人 / 我方 4 人</span>'+
+      '</div>'+qt+'</div></div>';
+  }
+  if(sc.k==='alert'){
+    return '<div class="scene alert">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="alertrow">'+IC('warning')+'<b>告警触发</b><span>'+esc(slot?slot.t:'刚刚')+'</span><span class="lv">P1</span></div>'+
+      qt+'</div></div>';
+  }
+  if(sc.k==='mail'){
+    return '<div class="scene mail">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="mailrow"><span class="k">发件人</span><span class="v">'+esc(sc.who)+'</span></div>'+
+      '<div class="mailrow"><span class="k">收件人</span><span class="v">我；项目组全体</span></div>'+
+      '<div class="mailrow"><span class="k">主题</span><span class="v">关于近期工作事项的沟通</span></div>'+
+      '<div class="mailrow"><span class="k">时间</span><span class="v">'+esc(slot?slot.t+' · '+slot.n:'今天 09:12')+'</span></div>'+
+      '<div class="mailbody">'+qt+'</div></div></div>';
+  }
+  if(sc.k==='exam'){
+    return '<div class="scene exam">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+      '<div class="docmeta"><span><i>科目</i>综合能力</span><span><i>题型</i>'+esc(q.c)+'</span>'+
+      '<span><i>分值</i>1 分</span></div>'+qt+'</div></div>';
+  }
+  return '<div class="scene">'+hd(esc(sc.app))+'<div class="scene-bd">'+
+    '<div class="docmeta"><span><i>场景</i>'+esc(slot?slot.t+' · '+slot.n:q.c)+'</span></div>'+qt+'</div></div>';
+}
+function renderQ(){
+  const q=RUN.qs[RUN.i];
+  const isTrial=RUN.mode==='trial';
+  let slotName,slotIc='clock';
+  if(RUN.mode==='day'){const s=SLOTS[RUN.i];slotName=s.t+' · '+s.n;slotIc=s.ic}
+  else if(RUN.mode==='daily')slotName='每日一练 · 第 '+(RUN.i+1)+' / 8 题';
+  else if(RUN.mode==='placement')slotName='入职测评 · 第 '+(RUN.i+1)+' / 6 题';
+  else if(RUN.mode==='ai')slotName='AI 情景 · 第 '+(RUN.i+1)+' / '+(RUN.aiTarget||5)+' 题';
+  else slotName='晋级试炼 · 第 '+(RUN.i+1)+' / 8 题';
+  const idx=shuffle([0,1,2,3],isTrial?null:mulberry32(hash(q.i+'-'+Date.now())));
+  RUN.order=idx;RUN.answered=false;RUN.phase='q';
+  const steps=RUN.qs.map((_,k)=>{
+    let cls='';
+    if(k<RUN.results.length)cls=RUN.results[k]?'done':'fail';
+    else if(k===RUN.i)cls='cur';
+    return '<i class="'+cls+'"></i>';
+  }).join('');
+  const totalN=RUN.mode==='ai'?(RUN.aiTarget||5):RUN.qs.length;
+  const crumbParts=RUN.mode==='day'?['工作台','修行一日']:(RUN.mode==='daily'?['工作台','每日一练']:(RUN.mode==='placement'?['工作台','入职测评']:(RUN.mode==='ai'?['工作台','修行','AI 情景']:['工作台','晋级试炼'])));
+  const qtag=q.by==='AI'?'<span class="tag">'+IC('lightning')+'AI 情景</span>'
+    :(q.by?'<span class="tag tag-w">'+IC('user')+'玩家出题 · '+esc(q.by)+'</span>':'');
+  setScreen(`
+  <div class="card rise" id="qcard">
+    <div class="card-hd">
+      <div class="t">${IC(slotIc)}${esc(slotName)}</div>
+      <div class="x">
+        ${isTrial?'<span id="timer" style="color:var(--el-color-danger);font-variant-numeric:tabular-nums"></span>':''}
+        ${RUN.mode==='placement'?'<span style="color:var(--el-text-secondary)">测评不计心态</span>':'<span style="display:inline-flex;align-items:center;gap:4px">心态 '+lives(RUN.hp)+'</span>'}
+      </div>
+    </div>
+    <div class="card-bd">
+      <div class="steps">${steps}</div>
+      <div class="metaline">
+        <div class="lft">
+          <span class="tag${isIQ(q)?' tag-i':''}">${IC(isIQ(q)?'odometer':'opportunity')}${esc(q.c)}</span>
+          ${stars(q.d)}
+          ${qtag}
+          ${SV.wrongbook[q.i]?'<span class="tag tag-d">'+IC('refresh')+'错题重现</span>':''}
+        </div>
+        <div class="lft">第 ${RUN.i+1} / ${totalN} 题</div>
+      </div>
+      ${sceneHTML(q)}
+      <div class="opts">${idx.map((oi,k)=>`<button class="opt" id="opt${k}" onclick="app.choose(${k})"><span class="key">${k+1}</span><span class="tx">${esc(q.o[oi])}</span></button>`).join('')}</div>
+      <div id="after"></div>
+    </div>
+  </div>`, crumb(...crumbParts), (RUN.mode==='day'||RUN.mode==='ai')?'practice':'home');
+  if(isTrial)startTimer(25);
+}
+function startTimer(sec){
+  RUN.tleft=sec;updateTimer();
+  RUN.tid=setInterval(()=>{
+    if(bossOn)return;
+    RUN.tleft-=0.2;
+    if(RUN.tleft<=0){clearInterval(RUN.tid);RUN.tid=null;choose(-1);return}
+    updateTimer();
+  },200);
+}
+function updateTimer(){
+  const el=document.getElementById('timer');if(!el||!RUN)return;
+  const t=Math.max(0,RUN.tleft);
+  el.innerHTML=IC('clock')+' 限时 '+t.toFixed(0)+'s';
+}
+function choose(k){
+  if(!RUN||RUN.phase!=='q'||RUN.answered)return;
+  RUN.answered=true;
+  const q=RUN.qs[RUN.i];
+  if(RUN.tid){clearInterval(RUN.tid);RUN.tid=null}
+  const picked=k<0?-1:RUN.order[k];
+  const ok=picked===q.a;
+  RUN.results[RUN.i]=ok;
+  const isPlacement=RUN.mode==='placement';
+  if(!isPlacement)SV.stats.answered++;
+  const seen=SV.seen[q.i]||(SV.seen[q.i]={c:0,w:0});
+  let gained=0,isCleared=false;
+  if(ok){
+    seen.c++;
+    RUN.combo++;RUN.maxCombo=Math.max(RUN.maxCombo,RUN.combo);
+    if(!isPlacement){
+      SV.stats.correct++;
+      gained=8+q.d*3+Math.min(RUN.combo,10)*2;
+      if(SV.wrongbook[q.i]){gained+=15;delete SV.wrongbook[q.i];isCleared=true;RUN.cleared++}
+      SV.wuxing+=gained;RUN.xp+=gained;
+      SV.stats[isIQ(q)?'iqXp':'eqXp']+=gained;
+    }else{
+      // 入职测评只定基线分：涨 EQ/IQ，不给悟性、不记错题
+      gained=12+q.d*4;
+      SV.stats[isIQ(q)?'iqXp':'eqXp']+=gained;
+    }
+  }else{
+    seen.w++;
+    RUN.combo=0;
+    if(!isPlacement){
+      RUN.hp--;
+      if(picked>=0)(SV.wrongbook[q.i]||(SV.wrongbook[q.i]={t:0})).t++;
+      RUN.wrongs.push(q.i);
+    }
+  }
+  if(q.cid&&NET.on){apiPost('api/community/play',{id:q.cid,ok}).catch(()=>{})}
+  if(SV.stats.answered>=100)grant('total100');
+  if(RUN.combo>=8)grant('combo8');
+  if(RUN.combo>=15)grant('combo15');
+  save();
+  RUN.order.forEach((oi,kk)=>{
+    const btn=document.getElementById('opt'+kk);if(!btn)return;
+    btn.disabled=true;
+    if(oi===q.a)btn.classList.add('correct');
+    else if(oi===picked&&picked>=0)btn.classList.add('wrongpick');
+  });
+  showAnalysis(q,ok,picked,gained,isCleared);
+  RUN.phase='a';
+}
+function analysisHTML(q,picked,order){
+  const ord=order||RUN.order;
+  // 正解置顶、你的选择其次、其余靠后，阅读动线更顺
+  const sorted=[...ord].sort((a,b)=>{
+    const r=x=>(x===q.a?0:(x===picked?1:2));
+    return r(a)-r(b);
+  });
+  let body='<div class="analysis">';
+  if(q.e){
+    body+=sorted.map(oi=>{
+      const ok=oi===q.a,you=oi===picked;
+      const mk=ok?'<span class="hd ok">'+IC('circle-check-filled')+'正解</span>':(you?'<span class="hd you">'+IC('circle-close-filled')+'你的选择</span>':'<span class="hd muted">其他选项</span>');
+      return '<div class="li">'+mk+'<div class="op">'+esc(q.o[oi])+'</div><div class="muted">'+esc(q.e[oi])+'</div></div>';
+    }).join('');
+  }else{
+    body+='<div class="li"><div class="hd ok">'+IC('circle-check-filled')+'正解</div><div class="op">'+esc(q.o[q.a])+'</div></div>'+
+      '<div class="li"><div class="hd">'+IC('info-filled')+'解法</div><div>'+esc(q.x)+'</div></div>';
+  }
+  body+='<div class="tip">'+IC('opportunity')+'<span>'+esc(q.t)+'</span></div></div>';
+  return body;
+}
+function showAnalysis(q,ok,picked,gained,isCleared){
+  const comboLine=RUN.combo>1&&ok?'<span class="combo">连击 ×'+RUN.combo+'</span>':'';
+  // 心态即时刷新，别等到下一题
+  if(RUN.mode!=='placement'){
+    const lv=document.querySelector('.lives');
+    if(lv)lv.outerHTML=lives(RUN.hp);
+  }
+  let head='';
+  if(RUN.mode!=='placement'){
+    head='<div style="display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:6px">'+
+      (ok?'<span class="tag tag-s">'+IC('circle-check-filled')+'答对了'+(isCleared?' · 补悟成功':'')+'</span>'
+         :'<span class="tag tag-d">'+IC('circle-close-filled')+'答错了，已入错题本</span>')+
+      '<span style="font-size:12px;color:var(--el-text-secondary)">'+(gained>0?'悟性 +'+gained:'')+(comboLine?(gained?' · ':'')+comboLine:'')+'</span></div>';
+  }
+  const last=RUN.i>=RUN.qs.length-1;
+  document.getElementById('after').innerHTML=
+    '<div class="alert '+(ok?'alert-s':'alert-e')+'" style="margin-top:16px"><div class="ai">'+(ok?IC('circle-check-filled'):IC('circle-close-filled'))+'</div><div style="flex:1">'+
+      '<div class="at">'+(ok?'解析 · 为什么这么选':'解析 · 正确答案与理由')+'</div>'+head+analysisHTML(q,picked)+'</div></div>'+
+    '<button class="btn btn-primary btn-lg btn-block" style="margin-top:14px" onclick="app.next()">'+
+      (last?'查看'+(RUN.mode==='trial'?'试炼结果':'本轮总结'):'继续作答')+IC('arrow-right')+'</button>';
+}
+function next(){
+  if(!RUN||RUN.phase!=='a')return;
+  RUN.i++;
+  if(RUN.hp<=0&&RUN.mode!=='placement'){settle(true);return}
+  if(RUN.mode==='ai'&&RUN.i>=RUN.qs.length){
+    if(RUN.qs.length>=(RUN.aiTarget||5)){settle(false);return}
+    aiNext();return;
+  }
+  if(RUN.i>=RUN.qs.length){settle(false);return}
+  renderQ();
+}
+
+/* ---------------- 结算 ---------------- */
+function settle(brokeEarly){
+  const total=RUN.results.length,right=RUN.results.filter(Boolean).length;
+  SV.pending=false;
+  const nx=nextRank();
+  if(nx&&SV.wuxing>=nx.xp)SV.pending=true;
+  if(RUN.mode==='day'){
+    SV.stats.days++;grant('day1');
+    if(right===total&&total>0)grant('perfect');
+  }
+  if(RUN.mode==='daily'){
+    const key=todayKey();
+    if(SV.dailyDone!==key){
+      SV.dailyDone=key;grant('daily1');
+      if(right>=6){
+        const y=new Date(Date.now()-86400000);
+        const yk=y.getFullYear()+'-'+String(y.getMonth()+1).padStart(2,'0')+'-'+String(y.getDate()).padStart(2,'0');
+        SV.streak=(SV.lastDaily===yk)?SV.streak+1:1;SV.lastDaily=key;
+        if(SV.streak>=7)grant('streak7');
+      }else SV.streak=0;
+    }
+  }
+  if(RUN.cleared>0&&Object.keys(SV.wrongbook).length===0)grant('clear0');
+  save();
+  if(NET.on&&['day','daily','ai'].includes(RUN.mode)&&right>0){
+    apiPost('api/score',{nick:SV.profile.nick,no:SV.profile.no,level:SV.level,
+      rank:currentRank().n,wuxing:SV.wuxing,days:SV.stats.days}).catch(()=>{});
+  }
+  if(RUN.mode==='trial'){renderTrialResult(right);return}
+  if(RUN.mode==='placement'){placementResult();return}
+  renderSettle(brokeEarly,right,total);
+}
+function renderSettle(brokeEarly,right,total){
+  const wrongCats=[...new Set(RUN.wrongs.map(i=>(qById(i)||{}).c).filter(Boolean))];
+  const daily=RUN.mode==='daily';
+  let quote,ri,rc;
+  if(brokeEarly){quote='心态用尽，提前下班。修行在于可持续，别硬扛。';ri='circle-close-filled';rc='warn'}
+  else if(right===total){quote='今日无过，慧根渐显。领导看你的眼神都清澈了几分。';ri='trophy';rc='ok'}
+  else if(right>=total-2){quote='略有杂念，瑕不掩瑜。错题已入册，补悟可加倍。';ri='circle-check-filled';rc='ok'}
+  else{quote='凡心未退，道行尚浅。回错题本，是最近的路。';ri='warning';rc='warn'}
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC(RUN.mode==='ai'?'setting':(daily?'calendar':'lightning'))}${RUN.mode==='ai'?'AI 情景 · 结算':(daily?'每日一练 · 修毕':'一日修行 · 结算')}</div>
+      <div class="x">${esc(todayKey())}</div></div>
+    <div class="card-bd">
+      <div class="result">
+        <div class="ri ${rc}">${IC(ri)}</div>
+        <div class="rt">${right} / ${total} 题答对</div>
+        <div class="rs">${esc(quote)}</div>
+      </div>
+      <div class="desc" style="margin-top:18px">
+        <div class="it"><div class="lb">${IC('lightning')}本轮悟性</div><div class="vl">+${RUN.xp}</div></div>
+        <div class="it"><div class="lb">${IC('refresh')}错题补悟</div><div class="vl">${RUN.cleared}<small> 题</small></div></div>
+        <div class="it"><div class="lb">${IC('aim')}最高连击</div><div class="vl">×${RUN.maxCombo}</div></div>
+        <div class="it"><div class="lb">${IC('medal')}当前悟性</div><div class="vl">${SV.wuxing}</div></div>
+      </div>
+      <div class="recap">${RUN.qs.map((q,k)=>`
+        <div class="row">
+          <span class="${RUN.results[k]?'ok':'no'}">${IC(RUN.results[k]?'circle-check-filled':'circle-close-filled')}</span>
+          <span class="tag tag-i tag-mini">${esc(q.c)}</span>
+          <span class="tx">${esc(q.s.slice(0,30))}…</span>
+        </div>`).join('')}</div>
+      ${RUN.wrongs.length?`<div class="alert alert-w" style="margin-top:16px"><div class="ai">${IC('warning')}</div><div>
+        <div class="at">本轮薄弱环节</div><div class="ab">${esc(wrongCats.join('、'))} —— 已进入错题本，之后会主动回来找你。补悟成功每道 +15 悟性。</div>
+      </div></div>`:`<div class="alert alert-s" style="margin-top:16px"><div class="ai">${IC('circle-check-filled')}</div><div>
+        <div class="at">本轮无错题</div><div class="ab">全部答对。稳定比爆发值钱，继续保持。</div>
+      </div></div>`}
+      ${SV.pending?`<div class="alert alert-w" style="margin-top:10px"><div class="ai">${IC('promotion')}</div><div>
+        <div class="at">悟性已达标</div><div class="ab">可以发起晋级试炼，晋升为「${esc((nextRank()||{n:''}).n)}」。</div>
+      </div></div>`:''}
+      <div style="margin-top:18px">
+        ${SV.pending?`<button class="btn btn-warning btn-lg btn-block" onclick="app.introTrial()">${IC('lightning')}发起晋级试炼</button>`:''}
+        <button class="btn ${SV.pending?'':'btn-primary'} btn-lg btn-block" style="margin-top:10px" onclick="app.again()">${IC('refresh')}再修一轮</button>
+        <button class="btn btn-lg btn-block" style="margin-top:10px" onclick="app.nav('wrong')">${IC('notebook')}去错题本补悟</button>
+        <button class="btn btn-lg btn-block" style="margin-top:10px" onclick="app.home()">${IC('arrow-left')}返回工作台</button>
+      </div>
+    </div>
+  </div>`, crumb('工作台',daily?'每日一练':'修行','结算'), 'practice');
+}
+function renderTrialResult(right){
+  const pass=right>=6;
+  if(pass){
+    SV.level++;SV.pending=false;
+    grant('promo1');
+    if(SV.level>=4)grant('rank5');
+    if(SV.level>=9)grant('rank9');
+    save();
+    const r=currentRank();
+    setScreen(`
+    <div class="card rise"><div class="card-bd">
+      <div class="result">
+        <div class="ri ok">${IC('medal')}</div>
+        <div class="rt">试炼通过</div>
+        <div class="rs">答对 ${right} / 8 · 经综合管理部（你本人）研究决定，予以晋升</div>
+      </div>
+      <div class="card" style="margin-top:20px;box-shadow:none">
+        <div class="card-hd"><div class="t">${IC('document')}任职通知</div><div class="x">综合管理部〔2026〕${SV.level}号</div></div>
+        <div class="card-bd center">
+          <div style="font-size:13px;color:var(--el-text-secondary)">兹任命</div>
+          <div class="rankname">${esc(r.n)}</div>
+          <div style="font-size:13px;color:var(--el-text-secondary)">${esc(r.q)}</div>
+          <div class="hr"></div>
+          <div style="font-size:12px;color:var(--el-text-secondary)">请于即日起按新职级履职，继续修行。</div>
+        </div>
+      </div>
+      <button class="btn btn-primary btn-lg btn-block" style="margin-top:18px" onclick="app.home()">${IC('arrow-right')}继续修行</button>
+    </div></div>`, crumb('工作台','晋级试炼','晋升'),'home');
+  }else{
+    setScreen(`
+    <div class="card rise"><div class="card-bd">
+      <div class="result">
+        <div class="ri warn">${IC('warning')}</div>
+        <div class="rt">时机未到</div>
+        <div class="rs">答对 ${right} / 8，过线需 6 题。<br>悟性不会流失，试炼不限次数。<br>先去错题本里找找感觉，再来。</div>
+      </div>
+      <div class="alert alert-i" style="margin-top:18px"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        失败的试炼不扣任何东西——这可能是这个游戏对你最温柔的地方。
+      </div></div>
+      <button class="btn btn-primary btn-lg btn-block" style="margin-top:16px" onclick="app.nav('wrong')">${IC('notebook')}去错题本补悟</button>
+      <button class="btn btn-lg btn-block" style="margin-top:10px" onclick="app.home()">${IC('arrow-left')}返回工作台</button>
+    </div></div>`, crumb('工作台','晋级试炼','未通过'),'home');
+  }
+}
+
+/* ---------------- 错题本 ---------------- */
+function openWrong(){
+  WB={q:null,answered:false};
+  const ids=Object.keys(SV.wrongbook);
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('notebook')}错题本</div>
+      <div class="x">待补悟 ${ids.length} 条</div></div>
+    <div class="card-bd">
+      <div class="alert alert-i"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        这里收录了你在修行中答错的所有题。补悟成功每道 <b style="color:var(--el-color-danger)">+15 悟性</b>；
+        错题也会在修行中主动回访。清空全部错题可解锁成就「补悟圆满」。
+      </div></div>
+      <div style="margin-top:14px">${ids.length?ids.map(id=>{
+        const q=qById(id);if(!q)return'';
+        return `<div class="witem" onclick="app.wbOpen('${id}')">
+          <div class="wi">${IC(isIQ(q)?'odometer':'opportunity')}</div>
+          <div class="wb"><div class="wq">${esc(q.s.slice(0,40))}…</div>
+            <div class="wm"><span class="tag tag-i tag-mini">${esc(q.c)}</span>${stars(q.d)}已错 ${SV.wrongbook[id].t} 次</div></div>
+          <div class="go">${IC('arrow-right')}</div>
+        </div>`;}).join('')
+      :`<div class="empty">${IC('circle-check-filled')}错题本空空如也。<br>要么你很稳，要么你还没开始。</div>`}</div>
+    </div>
+  </div>`, crumb('工作台','错题本'),'wrong');
+}
+function wbOpen(id){
+  WB={q:id,answered:false,order:shuffle([0,1,2,3])};
+  const q=qById(id);
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('refresh')}补悟 · ${esc(q.c)}</div>
+      <div class="x">${stars(q.d)}已错 ${SV.wrongbook[id].t} 次</div></div>
+    <div class="card-bd">
+      ${sceneHTML(q)}
+      <div class="opts">${WB.order.map((oi,k)=>`<button class="opt" id="wbo${k}" onclick="app.wbChoose(${k})"><span class="key">${k+1}</span><span class="tx">${esc(q.o[oi])}</span></button>`).join('')}</div>
+      <div id="wbafter"></div>
+      <button class="btn btn-lg btn-block" style="margin-top:14px" onclick="app.nav('wrong')">${IC('arrow-left')}返回错题列表</button>
+    </div>
+  </div>`, crumb('工作台','错题本','补悟'),'wrong');
+}
+function wbChoose(k){
+  if(!WB||!WB.q||WB.answered)return;WB.answered=true;
+  const q=qById(WB.q);
+  const picked=WB.order[k],ok=picked===q.a;
+  WB.order.forEach((oi,kk)=>{
+    const btn=document.getElementById('wbo'+kk);if(!btn)return;
+    btn.disabled=true;
+    if(oi===q.a)btn.classList.add('correct');
+    else if(oi===picked)btn.classList.add('wrongpick');
+  });
+  let msg;
+  if(ok){
+    delete SV.wrongbook[WB.q];
+    SV.wuxing+=15;SV.stats[isIQ(q)?'iqXp':'eqXp']+=15;
+    if(Object.keys(SV.wrongbook).length===0&&SV.stats.answered>0)grant('clear0');
+    msg='<div class="alert alert-s" style="margin-top:14px"><div class="ai">'+IC('circle-check-filled')+'</div><div><div class="at">补悟成功 · 悟性 +15</div><div class="ab">这道题已从错题本移除。下次它会以「老熟人」的身份，考得更难一点。</div></div></div>';
+  }else{
+    SV.wrongbook[WB.q].t++;
+    msg='<div class="alert alert-e" style="margin-top:14px"><div class="ai">'+IC('circle-close-filled')+'</div><div><div class="at">又错了一次</div><div class="ab">它会更频繁地回访你。没关系——错题本才是涨功力最快的地方。</div></div></div>';
+  }
+  save();
+  document.getElementById('wbafter').innerHTML=
+    '<div class="alert '+(ok?'alert-s':'alert-e')+'" style="margin-top:16px"><div class="ai">'+(ok?IC('circle-check-filled'):IC('circle-close-filled'))+'</div><div style="flex:1">'+
+    '<div class="at">解析</div>'+analysisHTML(q,picked,WB.order)+'</div></div>'+msg;
+}
+
+/* ---------------- 个人中心 ---------------- */
+function renderMe(){
+  const cur=currentRank(),nx=nextRank();
+  const wrongN=Object.keys(SV.wrongbook).length;
+  const achN=SV.achv.length;
+  const acc=SV.stats.answered?Math.round(SV.stats.correct/SV.stats.answered*100):0;
+  const eqA=eqScore(),iqA=iqScore();
+  // 能力条：以 140 为满分
+  const bar=(v)=>Math.round(Math.min(1,v/140)*100);
+  const seenN=Object.keys(SV.seen).length;
+  setScreen(`
+  <div class="card rise">
+    <div class="card-bd" style="display:flex;gap:16px;align-items:center;flex-wrap:wrap">
+      <div class="bigava" style="background:${esc(SV.profile.color||'#409eff')}1a;color:${esc(SV.profile.color||'#409eff')};border-color:${esc(SV.profile.color||'#409eff')}40">${esc((SV.profile.nick||'我')[0])}</div>
+      <div style="flex:1;min-width:180px">
+        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+          <span style="font-size:20px;font-weight:600;color:var(--el-text-primary)">${esc(SV.profile.nick)}</span>
+          <span class="tag">${IC('medal')}工号 ${esc(SV.profile.no)}</span>
+        </div>
+        <div style="font-size:13px;color:var(--el-text-secondary);margin-top:4px">${esc(cur.q)}</div>
+        <div class="tagrow" style="margin-top:8px">
+          <span class="tag tag-i">${IC('management')}${esc(SV.profile.dept)}</span>
+          <span class="tag tag-i">${IC('clock')}入职 ${SV.stats.days} 天</span>
+          <span class="tag ${SV.pending?'tag-w':'tag-s'}">${IC(SV.pending?'promotion':'circle-check-filled')}${SV.pending?'晋升待审':'在岗修行中'}</span>
+        </div>
+      </div>
+      <button class="btn btn-sm" onclick="app.editProfile()">${IC('edit-pen')}编辑资料</button>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('odometer')}能力评估</div>
+      <div class="x">满分 140 · 只增不减</div></div>
+    <div class="card-bd">
+      <div style="margin-bottom:14px">
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+          <span style="display:inline-flex;align-items:center;gap:6px;color:var(--el-text-primary)">${IC('opportunity')}情商 EQ</span>
+          <b style="font-variant-numeric:tabular-nums">${eqA}</b>
+        </div>
+        <div class="progress"><div class="track"><i style="width:${bar(eqA)}%"></i></div><span class="txt">${bar(eqA)}%</span></div>
+      </div>
+      <div>
+        <div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+          <span style="display:inline-flex;align-items:center;gap:6px;color:var(--el-text-primary)">${IC('odometer')}智商 IQ</span>
+          <b style="font-variant-numeric:tabular-nums">${iqA}</b>
+        </div>
+        <div class="progress"><div class="track"><i style="width:${bar(iqA)}%"></i></div><span class="txt">${bar(iqA)}%</span></div>
+      </div>
+      <div class="alert alert-i" style="margin-top:16px"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        情商分来自「向上管理 / 同事相处 / 拒绝 / 汇报 / 饭局 / 危机 / 政治 / 自我提升」八类情境题的答对情况；
+        智商分来自「数字推理 / 逻辑推理 / 文字推理 / 场景计算」四类思维题。答对才涨，答错不扣。
+      </div></div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('histogram')}修行数据</div>
+      <div class="x">累计作答 ${SV.stats.answered} 题</div></div>
+    <div class="card-bd">
+      <div class="desc">
+        <div class="it"><div class="lb">${IC('medal')}当前悟性</div><div class="vl">${SV.wuxing}</div></div>
+        <div class="it"><div class="lb">${IC('aim')}总正确率</div><div class="vl">${acc}<small>%</small></div></div>
+        <div class="it"><div class="lb">${IC('lightning')}最高连击</div><div class="vl">×${SV.stats.maxCombo}</div></div>
+        <div class="it"><div class="lb">${IC('calendar')}修行日数</div><div class="vl">${SV.stats.days}</div></div>
+        <div class="it"><div class="lb">${IC('notebook')}错题待补</div><div class="vl">${wrongN}</div></div>
+        <div class="it"><div class="lb">${IC('trophy')}成就解锁</div><div class="vl">${achN}<small>/${ACHV.length}</small></div></div>
+        <div class="it"><div class="lb">${IC('refresh')}连续修行</div><div class="vl">${SV.streak}<small> 天</small></div></div>
+        <div class="it"><div class="lb">${IC('collection')}已见题库</div><div class="vl">${seenN}<small>/${qList('day').length}</small></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('lightning')}AI 实时情景</div>
+      <div class="x">${NET.on?'服务端在线 · 已代理':'未连服务端 · 浏览器直连'}</div></div>
+    <div class="card-bd">
+      <div class="alert alert-i"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        情境完全按你的设定生成：行业、岗位、主题、风格都由你定，生成的题自动入库并混入修行一日。
+        上游只允许预设的大模型厂商（服务端白名单硬编码），不存在可注入的接口地址。
+      </div></div>
+      <div class="fi" style="margin-top:14px">
+        <label>模型来源</label>
+        <select id="ai-preset" onchange="app.aiPreset(this.value)">
+          <option value="zhipu">智谱 GLM-4-Flash（免费）</option>
+          <option value="siliconflow">硅基流动（有免费模型）</option>
+          <option value="deepseek">DeepSeek（按量计费）</option>
+          <option value="moonshot">月之暗面 Kimi</option>
+          <option value="dashscope">阿里通义千问</option>
+          <option value="openai">OpenAI</option>
+          <option value="openrouter">OpenRouter（含免费模型）</option>
+          <option value="custom">自定义网关（部署方在 api/ai.js 配置）</option>
+        </select>
+      </div>
+      <div class="fi">
+        <label>模型名称</label>
+        <input id="ai-model" value="${esc(SV.ai.model)}" placeholder="glm-4-flash" spellcheck="false">
+      </div>
+      <div class="fi">
+        <label>API Key</label>
+        <input id="ai-key" type="password" value="${esc(SV.ai.key)}" placeholder="sk-…（仅保存在本机浏览器；服务端也可用环境变量 AI_KEY 统一配置）">
+      </div>
+      <div class="hr"></div>
+      <div style="font-size:13px;color:var(--el-text-primary);font-weight:600;margin-bottom:10px;display:flex;align-items:center;gap:6px">${IC('setting')}情景自定义</div>
+      <div class="fi"><label>行业 / 公司类型</label>
+        <select id="ai-industry">${['互联网大厂','国企 · 体制内','外企','创业公司','事业单位','金融机构','制造业','咨询与乙方'].map(c=>`<option ${SV.aiStyle.industry===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <div class="fi"><label>你的视角 / 岗位</label>
+        <select id="ai-role">${['普通员工','职场新人','基层管理（组长）','中层管理（经理）','技术岗','职能岗（HR/财务/行政）'].map(c=>`<option ${SV.aiStyle.role===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <div class="fi"><label>主题关键词（逗号分隔，留空则随机轮换）</label>
+        <input id="ai-topics" value="${esc(SV.aiStyle.topics)}" placeholder="裁员风波, 汇报 PPT, 团建, 跨部门抢资源" spellcheck="false"></div>
+      <div class="fi"><label>出题风格</label>
+        <select id="ai-tone">${['轻松搞笑','真实扎心','高压困难'].map(c=>`<option ${SV.aiStyle.tone===c?'selected':''}>${c}</option>`).join('')}</select></div>
+      <div class="fi"><label>每轮题数</label>
+        <select id="ai-count">${[3,5,8].map(c=>`<option value="${c}" ${SV.aiStyle.count===c?'selected':''}>${c} 题</option>`).join('')}</select></div>
+      <div class="btn-row">
+        <button class="btn" onclick="app.aiSave()">${IC('check')}保存配置</button>
+        <button class="btn" onclick="app.aiTest()">${IC('aim')}测试连接</button>
+        <button class="btn btn-primary" onclick="app.startAI()">${IC('lightning')}开始 AI 修行</button>
+      </div>
+      <div id="ai-status" class="fi" style="margin:12px 0 0"></div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('setting')}设置</div>
+      <div class="x">${NET.on?'服务端在线':'本地运行 · 不联网'}</div></div>
+    <div class="card-bd" style="padding:0">
+      <div class="todo">
+        <div class="ti">${IC('trophy')}</div>
+        <div class="tb"><div class="tt">排行榜与玩家出题</div>
+          <div class="td">${NET.on?'服务端已连接：悟性榜实时可提交，你出的题会进入大家的题库。':'未连接服务端。在游戏目录执行 node server.mjs 后刷新，即可开启联网排行榜与玩家出题。'}</div></div>
+        <div class="ta"><button class="btn btn-sm" onclick="app.nav('rank')">${IC('top-right')}前往</button></div>
+      </div>
+      <div class="todo">
+        <div class="ti">${IC('monitor')}</div>
+        <div class="tb"><div class="tt">老板键 <span class="tag tag-s tag-mini">Esc</span></div>
+          <div class="td">整页切换为只读的「绩效指标跟踪表」伪装页，标题栏也同步改变。伪装页为固定模板，不提供自定义入口，避免因改坏而露馅。</div></div>
+        <div class="ta"><button class="btn btn-sm" onclick="app.toggleBoss()">${IC('view')}预览</button></div>
+      </div>
+      <div class="todo">
+        <div class="ti">${IC('aim')}</div>
+        <div class="tb"><div class="tt">键盘操作</div>
+          <div class="td">1-4 作答 · Enter 继续 · Esc 老板键。晋级试炼计时期间按 Esc 会暂停倒计时。</div></div>
+      </div>
+      <div class="todo">
+        <div class="ti d">${IC('refresh')}</div>
+        <div class="tb"><div class="tt">重置存档</div>
+          <div class="td">清空职级、悟性、错题本、成就与全部统计数据，回到入职测评。此操作不可撤销。</div></div>
+        <div class="ta"><button class="btn btn-sm" onclick="app.resetSave()">${IC('refresh')}重置</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('info-filled')}关于</div><div class="x">v1.2</div></div>
+    <div class="card-bd">
+      <div class="alert alert-i"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        单文件网页游戏，全部数据保存在本机浏览器（localStorage），不上传任何内容，断网可用。<br>
+        内置题库 ${EQ.length+IQ.length} 题（情商情境 ${EQ.length} / 思维推理 ${IQ.length}）+ AI 情景 ${SV.aiQs.length} 题 + 玩家出题 ${SV.commQs.length} 题，每题附完整解析。
+      </div></div>
+    </div>
+  </div>`, crumb('工作台','我的'),'me');
+  document.getElementById('ai-preset').value=SV.ai.preset;
+}
+
+/* ---------------- 成就 ---------------- */
+function openAchv(){
+  const got=SV.achv.length;
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('trophy')}成就</div>
+      <div class="x">已解锁 ${got} / ${ACHV.length}</div></div>
+    <div class="card-bd">
+      <div class="progress" style="margin-bottom:16px"><div class="track"><i style="width:${Math.round(got/ACHV.length*100)}%"></i></div>
+        <span class="txt">${Math.round(got/ACHV.length*100)}%</span></div>
+      <div class="agrid">${ACHV.map(a=>{
+        const has=SV.achv.includes(a.i);
+        return `<div class="acard${has?'':' locked'}">
+          <div class="an">${IC(has?'trophy':'lock')}${esc(a.n)}</div>
+          <div class="ad">${esc(a.d)}</div></div>`;}).join('')}</div>
+    </div>
+  </div>`, crumb('工作台','成就'),'achv');
+}
+
+/* ---------------- 晋级试炼 ---------------- */
+function introTrial(){
+  const nx=nextRank();
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('promotion')}晋级试炼</div><div class="x">目标职级：${esc(nx?nx.n:'')}</div></div>
+    <div class="card-bd">
+      <div class="alert alert-w"><div class="ai">${IC('lightning')}</div><div>
+        <div class="at">考核规则</div>
+        <div class="ab">八道混合考题（情商情境 + 思维推理），每题限时 <b>25 秒</b>，答对 <b>6 题</b>即晋升为
+        「${esc(nx?nx.n:'')}」。答错不扣悟性，试炼不限次数。</div>
+      </div></div>
+      <div class="desc" style="margin-top:14px">
+        <div class="it"><div class="lb">${IC('memo')}题量</div><div class="vl">8<small> 题</small></div></div>
+        <div class="it"><div class="lb">${IC('clock')}单题限时</div><div class="vl">25<small> 秒</small></div></div>
+        <div class="it"><div class="lb">${IC('aim')}通过线</div><div class="vl">6<small> 题</small></div></div>
+        <div class="it"><div class="lb">${IC('medal')}当前悟性</div><div class="vl">${SV.wuxing}</div></div>
+      </div>
+      <button class="btn btn-warning btn-lg btn-block" style="margin-top:18px" onclick="app.startTrial()">${IC('lightning')}开始试炼</button>
+      <button class="btn btn-lg btn-block" style="margin-top:10px" onclick="app.home()">${IC('arrow-left')}再等等</button>
+      <div class="center muted" style="margin-top:10px;font-size:12px">计时期间按 Esc 会暂停倒计时，放心摸鱼</div>
+    </div>
+  </div>`, crumb('工作台','晋级试炼'),'home');
+}
+
+/* ---------------- 每日一练 ---------------- */
+function startDaily(){
+  const key=todayKey();
+  if(SV.dailyDone===key){
+    setScreen(`
+    <div class="card rise"><div class="card-bd">
+      <div class="result">
+        <div class="ri ok">${IC('circle-check-filled')}</div>
+        <div class="rt">今日已修</div>
+        <div class="rs">每日一练一天一次，贪多嚼不烂。<br>当前连续修行：<b style="color:var(--el-color-danger)">${SV.streak}</b> 天</div>
+      </div>
+      <button class="btn btn-primary btn-lg btn-block" style="margin-top:18px" onclick="app.startDay()">${IC('lightning')}改修「一日修行」</button>
+      <button class="btn btn-lg btn-block" style="margin-top:10px" onclick="app.home()">${IC('arrow-left')}返回工作台</button>
+    </div></div>`, crumb('工作台','每日一练','今日已修'),'home');
+    return;
+  }
+  startRun('daily');
+}
+
+/* ---------------- 老板键 ---------------- */
+function toggleBoss(){
+  bossOn=!bossOn;
+  document.body.classList.toggle('boss',bossOn);
+  document.title=bossOn?'2026年度部门绩效指标跟踪表.xlsx - Excel':'悟性 · 职场修炼场';
+  if(bossOn)grant('boss1');
+}
+
+/* ---------------- 修行中心 ---------------- */
+function renderPractice(){
+  const dailyDone=SV.dailyDone===todayKey();
+  const nx=nextRank();
+  const canTrial=SV.pending;
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('lightning')}修行</div>
+      <div class="x">题库 ${qList('day').length} 题 · 核心 ${EQ.length+IQ.length} 题</div></div>
+    <div class="card-bd" style="padding:0">
+      <div class="todo">
+        <div class="ti">${IC('lightning')}</div>
+        <div class="tb"><div class="tt">修行一日 <span class="tag tag-mini">约 3 分钟</span></div>
+          <div class="td">七个真实时段、七道情境题。答对得悟性，答错进错题本——当日主要修行。</div></div>
+        <div class="ta"><button class="btn btn-primary btn-sm" onclick="app.startDay()">${IC('arrow-right')}开始</button></div>
+      </div>
+      <div class="todo">
+        <div class="ti ${dailyDone?'s':''}">${IC('calendar')}</div>
+        <div class="tb"><div class="tt">每日一练${dailyDone?'（今日已完成）':''}</div>
+          <div class="td">${dailyDone?('已连续 '+SV.streak+' 天，明天见。'):('每天八题、固定题序。连续七天解锁成就「七日不辍」。')}</div></div>
+        <div class="ta">${dailyDone?'<button class="btn btn-sm" disabled>已完成</button>':'<button class="btn btn-sm" onclick="app.startDaily()">'+IC('arrow-right')+'开始</button>'}</div>
+      </div>
+      <div class="todo">
+        <div class="ti ${canTrial?'w':''}">${IC('promotion')}</div>
+        <div class="tb"><div class="tt">晋级试炼</div>
+          <div class="td">${canTrial?('悟性已达「'+esc((nextRank()||{n:''}).n)+'」晋升线。八题限时，过六题晋升。'):'悟性达到下一职级晋升线后开放。失败不掉悟性。'}</div></div>
+        <div class="ta">${canTrial?'<button class="btn btn-warning btn-sm" onclick="app.introTrial()">'+IC('lightning')+'发起</button>':'<button class="btn btn-sm" disabled>未开放</button>'}</div>
+      </div>
+      <div class="todo">
+        <div class="ti" style="background:var(--el-color-primary-light-9);color:var(--el-color-primary)">${IC('setting')}</div>
+        <div class="tb"><div class="tt">AI 实时情景 <span class="tag tag-mini">实验</span></div>
+          <div class="td">接入你自己的大模型接口，实时生成全新的职场情境题（五题一轮，自动入库并可复练）。需在「我的」里配置接口。</div></div>
+        <div class="ta"><button class="btn btn-sm" onclick="app.startAI()">${IC('arrow-right')}开始</button></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('info-filled')}修行须知</div><div class="x">Esc = 老板键</div></div>
+    <div class="card-bd">
+      <div class="alert alert-w"><div class="ai">${IC('warning')}</div><div class="ab">
+        心态只有三点：连错三题当天提前收工。悟性来自答对，连击让它翻倍——稳住比贪刀赚。
+      </div></div>
+    </div>
+  </div>`, crumb('工作台','修行'),'practice');
+}
+
+/* ---------------- 排行榜与玩家出题 ---------------- */
+let RANK_TAB='score';
+async function renderRank(){
+  RANK_TAB=RANK_TAB||'score';
+  const tabs=[['score','悟性榜'],['author','出题榜'],['contribute','我要出题']];
+  setScreen(`
+  <div class="card rise">
+    <div class="card-hd"><div class="t">${IC('trophy')}排行榜</div>
+      <div class="x">${NET.on?'服务端在线':'<span style="color:var(--el-color-danger)">服务端未连接</span>'}</div></div>
+    <div class="card-bd">
+      <div class="rtabwrap">
+        ${tabs.map(([k,n])=>`<button class="rtab${RANK_TAB===k?' on':''}" onclick="app.rankTab('${k}')">${n}</button>`).join('')}
+      </div>
+      <div id="rank-body"></div>
+    </div>
+  </div>`, crumb('工作台','排行榜'),'rank');
+  renderRankBody();
+}
+async function renderRankBody(){
+  const el=document.getElementById('rank-body');if(!el)return;
+  if(RANK_TAB==='contribute'){renderContribute();return}
+  if(!NET.on){
+    el.innerHTML=`<div class="alert alert-w"><div class="ai">${IC('warning')}</div><div>
+      <div class="at">服务端未连接</div><div class="ab">在游戏目录执行 <b>node server.mjs</b>（本目录自带的零依赖服务端），然后用它给的地址打开本页，排行榜与玩家出题即自动开启。单文件双击打开时此功能不可用。</div>
+    </div></div>`;return;
+  }
+  el.innerHTML='<div class="empty">'+IC('clock')+'正在拉取榜单…</div>';
+  try{
+    const j=await apiGet('api/leaderboard');
+    apiGet('api/community').then(cj=>{
+      const items=(cj.items||[]).filter(it=>it&&it.q&&!validQ({...it.q,a:it.q.a??0}))
+        .map(it=>({...it.q,cid:it.id,by:it.author}))
+        .filter(q=>q.by!==SV.profile.nick);
+      SV.commQs=items.slice(0,50);save();
+    }).catch(()=>{});
+    if(RANK_TAB==='score')el.innerHTML=rankScoreHTML(j.scores||[]);
+    else el.innerHTML=rankAuthorHTML(j.contributors||[]);
+  }catch(e){
+    el.innerHTML='<div class="alert alert-e"><div class="ai">'+IC('circle-close-filled')+'</div><div><div class="at">拉取失败</div><div class="ab">请确认 server.mjs 正在运行。</div></div></div>';
+  }
+}
+function rankScoreHTML(list){
+  if(!list.length)return '<div class="empty">'+IC('medal')+'还没有人上榜——完成一轮修行就会自动提交。</div>';
+  const medal=['#f5a623','#a8b3bd','#c88a5a'];
+  const myNick=SV.profile.nick;
+  return `<div class="recap">${list.map((r,i)=>`
+    <div class="row" style="${r.nick===myNick?'background:var(--el-color-primary-light-9)':''}">
+      <span class="rk" style="${i<3?'color:'+medal[i]+';font-weight:700':''};width:26px;flex:none;text-align:center;font-variant-numeric:tabular-nums">${i+1}</span>
+      <span class="tx" style="color:var(--el-text-primary);white-space:normal">${esc(r.nick)}</span>
+      <span class="tag tag-i tag-mini">${esc(r.rank)}</span>
+      <span style="margin-left:auto;font-variant-numeric:tabular-nums"><b>${r.wuxing}</b> <span class="muted" style="font-size:11px">悟性</span></span>
+    </div>`).join('')}</div>
+  <div class="muted" style="font-size:12px;margin-top:10px;text-align:center">按最高悟性排名 · 每次修行结算后自动更新</div>`;
+}
+function rankAuthorHTML(list){
+  if(!list.length)return '<div class="empty">'+IC('trophy')+'出题榜虚位以待——去「我要出题」投下第一道题。</div>';
+  const medal=['#f5a623','#a8b3bd','#c88a5a'];
+  return `<div class="recap">${list.map((r,i)=>`
+    <div class="row">
+      <span style="width:26px;flex:none;text-align:center;font-variant-numeric:tabular-nums;${i<3?'color:'+medal[i]+';font-weight:700':''}">${i+1}</span>
+      <span class="tx" style="color:var(--el-text-primary);white-space:normal">${esc(r.nick)}${i<3?' <span class="tag tag-w tag-mini">'+(i===0?'金牌':i===1?'银牌':'铜牌')+'出题人</span>':''}</span>
+      <span style="margin-left:auto;font-size:12px;color:var(--el-text-secondary);font-variant-numeric:tabular-nums">出题 ${r.count} · 被作答 ${r.plays} · 获赞 ${r.likes}</span>
+    </div>`).join('')}</div>
+  <div class="muted" style="font-size:12px;margin-top:10px;text-align:center">按出题数与被作答/点赞加权排序 · 前十位获得「出题人」称号，题目会进入所有人的修行题库</div>`;
+}
+/* ---- 我要出题 ---- */
+const CATEGORIES=['向上管理','同事相处','拒绝的艺术','会议汇报','饭局应酬','危机处理','办公室政治','自我提升'];
+function renderContribute(){
+  const el=document.getElementById('rank-body');if(!el)return;
+  el.innerHTML=`
+  <div class="alert alert-i"><div class="ai">${IC('info-filled')}</div><div>
+    <div class="at">为其他修行人出一道题</div>
+    <div class="ab">出题会署你的昵称进入大家的题库（修行一日中有概率遇到）。被作答越多、点赞越多，出题榜排名越高，前三名获得「金/银/铜牌出题人」称号。</div>
+  </div></div>
+  <div class="fi" style="margin-top:14px"><label>分类</label>
+    <select id="ct-cat">${CATEGORIES.map(c=>'<option>'+c+'</option>').join('')}</select></div>
+  <div class="fi"><label>难度</label>
+    <select id="ct-diff"><option value="1">★☆☆ 简单</option><option value="2" selected>★★☆ 进阶</option><option value="3">★★★ 困难</option></select></div>
+  <div class="fi"><label>题干（情境描述）<i>*</i></label>
+    <textarea id="ct-s" maxlength="140" placeholder="第二人称描述一个真实职场情境，40–140 字。例如：周五下午领导说…"></textarea></div>
+  <div class="fi opts-in"><label>四个选项（点击圆圈标记正确答案）<i>*</i></label>
+    ${[0,1,2,3].map(i=>`<div class="oi"><span class="k" onclick="app.markAns(${i})">${'ABCD'[i]}</span>
+      <input id="ct-o${i}" maxlength="80" placeholder="选项 ${'ABCD'[i]}"></div>`).join('')}
+    <div class="hint">正确答案当前为：A</div></div>
+  <div class="fi"><label>逐项解析（为什么对 / 为什么错）<i>*</i></label>
+    ${[0,1,2,3].map(i=>`<textarea id="ct-e${i}" maxlength="120" style="min-height:44px;margin-bottom:6px" placeholder="${'ABCD'[i]} 的解析（一句话讲清为什么对/错）"></textarea>`).join('')}</div>
+  <div class="fi"><label>一句可复用的心得<i>*</i></label>
+    <input id="ct-t" maxlength="60" placeholder="例如：拒绝公式：做不到X，但可以做到Y和Z。"></div>
+  <button class="btn btn-primary btn-block" onclick="app.submitQ()">${IC('promotion')}提交出题</button>
+  <div id="ct-msg" class="fi"></div>`;
+  window._ctAns=0;
+}
+function submitQ(){
+  const msg=document.getElementById('ct-msg');
+  const val=id=>(document.getElementById(id).value||'').trim();
+  const q={c:document.getElementById('ct-cat').value,d:+document.getElementById('ct-diff').value,
+    s:val('ct-s'),o:[0,1,2,3].map(i=>val('ct-o'+i)),a:window._ctAns||0,
+    e:[0,1,2,3].map(i=>val('ct-e'+i)),t:val('ct-t')};
+  const err=validQ(q);
+  if(err){msg.innerHTML='<div class="err">'+esc(err)+'</div>';return}
+  if(!NET.on){msg.innerHTML='<div class="err">服务端未连接：请先用 node server.mjs 启动服务端。</div>';return}
+  msg.innerHTML='<div class="hint">正在提交…</div>';
+  apiPost('api/community',{author:SV.profile.nick,no:SV.profile.no,q})
+    .then(j=>{
+      const item={...j.q,by:SV.profile.nick,cid:j.q.id};
+      SV.commQs.unshift(item);save();
+      msg.innerHTML='<div class="hint" style="color:var(--el-color-success)">提交成功！你的题已进入大家修行一日出现的题池。</div>';
+    })
+    .catch(e=>{msg.innerHTML='<div class="err">'+esc(e.message||'提交失败')+'</div>'});
+}
+function validQ(q){
+  if(!q.s||q.s.length<20||q.s.length>140)return '题干需要 20–140 字';
+  if(q.o.some(o=>!o||o.length>80))return '四个选项都要填，且不超过 80 字';
+  if(new Set(q.o).size!==4)return '四个选项不能重复';
+  if(!(q.a>=0&&q.a<=3))return '请标记正确答案';
+  if(q.e.some(e=>!e||e.length>120))return '四条解析都要填，且不超过 120 字';
+  if(!q.t||q.t.length>60)return '心得需要 1–60 字';
+  return null;
+}
+/* ---- 编辑资料 ---- */
+function editProfile(){
+  const p=SV.profile;
+  const mask=document.createElement('div');mask.className='dmask';mask.id='dmask';
+  mask.innerHTML=`<div class="dbox">
+    <div class="dh"><div class="t">${IC('edit-pen')}编辑资料</div>
+      <button class="x" onclick="document.getElementById('dmask').remove()">${IC('close')}</button></div>
+    <div class="db">
+      <div class="fi"><label>昵称（排行榜与出题署名）<i>*</i></label>
+        <input id="pf-nick" maxlength="12" value="${esc(p.nick)}"></div>
+      <div class="fi"><label>部门</label><input id="pf-dept" maxlength="16" value="${esc(p.dept)}"></div>
+      <div class="fi"><label>工号</label><input id="pf-no" maxlength="20" value="${esc(p.no)}"></div>
+      <div class="fi"><label>头像色</label>
+        <select id="pf-color">
+          ${[['#409eff','蓝','#409eff'],['#67c23a','绿','#67c23a'],['#e6a23c','橙','#e6a23c'],['#f56c6c','红','#f56c6c'],['#8e6bd8','紫','#8e6bd8']]
+            .map(([v,n])=>`<option value="${v}" ${p.color===v?'selected':''}>${n}</option>`).join('')}
+        </select></div>
+      <div class="hint">昵称会显示在排行榜和你出的题上；其余资料只存在本机。</div>
+    </div>
+    <div class="df"><button class="btn" onclick="document.getElementById('dmask').remove()">取消</button>
+      <button class="btn btn-primary" onclick="app.saveProfile()">${IC('check')}保存</button></div>
+  </div>`;
+  document.body.appendChild(mask);
+}
+function saveProfile(){
+  const g=id=>(document.getElementById(id).value||'').trim();
+  const nick=g('pf-nick');
+  if(!nick){toast('昵称不能为空');return}
+  SV.profile.nick=nick.slice(0,12);
+  SV.profile.dept=g('pf-dept').slice(0,16)||'综合管理部';
+  SV.profile.no=g('pf-no').slice(0,20)||'ZP-2026-0971';
+  SV.profile.color=g('pf-color')||'#409eff';
+  save();document.getElementById('dmask').remove();
+  renderMe();toast('资料已更新','ok');
+}
+/* ---------------- AI 实时情景 ---------------- */
+const AI_TOPICS=['向上管理','跨部门协作','周报与汇报','拒绝与边界','会议发言','饭局应酬','客户沟通','背锅与甩锅','加班与调休','晋升答辩','带新人','远程办公'];
+const CATS=['向上管理','同事相处','拒绝的艺术','会议汇报','饭局应酬','危机处理','办公室政治','自我提升'];
+const AI_PRESETS={
+  zhipu:{model:'glm-4-flash'},siliconflow:{model:'Qwen/Qwen2.5-7B-Instruct'},
+  deepseek:{model:'deepseek-chat'},moonshot:{model:'moonshot-v1-8k'},
+  dashscope:{model:'qwen-turbo'},openai:{model:'gpt-4o-mini'},
+  openrouter:{model:'meta-llama/llama-3.1-8b-instruct:free'},custom:{model:''}
+};
+function aiPreset(v){
+  const p=AI_PRESETS[v]||AI_PRESETS.zhipu;
+  SV.ai.preset=v;SV.ai.provider=v;SV.ai.model=p.model;save();
+  document.getElementById('ai-model').value=p.model;
+}
+function aiSave(){
+  SV.ai.provider=(document.getElementById('ai-preset').value||'zhipu');
+  SV.ai.preset=SV.ai.provider;
+  SV.ai.model=(document.getElementById('ai-model').value||'').trim();
+  SV.ai.key=(document.getElementById('ai-key').value||'').trim();
+  SV.aiStyle.industry=document.getElementById('ai-industry').value;
+  SV.aiStyle.role=document.getElementById('ai-role').value;
+  SV.aiStyle.topics=(document.getElementById('ai-topics').value||'').trim().slice(0,80);
+  SV.aiStyle.tone=document.getElementById('ai-tone').value;
+  SV.aiStyle.count=+document.getElementById('ai-count').value||5;
+  save();toast('AI 配置与情景设定已保存','ok');
+}
+async function aiTest(){
+  const st=document.getElementById('ai-status');
+  aiSave();
+  st.innerHTML='<div class="hint">正在测试连接…</div>';
+  try{
+    const q=await callAI('连接测试');
+    st.innerHTML='<div class="hint" style="color:var(--el-color-success)">连接成功，模型返回正常。</div>';
+  }catch(e){
+    st.innerHTML='<div class="err">'+esc(e.message||'连接失败')+'</div>';
+  }
+}
+function parseAIQ(text){
+  let t=String(text||'').replace(/```json|```/g,'');
+  const a=t.indexOf('{'),b=t.lastIndexOf('}');
+  if(a<0||b<=a)throw new Error('模型没有返回 JSON');
+  let q;try{q=JSON.parse(t.slice(a,b+1))}catch(e){throw new Error('返回的 JSON 无法解析')}
+  q.by='AI';q.d=2;
+  if(Array.isArray(q.o))q.o=q.o.map(String);
+  if(typeof q.a==='string'&&/^[0-3]$/.test(q.a))q.a=+q.a;
+  const err=validQ(q);
+  if(err)throw new Error('生成内容不合格：'+err);
+  if(!CATS.includes(q.c))q.c='向上管理';
+  q.i='AI'+Date.now().toString(36)+Math.floor(Math.random()*1e4);
+  q.s=q.s.slice(0,140);q.o=q.o.map(x=>x.slice(0,80));q.e=q.e.map(x=>x.slice(0,120));q.t=q.t.slice(0,60);
+  return q;
+}
+async function callAI(topic){
+  const a=SV.ai,st=SV.aiStyle;
+  if(!a.provider||!a.model)throw new Error('请先在「我的 · AI 实时情景」里选择模型来源');
+  const messages=[
+    {role:'system',content:'你是资深职场培训专家与出题官。只输出 JSON，不要输出任何其他文字或代码块标记。'},
+    {role:'user',content:'请出一道全新的中国职场情商情境选择题。\n'+
+      '背景设定：行业与公司类型「'+st.industry+'」；玩家视角「'+st.role+'」；出题风格「'+st.tone+'」。\n'+
+      '主题领域：「'+topic+'」。要求：\n'+
+      '1. 严格输出 JSON：{"s":"情境","o":["A","B","C","D"],"a":0,"e":["解析A","解析B","解析C","解析D"],"t":"心得","c":"分类"}\n'+
+      '2. s 为第二人称情境描述（40–90 字），a 为正确答案下标(0-3)。\n'+
+      '3. e 为四个选项各自的解析（每条 15–40 字，讲清为什么对/错），c 从这些里选：'+CATS.join('、')+'。\n'+
+      '4. 情境细节要贴合「'+st.industry+'」的真实语境；干扰项合理；不要出现真实公司名、真实人名。\n'+
+      '5. 出题风格：「'+st.tone+'」。'}
+  ];
+  let j;
+  if(NET.on){
+    j=await apiPost('api/ai',{provider:a.provider,model:a.model,key:a.key,messages});
+  }else{
+    const urls={zhipu:'https://open.bigmodel.cn/api/paas/v4/chat/completions',
+      siliconflow:'https://api.siliconflow.cn/v1/chat/completions',
+      deepseek:'https://api.deepseek.com/chat/completions',
+      moonshot:'https://api.moonshot.cn/v1/chat/completions',
+      dashscope:'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
+      openai:'https://api.openai.com/v1/chat/completions',
+      openrouter:'https://openrouter.ai/api/v1/chat/completions'};
+    const url=urls[a.provider];
+    if(!url)throw new Error('该来源需通过服务端代理（node server.mjs）');
+    const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer '+a.key},
+      body:JSON.stringify({model:a.model,messages,temperature:1.05,max_tokens:900})});
+    j=await r.json().catch(()=>{throw new Error('接口返回非 JSON（可能跨域被拦，建议用 node server.mjs 打开本页走代理）')});
+  }
+  const content=j&&(j.choices&&j.choices[0]&&j.choices[0].message&&j.choices[0].message.content);
+  if(!content)throw new Error((j&&j.error)||'接口返回为空');
+  return parseAIQ(content);
+}
+function startAI(){
+  if(!SV.ai.provider||!SV.ai.model){toast('请先在「我的」选择 AI 模型来源');app.nav('me');return}
+  RUN={mode:'ai',qs:[],i:0,combo:0,maxCombo:0,hp:3,xp:0,cleared:0,wrongs:[],results:[],phase:'gen',order:null,
+    aiTarget:SV.aiStyle.count||5};
+  aiNext();
+}
+function aiTopic(){
+  const custom=(SV.aiStyle.topics||'').split(/[,，、;；\s]+/).filter(Boolean);
+  if(custom.length)return custom[Math.floor(Math.random()*custom.length)];
+  return AI_TOPICS[Math.floor(Math.random()*AI_TOPICS.length)];
+}
+async function aiNext(){
+  const topic=aiTopic();
+  setScreen(`
+  <div class="card rise"><div class="card-bd center" style="padding:40px 20px">
+    <div class="result"><div class="ri info" style="animation:pulse 1s ease infinite">${IC('lightning')}</div>
+      <div class="rt">AI 正在编排情境…</div>
+      <div class="rs">主题：${esc(topic)} · 已生成 ${RUN.qs.length} / ${RUN.aiTarget} 题</div></div>
+  </div></div>`, crumb('工作台','修行','AI 情景'),'practice');
+  try{
+    const q=await callAI(topic);
+    SV.aiQs.unshift(q);if(SV.aiQs.length>100)SV.aiQs.length=100;save();
+    RUN.qs.push(q);RUN.phase='q';renderQ();
+  }catch(e){
+    setScreen(`
+    <div class="card rise"><div class="card-bd">
+      <div class="result"><div class="ri warn">${IC('warning')}</div>
+        <div class="rt">生成失败</div><div class="rs">${esc(e.message||'未知错误')}</div></div>
+      <div class="alert alert-i" style="margin-top:14px"><div class="ai">${IC('info-filled')}</div><div class="ab">
+        常见原因：Key 未填/无效、接口地址不对、浏览器直连被跨域拦截（建议用 node server.mjs 打开本页走代理）。</div></div>
+      <div class="btn-row" style="margin-top:16px">
+        <button class="btn" onclick="app.aiRetry()">${IC('refresh')}重试本题</button>
+        ${RUN.qs.length?'<button class="btn" onclick="app.aiFinish()">'+IC('document')+'就答到这，去结算</button>':''}
+        <button class="btn" onclick="app.nav('me')">${IC('edit-pen')}去检查配置</button>
+      </div>
+    </div></div>`, crumb('工作台','AI 实时情景'),'practice');
+    RUN.phase='gen';
+  }
+}
+function aiFinish(){
+  if(!RUN.qs.length){app.nav('practice');return}
+  settle(false);
+}
+
+/* ---------------- 对外接口 ---------------- */
+window.app={
+  home:renderHome,
+  nav(k){
+    if(k==='home')renderHome();
+    else if(k==='practice')renderPractice();
+    else if(k==='wrong')openWrong();
+    else if(k==='rank')renderRank();
+    else if(k==='achv')openAchv();
+    else if(k==='me')renderMe();
+  },
+  rankTab(t){RANK_TAB=t;renderRankBody()},
+  startDay(){startRun('day')},
+  startDaily,
+  beginPlacement:startPlacement,
+  introTrial,
+  startTrial(){startRun('trial')},
+  startAI,aiRetry(){aiNext()},aiFinish,
+  aiPreset,aiSave,aiTest,
+  editProfile,saveProfile,
+  markAns(i){
+    window._ctAns=i;
+    document.querySelectorAll('.opts-in .k').forEach((el,k)=>el.classList.toggle('on',k===i));
+  },
+  submitQ,
+  choose,next,openWrong,openAchv,wbOpen,wbChoose,toggleBoss,
+  again(){if(RUN&&RUN.mode==='ai'){startAI();return}startRun(RUN?RUN.mode:'day')},
+  resetSave(){if(confirm('确定清空全部修行记录？此操作不可撤销。')){SV=defaultSave();save();renderHome()}}
+};
+
+/* ---------------- 键盘 ---------------- */
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){e.preventDefault();toggleBoss();return}
+  if(bossOn){
+    // 伪装页为固定模板：屏蔽一切可能改动内容的输入（复制/粘贴/打印/查找/全选/输入）
+    const k=e.key.toLowerCase();
+    if(e.ctrlKey||e.metaKey){
+      if(['c','a','p','s','f','u'].includes(k))e.preventDefault();
+      return;
+    }
+    if(e.key==='F12'||e.key==='F5'||e.key==='F11')return;
+    if(e.key.length===1||['Enter','Backspace','Delete','Tab',' '].includes(e.key))e.preventDefault();
+    return;
+  }
+  if(RUN&&RUN.phase==='q'&&['1','2','3','4'].includes(e.key)){app.choose(+e.key-1);return}
+  if(RUN&&RUN.phase==='a'&&e.key==='Enter'){app.next();return}
+  if(WB&&WB.q&&!WB.answered&&['1','2','3','4'].includes(e.key)){app.wbChoose(+e.key-1)}
+});
+/* 伪装页不可编辑：拦截一切写入型事件（含拖拽、粘贴、输入法） */
+['beforeinput','paste','drop','cut','dragover'].forEach(ev=>{
+  document.addEventListener(ev,e=>{if(bossOn)e.preventDefault()},true);
+});
+/* 伪装页不接受焦点，避免出现输入光标或选中态 */
+document.addEventListener('focusin',e=>{
+  if(bossOn&&e.target&&e.target.closest&&e.target.closest('#boss'))e.target.blur();
+});
+
+/* ---------------- 启动 ---------------- */
+(function init(){
+  if(!SV.placed)renderPlacementIntro();
+  else renderHome();
+  const nx=nextRank();
+  if(nx&&SV.wuxing>=nx.xp&&!SV.pending){SV.pending=true;save()}
+  netProbe();
+})();
+</script>
+</body>
+</html>
