@@ -1245,19 +1245,24 @@ let SV=load();
 let RUN=null, WB={q:null,answered:false}, bossOn=false, NAV='home';
 
 /* ---------------- 网络层：本地服务端（排行榜 / 玩家出题 / AI 代理） ---------------- */
-const NET={on:false,checking:false};
-async function netProbe(){
-  if(NET.checking||location.protocol==='file:')return;
+/* NET.file：单文件直开；NET.cloud：非 localhost 的 http(s) 打开（Vercel 部署等） */
+const NET={on:false,checking:false,err:'',
+  file:location.protocol==='file:',
+  cloud:location.protocol.startsWith('http')&&!['localhost','127.0.0.1','[::1]'].includes(location.hostname)};
+async function netProbe(retry){
+  if(NET.checking||NET.file)return;
   NET.checking=true;
   try{
-    const c=new AbortController();const t=setTimeout(()=>c.abort(),1800);
+    const c=new AbortController();const t=setTimeout(()=>c.abort(),5000);
     const r=await fetch('api/health',{signal:c.signal});
     clearTimeout(t);
-    const j=await r.json();
+    const txt=await r.text();let j=null;try{j=JSON.parse(txt)}catch(_e){}
     NET.on=!!(j&&j.ok);
-  }catch(e){NET.on=false}
+    if(NET.on)NET.err='';else NET.err=r.ok?'响应异常':'HTTP '+r.status;
+  }catch(e){NET.err=(e&&e.name==='AbortError')?'探测超时（云端冷启动较慢）':'无法连接';NET.on=false}
   NET.checking=false;
   if(NET.on&&typeof renderRank==='function'&&NAV==='rank')renderRank();
+  if(!NET.on&&NET.cloud&&!retry)setTimeout(()=>netProbe(true),1500);
 }
 async function apiGet(p){const r=await fetch(p);if(!r.ok)throw new Error('HTTP '+r.status);return r.json()}
 async function apiPost(p,body){
@@ -2036,7 +2041,7 @@ function renderMe(){
       <div class="todo">
         <div class="ti">${IC('trophy')}</div>
         <div class="tb"><div class="tt">排行榜与玩家出题</div>
-          <div class="td">${NET.on?'服务端已连接：悟性榜实时可提交，你出的题会进入大家的题库。':'未连接服务端。在游戏目录执行 node server.mjs 后刷新，即可开启联网排行榜与玩家出题。'}</div></div>
+          <div class="td">${NET.on?'服务端已连接：悟性榜实时可提交，你出的题会进入大家的题库。':(NET.cloud?'未连接云端接口。首次访问冷启动可能较慢，稍后刷新重试；若持续失败请到 Vercel 控制台查看部署日志，确认 api 函数构建成功。':'未连接服务端。在游戏目录执行 node server.mjs 后刷新，即可开启联网排行榜与玩家出题。')}</div></div>
         <div class="ta"><button class="btn btn-sm" onclick="app.nav('rank')">${IC('top-right')}前往</button></div>
       </div>
       <div class="todo">
@@ -2197,7 +2202,7 @@ async function renderRank(){
   setScreen(`
   <div class="card rise">
     <div class="card-hd"><div class="t">${IC('trophy')}排行榜</div>
-      <div class="x">${NET.on?'服务端在线':'<span style="color:var(--el-color-danger)">服务端未连接</span>'}</div></div>
+      <div class="x">${NET.on?'服务端在线':(NET.cloud?'<span style="color:var(--el-color-danger)">云端接口未就绪</span>':'<span style="color:var(--el-color-danger)">服务端未连接</span>')}</div></div>
     <div class="card-bd">
       <div class="rtabwrap">
         ${tabs.map(([k,n])=>`<button class="rtab${RANK_TAB===k?' on':''}" onclick="app.rankTab('${k}')">${n}</button>`).join('')}
@@ -2211,8 +2216,14 @@ async function renderRankBody(){
   const el=document.getElementById('rank-body');if(!el)return;
   if(RANK_TAB==='contribute'){renderContribute();return}
   if(!NET.on){
+    if(!NET.checking)netProbe();
+    const tip=NET.cloud
+      ?`云端接口未就绪${NET.err?'（'+esc(NET.err)+'）':''}。首次访问冷启动可能较慢，稍候会自动重试，也可刷新本页；若持续失败，请到 Vercel 控制台查看部署日志确认 api 函数构建成功，并直接访问 <b>/api/health</b> 验证。`
+      :(NET.file
+        ?'单文件方式打开不支持联网功能：排行榜与玩家出题需要服务端支持。'
+        :'在游戏目录执行 <b>node server.mjs</b>（本目录自带的零依赖服务端），然后用它给的地址打开本页，排行榜与玩家出题即自动开启。');
     el.innerHTML=`<div class="alert alert-w"><div class="ai">${IC('warning')}</div><div>
-      <div class="at">服务端未连接</div><div class="ab">在游戏目录执行 <b>node server.mjs</b>（本目录自带的零依赖服务端），然后用它给的地址打开本页，排行榜与玩家出题即自动开启。单文件双击打开时此功能不可用。</div>
+      <div class="at">${NET.cloud?'云端接口未就绪':'服务端未连接'}</div><div class="ab">${tip}</div>
     </div></div>`;return;
   }
   el.innerHTML='<div class="empty">'+IC('clock')+'正在拉取榜单…</div>';
@@ -2289,7 +2300,7 @@ function submitQ(){
     e:[0,1,2,3].map(i=>val('ct-e'+i)),t:val('ct-t')};
   const err=validQ(q);
   if(err){msg.innerHTML='<div class="err">'+esc(err)+'</div>';return}
-  if(!NET.on){msg.innerHTML='<div class="err">服务端未连接：请先用 node server.mjs 启动服务端。</div>';return}
+  if(!NET.on){msg.innerHTML='<div class="err">'+(NET.cloud?'云端接口未就绪：请稍后刷新重试（首次冷启动较慢）。':'服务端未连接：请先用 node server.mjs 启动服务端。')+'</div>';return}
   msg.innerHTML='<div class="hint">正在提交…</div>';
   apiPost('api/community',{author:SV.profile.nick,no:SV.profile.no,q})
     .then(j=>{
